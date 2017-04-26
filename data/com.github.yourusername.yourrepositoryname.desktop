@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Bookmark Manager
+GenericName=Bookmark Manager App
+Comment=Application to manage the .ssh/config bookmarks file
+Categories=GTK;Utility;
+Exec=com.github.yourusername.yourrepositoryname
+Icon=application-default-icon
+Terminal=false
+Type=Application
+X-GNOME-Gettext-Domain=hello-again
+Keywords=Hello;World;Example;

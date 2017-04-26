@@ -1,8 +1,6 @@
 # Hello World
 
-### Simple debian package installer for elementary OS
-
-![screenshot](Screenshot.png)
+### Simple App for elementary OS
 
 Simple first Vala GTK App
 
@@ -17,11 +15,12 @@ These dependencies must be present before building
  `No command needed`
 
 ### Building
-
+```
 mkdir build
 cd build
 cmake ..
 make
+```
 
 
 ### Installing

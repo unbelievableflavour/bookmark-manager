@@ -18,6 +18,7 @@
 *
 * Authored by: Author <author@example.com>
 */
+using Granite.Widgets;
 
 int main (string[] args) {
     Gtk.init (ref args);

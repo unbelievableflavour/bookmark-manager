@@ -19,11 +19,14 @@
     set (VERSION "0.1")
     set (VERSION_INFO "whats up world")
 
-    # we're about to use pkgconfig to make sure dependencies are installed so let's find pkgconfig first
-    find_package(PkgConfig)
+    set (DEPS_PACKAGES
+        gtk+-3.0
+        granite
+    )
 
-    # now let's actually check for the required dependencies
-    pkg_check_modules(DEPS REQUIRED gtk+-3.0)
+    find_package (PkgConfig)
+    pkg_check_modules (DEPS REQUIRED ${DEPS_PACKAGES})
+
 
     add_definitions(${DEPS_CFLAGS})
     link_libraries(${DEPS_LIBRARIES})
@@ -39,11 +42,16 @@
     # files we want to compile
     include(ValaPrecompile)
     vala_precompile(VALA_C ${EXEC_NAME}
-        src/hello-again.vala
+        src/BookmarkManager.vala
+        src/BookmarkManagerWindow.vala
+        src/ListBoxRow.vala
+        src/ListBox.vala
+        src/Bookmarks.vala
 
     # tell what libraries to use when compiling
     PACKAGES
         gtk+-3.0
+        granite
     )
 
     # tell cmake what to call the executable we just made

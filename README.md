@@ -1,8 +1,8 @@
-# Hello World
+# Bookmark Manager
 
 ### Simple App for elementary OS
 
-Simple first Vala GTK App
+A Vala application to get your ssh bookmarks from your config file
 
 ## Installation
 

@@ -12,8 +12,7 @@ public class Bookmarks : Gtk.ListBox{
 
    public string[,] getBookmarks (){
         string[,] bookmarks = new string[bookmarksCount,2];  
-        bookmarks[0,1] = "han";
-        bookmarks[0,2] = "5070";
+        
          // A reference to our file
         string path = Environment.get_home_dir ();
         var file = File.new_for_path (path + "/.ssh/config");
@@ -22,7 +21,6 @@ public class Bookmarks : Gtk.ListBox{
             stderr.printf ("File '%s' doesn't exist.\n", file.get_path ());
             return bookmarks;
         }
-
         
         try {        
             // Open file for reading and wrap returned FileInputStream into a

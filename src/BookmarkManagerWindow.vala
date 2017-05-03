@@ -13,8 +13,11 @@ public class BookmarkManagerWindow : Gtk.Window{
         set_size_request (600, 500);
 
         var header_bar = new Gtk.HeaderBar ();
-        header_bar.set_title ("Bookmark Manager");
+        var searchEntry = new Gtk.SearchEntry ();
+
+        header_bar.set_title ("Bookmark Manager");        
         header_bar.show_close_button = true;
+        header_bar.pack_end (searchEntry);
 
         set_titlebar (header_bar);
         
@@ -28,7 +31,16 @@ public class BookmarkManagerWindow : Gtk.Window{
         var bookmarkManager = new Bookmarks ();
         var bookmarks = bookmarkManager.getBookmarks();
 
-        for (int a = 0; a < 15; a++) {    
+        searchEntry.search_changed.connect (() => {
+            bookmarks = bookmarkManager.getBookmarks();
+            for (int a = 0; a < 15; a++) {
+                if(searchEntry.text in bookmarks[a,1]){
+                    print(bookmarks[a,1]);
+                }
+            }
+        });
+
+        for (int a = 0; a < 15; a++) {
             bookmarkBox.add (new ListBoxRow (bookmarks[a,1], bookmarks[a,2]));
         }        
         var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);

@@ -20,7 +20,7 @@ public class BookmarkManagerWindow : Gtk.Window{
             bookmarkBox.getBookmarks(searchEntry.text); 
         });
 
-        header_bar.set_title ("Bookmark Manager");        
+      
         header_bar.show_close_button = true;
         header_bar.pack_end (searchEntry);
 

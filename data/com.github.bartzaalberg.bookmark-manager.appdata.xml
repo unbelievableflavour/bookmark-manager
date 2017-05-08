@@ -6,7 +6,7 @@
   <name>Bookmark Manager</name>
   <summary>For people with SSH headaches</summary>
   <description>
-    <p>A quick summary of your app's main selling points and features. Just a couple sentences per paragraph is best.</p>
+    <p>Application to manage the .ssh/config bookmarks file.</p>
   </description>
   <custom>
     <value key="x-appcenter-color-primary">#b30033</value>

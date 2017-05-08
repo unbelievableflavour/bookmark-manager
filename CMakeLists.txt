@@ -60,14 +60,10 @@
     # install the binaries we just made
     install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
 
-    # install our .desktop file so the Applications menu will see it
-    install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.bartzaalberg.bookmark-manager.desktop DESTINATION ${DATADIR}/applications/)
-
-    # install our .appdata.xml file so AppCenter will see it
-    install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.bartzaalberg.bookmark-manager.appdata.xml DESTINATION ${DATADIR}/metainfo/)
+    #add the data directory and activated the cmakelists in that folder
+    add_subdirectory (data)
     
     # add settings schema to pc and recomple all schemas
-    #install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.bartzaalberg.bookmark-manager.gschema.xml DESTINATION "/usr/share/glib-2.0/schemas")
     execute_process (COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.bartzaalberg.bookmark-manager.gschema.xml "/usr/share/glib-2.0/schemas")
     execute_process (COMMAND glib-compile-schemas "/usr/share/glib-2.0/schemas")
 

@@ -1,5 +1,5 @@
  # project name
-    project (com.github.yourusername.yourrepositoryname)
+    project (com.github.bartzaalberg.bookmark-manager)
 
     # the oldest stable cmake version we support
     cmake_minimum_required (VERSION 2.6)
@@ -12,10 +12,9 @@
     set (DATADIR "${CMAKE_INSTALL_PREFIX}/share")
 
     # what to call that directory where we install data too
-    set (PKGDATADIR "${DATADIR}/com.github.yourusername.yourrepositoryname")
+    set (PKGDATADIR "${DATADIR}/com.github.bartzaalberg.bookmark-manager")
 
-    set (EXEC_NAME "com.github.yourusername.yourrepositoryname")
-    set (RELEASE_NAME "A hello world.")
+    set (EXEC_NAME "com.github.bartzaalberg.bookmark-manager")
     set (VERSION "0.1")
     set (VERSION_INFO "whats up world")
 
@@ -47,6 +46,7 @@
         src/ListBoxRow.vala
         src/ListBox.vala
         src/Bookmarks.vala
+        src/Constants.vala
 
     # tell what libraries to use when compiling
     PACKAGES
@@ -61,7 +61,13 @@
     install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
 
     # install our .desktop file so the Applications menu will see it
-    install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.yourusername.yourrepositoryname.desktop DESTINATION ${DATADIR}/applications/)
+    install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.bartzaalberg.bookmark-manager.desktop DESTINATION ${DATADIR}/applications/)
 
     # install our .appdata.xml file so AppCenter will see it
-    install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.yourusername.yourrepositoryname.appdata.xml DESTINATION ${DATADIR}/metainfo/)
+    install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.bartzaalberg.bookmark-manager.appdata.xml DESTINATION ${DATADIR}/metainfo/)
+    
+    # add settings schema to pc and recomple all schemas
+    #install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.bartzaalberg.bookmark-manager.gschema.xml DESTINATION "/usr/share/glib-2.0/schemas")
+    execute_process (COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.bartzaalberg.bookmark-manager.gschema.xml "/usr/share/glib-2.0/schemas")
+    execute_process (COMMAND glib-compile-schemas "/usr/share/glib-2.0/schemas")
+

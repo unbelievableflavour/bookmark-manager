@@ -3,8 +3,10 @@ using Granite.Widgets;
 namespace BookmarkManager {
 public class ListBox : Gtk.ListBox{
 
-     construct{
-        expand = true;    
+    private Bookmarks bookmarkManager = new Bookmarks ();
+
+    construct{
+        expand = true;
     }
 
     public void empty(){
@@ -16,10 +18,10 @@ public class ListBox : Gtk.ListBox{
     public void getBookmarks(string searchWord = ""){
         this.empty();
 
-        var bookmarkManager = new Bookmarks ();
         var bookmarks = bookmarkManager.getBookmarks();
+        var bookmarksCount = bookmarkManager.countBookmarks();
 
-        for (int a = 0; a < 15; a++) {
+        for (int a = 0; a < bookmarksCount; a++) {
             if(searchWord != ""){
                 if(searchWord in bookmarks[a,1]){
                     this.add (new ListBoxRow (bookmarks[a,1], bookmarks[a,2]));
@@ -31,5 +33,5 @@ public class ListBox : Gtk.ListBox{
 
         this.show_all();
     }
-} 
+}
 }

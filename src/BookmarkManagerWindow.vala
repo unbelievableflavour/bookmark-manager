@@ -4,12 +4,12 @@ namespace BookmarkManager {
 public class BookmarkManagerWindow : Gtk.Window{
 
     private const string WELCOME_VIEW_ID = "welcome-view";
-    private const string CONFIG_VIEW_ID = "config-view";
     private const string LIST_VIEW_ID = "list-view";
     private Gtk.Stack stack;
     private int importIndex;
     private ListBox bookmarkBox = new ListBox ();
     private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager");
+    private Preferences dialog = new Preferences ();
 
     construct {
         set_default_size(600, 500);
@@ -23,7 +23,7 @@ public class BookmarkManagerWindow : Gtk.Window{
         });
         var settings_button = new Gtk.Button.from_icon_name ("document-properties", Gtk.IconSize.LARGE_TOOLBAR);
         settings_button.clicked.connect (() => {
-            stack.visible_child_name = CONFIG_VIEW_ID;        
+            dialog.show_all();
         });
 
         //Granite.Widgets.Utils.set_color_primary (this, Constants.BRAND_COLOR);
@@ -47,28 +47,11 @@ public class BookmarkManagerWindow : Gtk.Window{
 
         var list_view = setupListView();
 
-        var config_view = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
-        var titleLabel = new Gtk.Label ("Settings");
-        var sshLabel = new Gtk.Label ("SSH name");
-        var sshEntry = new Gtk.Entry ();
-        sshEntry.set_text (settings.get_string ("sshname"));
-        var button = new Gtk.Button.with_label ("Save Settings");
-        button.clicked.connect (() => {
-            settings.set_string("sshname", sshEntry.text);
-            stack.visible_child_name = LIST_VIEW_ID;        
-        });
-        
-        config_view.add(titleLabel);
-        config_view.add(sshLabel);
-        config_view.add(sshEntry);
-        config_view.add(button);
-
         if(settings.get_string ("sshname") == ""){
             stack.add_named (welcome_view, WELCOME_VIEW_ID);
         }
         
         stack.add_named (list_view, LIST_VIEW_ID);
-        stack.add_named (config_view, CONFIG_VIEW_ID);
         add(stack);
     }
     
@@ -79,8 +62,9 @@ public class BookmarkManagerWindow : Gtk.Window{
     //}
 
     private void on_welcome_view_activated (int index) {
-        if(index == importIndex){    
-            stack.visible_child_name = CONFIG_VIEW_ID;
+        if(index == importIndex){
+            stack.visible_child_name = LIST_VIEW_ID;
+            dialog.show_all();
         }
     }
 

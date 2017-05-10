@@ -14,19 +14,19 @@ public class ListBoxRow : Gtk.ListBoxRow {
     private Gtk.Box button_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
     private Gtk.ListBoxRow list_bow_row = new Gtk.ListBoxRow ();
 
-    public ListBoxRow (string bookmarkName, string bookmarkIp){
+    public ListBoxRow (Bookmark bookmark){
         
-        name_label = new Gtk.Label ("<b>%s</b>".printf (bookmarkName));
+        name_label = new Gtk.Label ("<b>%s</b>".printf (bookmark.getName()));
         name_label.use_markup = true;
         name_label.halign = Gtk.Align.START;            
 
-        summary_label = new Gtk.Label (bookmarkIp);
+        summary_label = new Gtk.Label (bookmark.getIp());
         summary_label.halign = Gtk.Align.START;
 
         button.clicked.connect (() => {
             try {
 		        Process.spawn_command_line_async (
-                    "pantheon-terminal --execute='ssh " + settings.get_string("sshname") + "@" + bookmarkIp + "'"
+                    "pantheon-terminal --execute='ssh " + settings.get_string("sshname") + "@" + bookmark.getIp() + "'"
                 );
 	        } catch (SpawnError e) {
 		        stdout.printf ("Error: %s\n", e.message);

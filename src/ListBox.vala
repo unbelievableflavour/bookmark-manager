@@ -22,13 +22,15 @@ public class ListBox : Gtk.ListBox{
         var bookmarksCount = bookmarkManager.countBookmarks();
 
         for (int a = 0; a < bookmarksCount; a++) {
+            var bookmark = bookmarks[a];
+        
             if(searchWord != ""){
-                if(searchWord in bookmarks[a,1]){
-                    this.add (new ListBoxRow (bookmarks[a,1], bookmarks[a,2]));
+                if(searchWord in bookmark.getName()){
+                    this.add (new ListBoxRow (bookmark));
                 }
                 continue;
             }
-            this.add (new ListBoxRow (bookmarks[a,1], bookmarks[a,2]));                        
+            this.add (new ListBoxRow (bookmark));
         }
 
         this.show_all();

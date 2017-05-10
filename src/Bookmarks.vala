@@ -3,13 +3,9 @@ using Granite.Widgets;
 namespace BookmarkManager {
 public class Bookmarks : Gtk.ListBox{
 
-    construct{
-        expand = true;    
-    }
-
-   public string[,] getBookmarks (){
+   public Bookmark[] getBookmarks (){
         var bookmarksCount = countBookmarks();
-        string[,] bookmarks = new string[bookmarksCount,2];
+        Bookmark[] bookmarks = new Bookmark[bookmarksCount];
 
         var file = File.new_for_path (Environment.get_home_dir () + "/.ssh/config");
 
@@ -23,20 +19,25 @@ public class Bookmarks : Gtk.ListBox{
             // DataInputStream, so we can read line by line
             var dis = new DataInputStream (file.read ());
             string line;
-            int i = 0;
-            // Read lines until end of file (null) is reached        
+            
+            int i = 0;            
+            bookmarks[i] = new Bookmark();
+
+            // Read lines until end of file (null) is reached
             while ((line = dis.read_line (null)) != null) {
                 if("host" in line ){
                     string line_new = line.replace ("host", "");
                     string line_newest = line_new.replace (" ", "");
-                    bookmarks[i,1] = line_newest;
+                    bookmarks[i].setName(line_newest);
                 }
 
                 if("HostName" in line ){
                     string line_new = line.replace ("HostName", "");
-                    string line_newest = line_new.replace (" ", "");                
-                    bookmarks[i,2] = line_newest;
+                    string line_newest = line_new.replace (" ", "");
+                    bookmarks[i].setIp(line_newest);    
+ 
                     i++;
+                    bookmarks[i] = new Bookmark();
                 }
             }
             

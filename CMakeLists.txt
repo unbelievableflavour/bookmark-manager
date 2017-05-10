@@ -48,6 +48,7 @@
         src/Bookmarks.vala
         src/Constants.vala
         src/PreferencesDialog.vala
+        src/Bookmark.vala
 
     # tell what libraries to use when compiling
     PACKAGES

@@ -20,7 +20,7 @@ namespace BookmarkManager {
             var close_button = new Gtk.Button.with_label ("Close");
             close_button.clicked.connect (() => {
                 settings.set_string("sshname", sshEntry.text);
-                this.hide ();
+                this.destroy ();
 
             });
 
@@ -45,6 +45,7 @@ namespace BookmarkManager {
             main_grid.attach (button_box, 0, 1, 1, 1);
             
             ((Gtk.Container) get_content_area ()).add (main_grid);
+            this.show_all ();
         }
     }
 

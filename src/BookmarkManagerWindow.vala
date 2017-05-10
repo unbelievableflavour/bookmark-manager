@@ -9,7 +9,6 @@ public class BookmarkManagerWindow : Gtk.Window{
     private int importIndex;
     private ListBox bookmarkBox = new ListBox ();
     private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager");
-    private Preferences dialog = new Preferences ();
 
     construct {
         set_default_size(600, 500);
@@ -24,7 +23,7 @@ public class BookmarkManagerWindow : Gtk.Window{
         });
         var settings_button = new Gtk.Button.from_icon_name ("document-properties", Gtk.IconSize.LARGE_TOOLBAR);
         settings_button.clicked.connect (() => {
-            dialog.show_all();
+            new Preferences ();
         });
 
         //Granite.Widgets.Utils.set_color_primary (this, Constants.BRAND_COLOR);
@@ -65,7 +64,7 @@ public class BookmarkManagerWindow : Gtk.Window{
     private void on_welcome_view_activated (int index) {
         if(index == importIndex){
             stack.visible_child_name = LIST_VIEW_ID;
-            dialog.show_all();
+            new Preferences ();
         }
     }
 

@@ -41,14 +41,14 @@
     # files we want to compile
     include(ValaPrecompile)
     vala_precompile(VALA_C ${EXEC_NAME}
-        src/BookmarkManager.vala
-        src/BookmarkManagerWindow.vala
+        src/Application.vala
+        src/MainWindow.vala
         src/ListBoxRow.vala
         src/ListBox.vala
-        src/Bookmarks.vala
-        src/Constants.vala
-        src/PreferencesDialog.vala
+        src/ConfigFileReader.vala
+        src/Constants.vala        
         src/Bookmark.vala
+        src/Dialogs/Preferences.vala
 
     # tell what libraries to use when compiling
     PACKAGES

@@ -1,7 +1,7 @@
 using Granite.Widgets;
 
 namespace BookmarkManager {
-public class BookmarkManagerWindow : Gtk.Window{
+public class MainWindow : Gtk.Window{
 
     private const string WELCOME_VIEW_ID = "welcome-view";
     private const string LIST_VIEW_ID = "list-view";

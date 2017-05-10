@@ -3,7 +3,7 @@ using Granite.Widgets;
 namespace BookmarkManager {
 public class ListBox : Gtk.ListBox{
 
-    private Bookmarks bookmarkManager = new Bookmarks ();
+    private ConfigFileReader bookmarkManager = new ConfigFileReader ();
 
     construct{
         expand = true;

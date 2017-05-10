@@ -1,7 +1,7 @@
 using Granite.Widgets;
 
 namespace BookmarkManager {
-public class Bookmarks : Gtk.ListBox{
+public class ConfigFileReader : Gtk.ListBox{
 
    public Bookmark[] getBookmarks (){
         var bookmarksCount = countBookmarks();

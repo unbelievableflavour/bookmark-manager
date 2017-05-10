@@ -17,7 +17,7 @@ public class App:Granite.Application{
     }
 
     public override void activate() {
-        var window = new BookmarkManagerWindow ();
+        var window = new MainWindow ();
         window.show_all();
     }
 

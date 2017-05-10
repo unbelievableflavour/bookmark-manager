@@ -18,6 +18,7 @@ public class BookmarkManagerWindow : Gtk.Window{
         var header_bar = new Gtk.HeaderBar ();
 
         var searchEntry = new Gtk.SearchEntry ();
+        searchEntry.set_placeholder_text("Search Bookmarks");
         searchEntry.search_changed.connect (() => {     
             bookmarkBox.getBookmarks(searchEntry.text); 
         });

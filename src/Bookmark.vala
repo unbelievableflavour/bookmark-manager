@@ -28,8 +28,8 @@ public class Bookmark : Object {
         return this.user;    
     }
 
-    public string getPort(){
-        return this.ip;    
+    public int getPort(){
+        return this.port;    
     }
 }
 }

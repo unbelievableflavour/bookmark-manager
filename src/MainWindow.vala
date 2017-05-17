@@ -12,8 +12,8 @@ public class MainWindow : Gtk.Window{
     private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager");
 
     construct {
-        set_default_size(600, 500);
-        set_size_request (600, 500);
+        set_default_size(600, 810);
+        set_size_request (600, 810);
 
         var header_bar = new Gtk.HeaderBar ();
 
@@ -35,7 +35,7 @@ public class MainWindow : Gtk.Window{
         Granite.Widgets.Utils.set_color_primary (this, Constants.BRAND_COLOR);
       
         header_bar.show_close_button = true;
-        header_bar.pack_start (add_button);
+        //header_bar.pack_start (add_button);
         header_bar.pack_end (settings_button);        
         header_bar.pack_end (searchEntry);
         set_titlebar (header_bar);

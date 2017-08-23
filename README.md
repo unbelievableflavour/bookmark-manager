@@ -1,8 +1,11 @@
 # Bookmark Manager
+Manager for your ssh configs
+
+![Screenshot](https://raw.githubusercontent.com/bartzaalberg/Bookmark-Manager/master/screenshot.png)
 
 ### Simple App for elementary OS
 
-A Vala application to get your ssh bookmarks from your config file
+A Vala application to get your ssh bookmarks from your config file and use them in an interface kinda way
 
 ## Installation
 

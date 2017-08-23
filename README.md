@@ -22,7 +22,7 @@ These dependencies must be present before building
 ```
 mkdir build
 cd build
-cmake ..
+sudo cmake ..
 make
 ```
 

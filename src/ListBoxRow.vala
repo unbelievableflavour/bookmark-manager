@@ -22,8 +22,25 @@ public class ListBoxRow : Gtk.ListBoxRow {
         name_label = new Gtk.Label ("<b>%s</b>".printf (bookmark.getName()));
         name_label.use_markup = true;
         name_label.halign = Gtk.Align.START;            
+        
+        var username = settings.get_string("sshname");
+        if(bookmark.getUser() != null){
+            username = bookmark.getUser();
+        }
 
-        summary_label = new Gtk.Label (bookmark.getIp());
+        var port = 22;
+        if(bookmark.getPort() != 0){
+            port = bookmark.getPort();
+        }
+
+        var ip = "127.0.0.1";
+        if(bookmark.getIp() != null){
+            ip = bookmark.getIp();
+        }
+
+        var sshCommand = "ssh " + username + "@" + ip + " -p " + port.to_string();
+        
+        summary_label = new Gtk.Label (sshCommand);
         summary_label.halign = Gtk.Align.START;
 
         var start_session_event_box = new Gtk.EventBox();
@@ -32,7 +49,7 @@ public class ListBoxRow : Gtk.ListBoxRow {
         start_session_event_box.button_press_event.connect (() => {
             try {
                 Process.spawn_command_line_async (
-                    "pantheon-terminal --execute='ssh " + settings.get_string("sshname") + "@" + bookmark.getIp() + "'"
+                    "pantheon-terminal --execute='" + sshCommand + "'"
                 );
             } catch (SpawnError e) {
 	            stdout.printf ("Error: %s\n", e.message);

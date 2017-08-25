@@ -21,23 +21,32 @@ public class ConfigFileReader : Gtk.ListBox{
             string line;
             
             int i = 0;            
-            bookmarks[i] = new Bookmark();
-
             // Read lines until end of file (null) is reached
             while ((line = dis.read_line (null)) != null) {
                 if("host" in line ){
+                    i++;
+                    bookmarks[i] = new Bookmark();
                     string line_new = line.replace ("host", "");
-                    string line_newest = line_new.replace (" ", "");
-                    bookmarks[i].setName(line_newest);
+                    string host = line_new.replace (" ", "");
+                    bookmarks[i].setName(host);
                 }
 
                 if("HostName" in line ){
                     string line_new = line.replace ("HostName", "");
-                    string line_newest = line_new.replace (" ", "");
-                    bookmarks[i].setIp(line_newest);    
- 
-                    i++;
-                    bookmarks[i] = new Bookmark();
+                    string hostName = line_new.replace (" ", "");
+                    bookmarks[i].setIp(hostName); 
+                }
+
+                if("Port" in line ){
+                    string line_new = line.replace ("Port", "");
+                    int port = int.parse(line_new.replace (" ", ""));
+                    bookmarks[i].setPort(port);                
+                }
+
+                if("User" in line ){
+                    string line_new = line.replace ("User", "");
+                    string user = line_new.replace (" ", "");
+                    bookmarks[i].setUser(user);                     
                 }
             }
             

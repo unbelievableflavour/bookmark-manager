@@ -28,8 +28,16 @@ public class Bookmark : Object {
         return this.user;    
     }
 
+    public void setUser(string user){
+        this.user = user;    
+    }
+
     public int getPort(){
         return this.port;    
+    }
+
+    public void setPort(int port){
+        this.port = port;    
     }
 }
 }

@@ -1,0 +1,15 @@
+Source: com.github.bartzaalberg.bookmark-manager
+Section: utils
+Priority: optional
+Maintainer: Bart Zaalberg <bartzaalberg@gmail.com>
+Build-Depends: cmake (>= 2.8),
+               libgranite-dev,
+               libgtk-3-dev,
+               valac (>= 0.26)
+
+Package: com.github.bartzaalberg.bookmark-manager
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: dpkg (>= 1.15.6)
+Description: Bookmark Manager
+ Simpler Terminal Bookmarks

@@ -1,27 +1,5 @@
-com.github.bartzaalberg.bookmark-manager (v1.0.4) UNSTABLE; urgency=low
-
-  * Fixed changelog versions
-
-com.github.bartzaalberg.bookmark-manager (v1.0.3) UNSTABLE; urgency=low
-
-  * Fixed changelog versions
-
- -- Bart Zaalberg <bartzaalberg@gmail.com>  Fri, 25 Aug 2017 10:32:08 +0200
-
-com.github.bartzaalberg.bookmark-manager (v1.0.2) UNSTABLE; urgency=low
-
-  * Added changelog file and screenshot to appdata
-
- -- Bart Zaalberg <bartzaalberg@gmail.com>  Fri, 25 Aug 2017 10:32:08 +0200
-
-com.github.bartzaalberg.bookmark-manager (v1.0.1) UNSTABLE; urgency=low
-
-  * Added debian packaging
-
- -- Bart Zaalberg <bartzaalberg@gmail.com>  Fri, 25 Aug 2017 10:30:08 +0200
-
-com.github.bartzaalberg.bookmark-manager (v1.0.0) UNSTABLE; urgency=low
+com.github.bartzaalberg.bookmark-manager (1.0.0) UNSTABLE; urgency=low
 
   * First release
 
- -- Bart Zaalberg <bartzaalberg@gmail.com>  Fri, 25 Aug 2017 10:29:08 +0200
+ -- Bart Zaalberg <bartzaalberg@gmail.com>  Fri, 25 Aug 2017 11:27:08 +0200

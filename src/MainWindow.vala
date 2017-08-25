@@ -35,7 +35,7 @@ public class MainWindow : Gtk.Window{
         Granite.Widgets.Utils.set_color_primary (this, Constants.BRAND_COLOR);
       
         header_bar.show_close_button = true;
-        //header_bar.pack_start (add_button);
+        header_bar.pack_start (add_button);
         header_bar.pack_end (settings_button);        
         header_bar.pack_end (searchEntry);
         set_titlebar (header_bar);
@@ -47,7 +47,7 @@ public class MainWindow : Gtk.Window{
         welcome_view.activated.connect (on_welcome_view_activated);
         var importIndex = welcome_view.append("document-properties", "Setup your information", "Change your ssh name, password, etc..");
 
-        var add_bookmark_view = new AddBookmark(stack);
+        var add_bookmark_view = new AddBookmark(stack, listBox);
         listBox.getBookmarks("" , stack); 
         var list_view = new ListBookmarks(listBox);
 

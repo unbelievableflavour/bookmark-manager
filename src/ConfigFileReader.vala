@@ -76,7 +76,7 @@ public class ConfigFileReader : Gtk.ListBox{
                     bookmarks[bookmarks.length - 1].setForwardAgent(forwardAgent);
                 }
             }
-            
+               
            return bookmarks;
 
         } catch (Error e) {
@@ -84,8 +84,55 @@ public class ConfigFileReader : Gtk.ListBox{
         }
     }
 
+    public string[] getOtherSettings (){
+        string[] settings = new string[0];
+
+        var file = getSshConfigFile();
+
+        if (!file.query_exists ()) {
+            stderr.printf ("File '%s' doesn't exist.\n", file.get_path ());
+            return settings;
+        }
+        
+        try {
+            // Open file for reading and wrap returned FileInputStream into a
+            // DataInputStream, so we can read line by line
+            var lines = new DataInputStream (file.read ());
+            string line;
+            int i = 0;
+
+            // Read lines until end of file (null) is reached
+            while ((line = lines.read_line (null)) != null) {
+                if("host" in line || "Host" in line){
+                    continue;
+                }
+                if("hostName" in line || "HostName" in line){
+                    continue;
+                }
+                if("port" in line || "Port" in line){
+                    continue;
+                }
+                if("User" in line || "user" in line){
+                    continue;
+                }
+
+                if(line == ""){
+                    continue;
+                }
+
+                i++;
+                settings += line;
+            }
+
+           return settings;
+
+        } catch (Error e) {
+            error ("%s", e.message);
+        }
+    }
+
     public int countBookmarks (){
-        int count = 0;
+        int count = 1;
         
         var file = getSshConfigFile();
 
@@ -130,5 +177,77 @@ public class ConfigFileReader : Gtk.ListBox{
         }
         return file;
     }
-} 
+
+    public void writeToFile(Bookmark[] bookmarks){
+        var file = getSshConfigFile();
+
+        try {
+            if(file.query_exists() == true){
+                var otherSettings = getOtherSettings();
+                string bookmarksRaw = convertBookmarksToString(bookmarks);
+                var otherSettingsRaw = convertOtherSettingsToString(otherSettings);
+
+                file.delete(null);
+                FileOutputStream fos = file.create (FileCreateFlags.REPLACE_DESTINATION, null);
+                DataOutputStream dos = new DataOutputStream (fos);
+                
+                dos.put_string (otherSettingsRaw + bookmarksRaw, null);
+            }
+        } catch (Error e) {
+            stderr.printf ("Error: %s\n", e.message);
+        }
+    }
+
+    private string convertOtherSettingsToString(string[] settings){
+        string rawSettingsString = "";
+        
+        for (int a = 0; a < settings.length; a++) {
+            var setting = settings[a];
+            string rawSetting = setting + "
+";
+            rawSettingsString += rawSetting;
+        }
+
+        rawSettingsString += "
+";
+        
+        return rawSettingsString;
+    }
+
+    private string convertBookmarksToString(Bookmark[] bookmarks){
+        string rawBookmarksString = "";
+        
+        for (int a = 0; a < bookmarks.length + 1; a++) {
+            var bookmark = bookmarks[a];
+            string rawBookmark = convertBookmarktoString(bookmark);
+            rawBookmarksString += rawBookmark;
+        }
+        
+        return rawBookmarksString;
+    }
+
+    private string convertBookmarktoString(Bookmark bookmark){
+            string rawBookmark = "Host " + bookmark.getName(); 
+ 
+            if(bookmark.getIp() != null){ 
+                rawBookmark = rawBookmark + "
+    HostName " + bookmark.getIp().to_string();
+            }
+       
+            if(bookmark.getPort() != 0){ 
+                rawBookmark = rawBookmark + "
+    Port " + bookmark.getPort().to_string();
+            }
+     
+            if(bookmark.getUser() != null){ 
+                rawBookmark = rawBookmark + "
+    User " + bookmark.getUser();
+            }
+            
+            rawBookmark = rawBookmark + "
+
+";
+            return rawBookmark;
+    }
+}
 }

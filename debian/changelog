@@ -1,3 +1,9 @@
+com.github.bartzaalberg.bookmark-manager (1.0.1) UNSTABLE; urgency=low
+
+  * Lowered minimal cmake version
+
+ -- Bart Zaalberg <bartzaalberg@gmail.com>  Fri, 25 Aug 2017 11:49:08 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.0.0) UNSTABLE; urgency=low
 
   * First release

@@ -4,13 +4,12 @@ namespace BookmarkManager {
 public class ListBoxRow : Gtk.ListBoxRow {
 
     private const int PROGRESS_BAR_HEIGHT = 5;
-    private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager");
 
     private Gtk.Label summary_label;
     private Gtk.Label name_label;
     private Gtk.Image start_session_image = new Gtk.Image.from_icon_name ("media-playback-start", Gtk.IconSize.SMALL_TOOLBAR);
-    private Gtk.Image edit_image = new Gtk.Image.from_icon_name ("document-properties", Gtk.IconSize.SMALL_TOOLBAR);
-    private Gtk.Image remove_image = new Gtk.Image.from_icon_name ("edit-delete-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
+    //private Gtk.Image edit_image = new Gtk.Image.from_icon_name ("document-properties", Gtk.IconSize.SMALL_TOOLBAR);
+    //private Gtk.Image remove_image = new Gtk.Image.from_icon_name ("edit-delete-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
 
     private Gtk.Image icon = new Gtk.Image.from_icon_name ("terminal", Gtk.IconSize.DND);        
     private Gtk.Box vertical_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
@@ -21,24 +20,9 @@ public class ListBoxRow : Gtk.ListBoxRow {
         
         name_label = new Gtk.Label ("<b>%s</b>".printf (bookmark.getName()));
         name_label.use_markup = true;
-        name_label.halign = Gtk.Align.START;            
-        
-        var username = settings.get_string("sshname");
-        if(bookmark.getUser() != null){
-            username = bookmark.getUser();
-        }
+        name_label.halign = Gtk.Align.START;
 
-        var port = 22;
-        if(bookmark.getPort() != 0){
-            port = bookmark.getPort();
-        }
-
-        var ip = "127.0.0.1";
-        if(bookmark.getIp() != null){
-            ip = bookmark.getIp();
-        }
-
-        var sshCommand = "ssh " + username + "@" + ip + " -p " + port.to_string();
+        var sshCommand = "ssh " + bookmark.getUser() + "@" + bookmark.getIp() + " -p " + bookmark.getPort().to_string();
         
         summary_label = new Gtk.Label (sshCommand);
         summary_label.halign = Gtk.Align.START;

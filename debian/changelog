@@ -1,3 +1,9 @@
+com.github.bartzaalberg.bookmark-manager (1.1.2) UNSTABLE; urgency=low
+
+  * Fixed scheme loading
+
+ -- Bart Zaalberg <bartzaalberg@gmail.com>  Mon, 05 Sep 2017 09:15:05 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.1.1) UNSTABLE; urgency=low
 
   * Added debhelper dependency

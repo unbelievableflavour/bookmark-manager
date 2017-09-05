@@ -68,6 +68,5 @@
     add_subdirectory (data)
     
     # add settings schema to pc and recomple all schemas
-    execute_process (COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.bartzaalberg.bookmark-manager.gschema.xml "/usr/share/glib-2.0/schemas")
-    execute_process (COMMAND glib-compile-schemas "/usr/share/glib-2.0/schemas")
-
+    include (GSettings)
+    add_schema (data/com.github.bartzaalberg.bookmark-manager.gschema.xml)

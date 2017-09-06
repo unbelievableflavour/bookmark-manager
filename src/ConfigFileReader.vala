@@ -7,7 +7,7 @@ public class ConfigFileReader : Gtk.ListBox{
         var bookmarksCount = countBookmarks();
         Bookmark[] bookmarks = new Bookmark[bookmarksCount];
 
-        var file = File.new_for_path (Environment.get_home_dir () + "/.ssh/config");
+        var file = getSshConfigFile();
 
         if (!file.query_exists ()) {
             stderr.printf ("File '%s' doesn't exist.\n", file.get_path ());
@@ -84,8 +84,21 @@ public class ConfigFileReader : Gtk.ListBox{
     }
 
     private File getSshConfigFile(){
-        string path = Environment.get_home_dir ();    
-        return File.new_for_path (path + "/.ssh/config");
+        string path = Environment.get_home_dir ();
+
+        var sshFolder = File.new_for_path (path + "/.ssh/");
+        if (!sshFolder.query_exists ()) {
+            sshFolder.make_directory ();
+        }
+
+        var file = File.new_for_path (path + "/.ssh/config");
+        if (!file.query_exists ()) {
+            FileOutputStream fos = file.create (FileCreateFlags.REPLACE_DESTINATION, null);            
+            DataOutputStream dos = new DataOutputStream (fos); 
+
+            getSshConfigFile();
+        }
+        return file;
     }
 } 
 }

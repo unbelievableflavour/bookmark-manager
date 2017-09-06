@@ -20,7 +20,7 @@ public class MainWindow : Gtk.Window{
         var searchEntry = new Gtk.SearchEntry ();
         searchEntry.set_placeholder_text("Search Bookmarks");
         searchEntry.search_changed.connect (() => {
-            bookmarkBox.getBookmarks(searchEntry.text); 
+            bookmarkBox.getBookmarks(searchEntry.text, stack); 
         });
         var settings_button = new Gtk.Button.from_icon_name ("document-properties", Gtk.IconSize.LARGE_TOOLBAR);
         settings_button.clicked.connect (() => {
@@ -47,12 +47,8 @@ public class MainWindow : Gtk.Window{
         welcome_view.activated.connect (on_welcome_view_activated);
         var importIndex = welcome_view.append("document-properties", "Setup your information", "Change your ssh name, password, etc..");
 
-        //var empty_view = new Welcome("Add some bookmarks", "Your bookmarks file is empty.");
-        //empty_view.activated.connect (on_empty_view_activated);
-        //var empty_view = welcome_view.append("system-software-install", "Import from SSH folder", "Load the .ssh/config file instead."); 
-        
         var add_bookmark_view = new AddBookmark(stack);
-        bookmarkBox.getBookmarks(); 
+        bookmarkBox.getBookmarks("" , stack); 
         var list_view = new ListBookmarks(bookmarkBox);
 
         if(settings.get_string ("sshname") == ""){
@@ -64,11 +60,6 @@ public class MainWindow : Gtk.Window{
         add(stack);
     }
     
-    //private void on_empty_view_activated (int index) {
-    //    if(index == importIndex){    
-    //        stack.visible_child_name = LIST_VIEW_ID;
-    //    }
-    //}
 
     private void on_welcome_view_activated (int index) {
         if(index == importIndex){

@@ -1,3 +1,10 @@
+com.github.bartzaalberg.bookmark-manager (1.1.3) UNSTABLE; urgency=low
+
+  * Made sure there is always a ~/.ssh directory and config file
+  * Added a nice empty file message when the file is empty
+
+ -- Bart Zaalberg <bartzaalberg@gmail.com>  Mon, 06 Sep 2017 11:34:05 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.1.2) UNSTABLE; urgency=low
 
   * Fixed scheme loading

@@ -23,11 +23,23 @@ public class ConfigFileReader : Gtk.ListBox{
 
             // Read lines until end of file (null) is reached
             while ((line = dis.read_line (null)) != null) {
-                if("host" in line ){
+                if("host " in line ){
                     i++;
                     bookmarks[i] = new Bookmark();
                     string host = getfilteredValueFromLine("host", line);
                     bookmarks[i].setName(host);
+                }
+
+                if("Host " in line ){
+                    i++;
+                    bookmarks[i] = new Bookmark();
+                    string host = getfilteredValueFromLine("Host", line);
+                    bookmarks[i].setName(host);
+                }
+
+                if("hostName" in line ){
+                    string hostName = getfilteredValueFromLine("hostName", line);
+                    bookmarks[i].setIp(hostName); 
                 }
 
                 if("HostName" in line ){

@@ -1,3 +1,9 @@
+com.github.bartzaalberg.bookmark-manager (1.1.5) UNSTABLE; urgency=low
+
+  * Changed the description and my name
+
+ -- Bart Zaalberg <bartzaalberg@gmail.com>  Sun, 10 Sep 2017 21:01:23 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.1.4) UNSTABLE; urgency=low
 
   * Updated screenshot because the last contained a white background

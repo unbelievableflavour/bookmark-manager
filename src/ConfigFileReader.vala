@@ -4,8 +4,7 @@ namespace BookmarkManager {
 public class ConfigFileReader : Gtk.ListBox{
 
    public Bookmark[] getBookmarks (){
-        var bookmarksCount = countBookmarks();
-        Bookmark[] bookmarks = new Bookmark[bookmarksCount];
+        Bookmark[] bookmarks = {};
 
         var file = getSshConfigFile();
 
@@ -19,41 +18,42 @@ public class ConfigFileReader : Gtk.ListBox{
             // DataInputStream, so we can read line by line
             var lines = new DataInputStream (file.read ());
             string line;
-            int currentBookmarkIndex = 0;
+
             // Read lines until end of file (null) is reached
             while ((line = lines.read_line (null)) != null) {
+        
                 if("host " in line ){
-                    currentBookmarkIndex++;
-                    bookmarks[currentBookmarkIndex] = new Bookmark();
-                    string host = getfilteredValueFromLine("host", line);
-                    bookmarks[currentBookmarkIndex].setName(host);
-                }
+                    bookmarks += new Bookmark();
 
+                    string host = getfilteredValueFromLine("host", line);
+                    bookmarks[bookmarks.length - 1].setName(host);
+                }
+                
                 if("Host " in line ){
-                    currentBookmarkIndex++;
-                    bookmarks[currentBookmarkIndex] = new Bookmark();
+                    bookmarks += new Bookmark();
+
                     string host = getfilteredValueFromLine("Host", line);
-                    bookmarks[currentBookmarkIndex].setName(host);
+                    bookmarks[bookmarks.length - 1].setName(host);
                 }
 
                 if("hostName" in line ){
                     string hostName = getfilteredValueFromLine("hostName", line);
-                    bookmarks[currentBookmarkIndex].setIp(hostName); 
+                    bookmarks[bookmarks.length - 1].setIp(hostName); 
                 }
 
                 if("HostName" in line ){
                     string hostName = getfilteredValueFromLine("HostName", line);
-                    bookmarks[currentBookmarkIndex].setIp(hostName); 
+                    bookmarks[bookmarks.length - 1].setIp(hostName); 
                 }
 
                 if("Port" in line ){
                     int port = int.parse(getfilteredValueFromLine("Port", line));
-                    bookmarks[currentBookmarkIndex].setPort(port);                
+                    bookmarks[bookmarks.length - 1].setPort(port);                
                 }
 
                 if("User" in line ){
                     string user = getfilteredValueFromLine("User", line);
-                    bookmarks[currentBookmarkIndex].setUser(user);                     
+                    bookmarks[bookmarks.length - 1].setUser(user);                     
                 }
             }
             
@@ -104,8 +104,7 @@ public class ConfigFileReader : Gtk.ListBox{
 
         var file = File.new_for_path (path + "/.ssh/config");
         if (!file.query_exists ()) {
-            FileOutputStream fos = file.create (FileCreateFlags.REPLACE_DESTINATION, null);            
-            DataOutputStream dos = new DataOutputStream (fos); 
+            FileOutputStream fos = file.create (FileCreateFlags.REPLACE_DESTINATION, null);
 
             getSshConfigFile();
         }

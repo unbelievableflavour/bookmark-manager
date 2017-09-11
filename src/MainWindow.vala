@@ -8,7 +8,7 @@ public class MainWindow : Gtk.Window{
     private const string LIST_VIEW_ID = "list-view";
     private Gtk.Stack stack;
     private int importIndex;
-    private ListBox bookmarkBox = new ListBox ();
+    private ListBox listBox = new ListBox ();
     private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager");
 
     construct {
@@ -20,11 +20,11 @@ public class MainWindow : Gtk.Window{
         var searchEntry = new Gtk.SearchEntry ();
         searchEntry.set_placeholder_text("Search Bookmarks");
         searchEntry.search_changed.connect (() => {
-            bookmarkBox.getBookmarks(searchEntry.text, stack); 
+            listBox.getBookmarks(searchEntry.text, stack); 
         });
         var settings_button = new Gtk.Button.from_icon_name ("document-properties", Gtk.IconSize.LARGE_TOOLBAR);
         settings_button.clicked.connect (() => {
-            new Preferences ();
+            new Preferences (stack, listBox);
         });
 
         var add_button = new Gtk.Button.from_icon_name ("document-new", Gtk.IconSize.LARGE_TOOLBAR);
@@ -48,8 +48,8 @@ public class MainWindow : Gtk.Window{
         var importIndex = welcome_view.append("document-properties", "Setup your information", "Change your ssh name, password, etc..");
 
         var add_bookmark_view = new AddBookmark(stack);
-        bookmarkBox.getBookmarks("" , stack); 
-        var list_view = new ListBookmarks(bookmarkBox);
+        listBox.getBookmarks("" , stack); 
+        var list_view = new ListBookmarks(listBox);
 
         if(settings.get_string ("sshname") == ""){
             stack.add_named (welcome_view, WELCOME_VIEW_ID);
@@ -64,7 +64,7 @@ public class MainWindow : Gtk.Window{
     private void on_welcome_view_activated (int index) {
         if(index == importIndex){
             stack.visible_child_name = LIST_VIEW_ID;
-            new Preferences ();
+            new Preferences (stack, listBox);
         }
     }
 }

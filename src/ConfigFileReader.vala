@@ -17,44 +17,43 @@ public class ConfigFileReader : Gtk.ListBox{
         try {
             // Open file for reading and wrap returned FileInputStream into a
             // DataInputStream, so we can read line by line
-            var dis = new DataInputStream (file.read ());
+            var lines = new DataInputStream (file.read ());
             string line;
-            int i = 0;
-
+            int currentBookmarkIndex = 0;
             // Read lines until end of file (null) is reached
-            while ((line = dis.read_line (null)) != null) {
+            while ((line = lines.read_line (null)) != null) {
                 if("host " in line ){
-                    i++;
-                    bookmarks[i] = new Bookmark();
+                    currentBookmarkIndex++;
+                    bookmarks[currentBookmarkIndex] = new Bookmark();
                     string host = getfilteredValueFromLine("host", line);
-                    bookmarks[i].setName(host);
+                    bookmarks[currentBookmarkIndex].setName(host);
                 }
 
                 if("Host " in line ){
-                    i++;
-                    bookmarks[i] = new Bookmark();
+                    currentBookmarkIndex++;
+                    bookmarks[currentBookmarkIndex] = new Bookmark();
                     string host = getfilteredValueFromLine("Host", line);
-                    bookmarks[i].setName(host);
+                    bookmarks[currentBookmarkIndex].setName(host);
                 }
 
                 if("hostName" in line ){
                     string hostName = getfilteredValueFromLine("hostName", line);
-                    bookmarks[i].setIp(hostName); 
+                    bookmarks[currentBookmarkIndex].setIp(hostName); 
                 }
 
                 if("HostName" in line ){
                     string hostName = getfilteredValueFromLine("HostName", line);
-                    bookmarks[i].setIp(hostName); 
+                    bookmarks[currentBookmarkIndex].setIp(hostName); 
                 }
 
                 if("Port" in line ){
                     int port = int.parse(getfilteredValueFromLine("Port", line));
-                    bookmarks[i].setPort(port);                
+                    bookmarks[currentBookmarkIndex].setPort(port);                
                 }
 
                 if("User" in line ){
                     string user = getfilteredValueFromLine("User", line);
-                    bookmarks[i].setUser(user);                     
+                    bookmarks[currentBookmarkIndex].setUser(user);                     
                 }
             }
             

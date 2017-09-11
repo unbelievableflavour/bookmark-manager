@@ -3,7 +3,7 @@ using Granite.Widgets;
 namespace BookmarkManager {
 public class ListBox : Gtk.ListBox{
 
-    private ConfigFileReader bookmarkManager = new ConfigFileReader ();
+    private ConfigFileReader configFileReader = new ConfigFileReader ();
 
     construct{
         expand = true;
@@ -18,17 +18,14 @@ public class ListBox : Gtk.ListBox{
     public void getBookmarks(string searchWord = "", Gtk.Stack stack){
         this.empty();
 
-        var bookmarks = bookmarkManager.getBookmarks();
-        var bookmarksCount = bookmarkManager.countBookmarks();
+        var bookmarks = configFileReader.getBookmarks();
 
-        if(bookmarksCount == 0){
+        if(bookmarks.length == 0){
             var empty_view = new Welcome("Add some bookmarks", "Your bookmarks file is empty.");
             stack.add_named (empty_view, "empty-view");
         }
 
-        for (int a = 0; a < bookmarksCount; a++) {
-            var bookmark = bookmarks[a];
-        
+        foreach (Bookmark bookmark in bookmarks) {
             if(searchWord != ""){
                 if(searchWord in bookmark.getName()){
                     this.add (new ListBoxRow (bookmark));

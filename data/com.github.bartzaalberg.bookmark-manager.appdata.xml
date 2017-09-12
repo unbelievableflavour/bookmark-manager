@@ -4,9 +4,15 @@
   <id>com.github.bartzaalberg.bookmark-manager.desktop</id>
   <metadata_license>CC0</metadata_license>
   <name>Bookmark Manager</name>
-  <summary>For people with SSH headaches</summary>
+  <summary>Manage the .ssh/config file bookmarks</summary>
   <description>
-    <p>An Application to manage the .ssh/config bookmarks.</p>
+    <p>A simple tool to manage the .ssh/config file bookmarks.</p>
+    <p>Features:</p>
+     <ul>
+       <li>Easily search through your SSH bookmarks</li>
+       <li>Simply start a session by clicking on a button</li>
+       <li>Add a default parameters for when the config file doesn't contain a variable</li>
+    </ul>
   </description>
   <screenshots>
     <screenshot type="default">

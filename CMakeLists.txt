@@ -51,6 +51,8 @@
         src/Dialogs/Preferences.vala
         src/Views/AddBookmark.vala
         src/Views/ListBookmarks.vala
+        src/Views/WelcomeView.vala
+        src/Views/EmptyView.vala
 
     # tell what libraries to use when compiling
     PACKAGES

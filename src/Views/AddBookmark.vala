@@ -1,7 +1,7 @@
 namespace BookmarkManager {
 public class AddBookmark : Gtk.ScrolledWindow{
  
-    public AddBookmark(Gtk.Stack stack, ListBox bookmarkBox){ 
+    public AddBookmark(Gtk.Stack stack, ListBox listBox){ 
         var general_header = new SettingsHeader ("Add new bookmark");
        
         var hostLabel = new Gtk.Label ("Host:");
@@ -33,7 +33,7 @@ public class AddBookmark : Gtk.ScrolledWindow{
            ConfigFileReader.writeToFile(bookmarks);
 
            stack.visible_child_name = "list-view";
-           bookmarkBox.getBookmarks("", stack); 
+           listBox.getBookmarks("", stack); 
         });
 
         var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);

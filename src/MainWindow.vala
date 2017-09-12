@@ -43,12 +43,10 @@ public class MainWindow : Gtk.Window{
         stack = new Gtk.Stack ();
         stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT;
 
-        var welcome_view = new Welcome("Welcome!", "We see this is you're first time");
-        welcome_view.activated.connect (on_welcome_view_activated);
-        var importIndex = welcome_view.append("document-properties", "Setup your information", "Change your ssh name, password, etc..");
-
-        var add_bookmark_view = new AddBookmark(stack, listBox);
         listBox.getBookmarks("" , stack); 
+
+        var welcome_view = new WelcomeView(stack, listBox);
+        var add_bookmark_view = new AddBookmark(stack, listBox);
         var list_view = new ListBookmarks(listBox);
 
         if(settings.get_string ("sshname") == ""){
@@ -58,14 +56,6 @@ public class MainWindow : Gtk.Window{
         stack.add_named (list_view, LIST_VIEW_ID);
         stack.add_named (add_bookmark_view, ADD_BOOKMARK_VIEW_ID);
         add(stack);
-    }
-    
-
-    private void on_welcome_view_activated (int index) {
-        if(index == importIndex){
-            stack.visible_child_name = LIST_VIEW_ID;
-            new Preferences (stack, listBox);
-        }
     }
 }
 }

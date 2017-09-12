@@ -65,6 +65,16 @@ public class ConfigFileReader : Gtk.ListBox{
                     string user = getfilteredValueFromLine("User", line);
                     bookmarks[bookmarks.length - 1].setUser(user);                     
                 }
+                
+                if("forwardAgent" in line ){
+                    string forwardAgent = getfilteredValueFromLine("forwardAgent", line);
+                    bookmarks[bookmarks.length - 1].setForwardAgent(forwardAgent);
+                }
+
+                if("ForwardAgent" in line ){
+                    string forwardAgent = getfilteredValueFromLine("ForwardAgent", line);
+                    bookmarks[bookmarks.length - 1].setForwardAgent(forwardAgent);
+                }
             }
             
            return bookmarks;

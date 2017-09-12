@@ -22,7 +22,8 @@ public class ListBoxRow : Gtk.ListBoxRow {
         name_label.use_markup = true;
         name_label.halign = Gtk.Align.START;
 
-        var sshCommand = "ssh " + bookmark.getUser() + "@" + bookmark.getIp() + " -p " + bookmark.getPort().to_string();
+
+        var sshCommand = "ssh " + (bookmark.getForwardAgent() == "yes" ? "-T " : "") + bookmark.getUser() + "@" + bookmark.getIp() + " -p " + bookmark.getPort().to_string();
         
         summary_label = new Gtk.Label (sshCommand);
         summary_label.halign = Gtk.Align.START;

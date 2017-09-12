@@ -9,6 +9,7 @@ public class Bookmark : Object {
     private string ip;
     private string user;
     private int port;
+    private string forwardAgent;
 
     public Bookmark() {
         setIp("127.0.0.1");
@@ -46,6 +47,14 @@ public class Bookmark : Object {
 
     public void setPort(int port){
         this.port = port;    
+    }
+
+    public string getForwardAgent(){
+        return this.forwardAgent;    
+    }
+
+    public void setForwardAgent(string forwardAgent){
+        this.forwardAgent = forwardAgent;    
     }
 }
 }

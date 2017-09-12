@@ -46,9 +46,19 @@ public class ConfigFileReader : Gtk.ListBox{
                     bookmarks[bookmarks.length - 1].setIp(hostName); 
                 }
 
+                if("port" in line ){
+                    int port = int.parse(getfilteredValueFromLine("port", line));
+                    bookmarks[bookmarks.length - 1].setPort(port);                
+                }
+
                 if("Port" in line ){
                     int port = int.parse(getfilteredValueFromLine("Port", line));
                     bookmarks[bookmarks.length - 1].setPort(port);                
+                }
+
+                if("user" in line ){
+                    string user = getfilteredValueFromLine("user", line);
+                    bookmarks[bookmarks.length - 1].setUser(user);                     
                 }
 
                 if("User" in line ){

@@ -1,3 +1,11 @@
+com.github.bartzaalberg.bookmark-manager (1.1.6) UNSTABLE; urgency=low
+
+  * Fixed a bug where the last bookmark wasn't shown
+  * Made preferences more logical.(added save button, tooltip, better naming)
+  * Added a workaround for a bug where some hosts wouldn't show up 
+
+ -- Bart Zaalberg <bartzaalberg@gmail.com>  Tue, 12 Sep 2017 09:44:55 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.1.5) UNSTABLE; urgency=low
 
   * Changed the description and my name

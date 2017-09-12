@@ -3,6 +3,7 @@
 <component type="desktop">
   <id>com.github.bartzaalberg.bookmark-manager.desktop</id>
   <metadata_license>CC0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
   <name>Bookmark Manager</name>
   <summary>Manage the .ssh/config file bookmarks</summary>
   <description>

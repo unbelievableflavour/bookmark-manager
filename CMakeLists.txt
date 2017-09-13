@@ -53,6 +53,7 @@
         src/Views/ListBookmarks.vala
         src/Views/WelcomeView.vala
         src/Views/EmptyView.vala
+        src/Views/HeaderBar.vala
 
     # tell what libraries to use when compiling
     PACKAGES

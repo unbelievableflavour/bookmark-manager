@@ -2,8 +2,9 @@ namespace BookmarkManager {
     public class Preferences : Gtk.Dialog {
       
         private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager");
+        BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
 
-        public Preferences(Gtk.Stack stack, ListBox listBox){
+        public Preferences(){
             title = "Preferences";
             set_default_size (630, 430);
             resizable = false;
@@ -24,7 +25,7 @@ namespace BookmarkManager {
             var save_button = new Gtk.Button.with_label ("Save");
             save_button.clicked.connect (() => {
                 settings.set_string("sshname", usernameEntry.text);
-                listBox.getBookmarks(stack, "");
+                bookmarkListManager.getList().getBookmarks("");
                 this.destroy ();
             });
 

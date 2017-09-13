@@ -4,10 +4,7 @@ namespace BookmarkManager {
 public class ListBox : Gtk.ListBox{
 
     private ConfigFileReader configFileReader = new ConfigFileReader ();
-
-    construct{
-        expand = true;
-    }
+    StackManager stackManager = StackManager.get_instance();
 
     public void empty(){
         this.foreach ((ListBoxRow) => {
@@ -15,24 +12,34 @@ public class ListBox : Gtk.ListBox{
         });    
     }
 
-    public void getBookmarks(Gtk.Stack stack, string searchWord = ""){
+    public void getBookmarks(string searchWord = ""){
         this.empty();
+
+        stackManager.getStack().visible_child_name = "list-view";
 
         var bookmarks = configFileReader.getBookmarks();
 
-        if(bookmarks.length == 0){
-            var empty_view = new EmptyView(stack);
-            stack.add_named (empty_view, "empty-view");
+        if(bookmarks.length == 0){ 
+            stackManager.getStack().visible_child_name = "empty-view";
         }
 
+        int matchCount = 0;
+        
         foreach (Bookmark bookmark in bookmarks) {
             if(searchWord != ""){
                 if(searchWord in bookmark.getName()){
+                    matchCount++;                
                     this.add (new ListBoxRow (bookmark));
                 }
+                
                 continue;
-            }
+            }          
+            matchCount++;  
             this.add (new ListBoxRow (bookmark));
+        }
+
+        if(matchCount == 0){ 
+            stackManager.getStack().visible_child_name = "not-found-view";
         }
 
         this.show_all();

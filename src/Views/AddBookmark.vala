@@ -1,7 +1,10 @@
 namespace BookmarkManager {
 public class AddBookmark : Gtk.ScrolledWindow{
  
-    public AddBookmark(Gtk.Stack stack, ListBox listBox){ 
+    StackManager stackManager = StackManager.get_instance();
+    BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
+
+    public AddBookmark(){ 
         var general_header = new SettingsHeader ("Add new bookmark");
        
         var hostLabel = new Gtk.Label ("Host:");
@@ -15,8 +18,9 @@ public class AddBookmark : Gtk.ScrolledWindow{
 
         var back_button = new Gtk.Button.with_label ("Back");
         back_button.clicked.connect (() => {
-            stack.visible_child_name = "list-view";
-        }); 
+            stackManager.getStack().visible_child_name = "list-view";
+            bookmarkListManager.getList().getBookmarks("");
+        });
 
         var create_button = new Gtk.Button.with_label ("Create");
         create_button.clicked.connect (() => {
@@ -32,8 +36,8 @@ public class AddBookmark : Gtk.ScrolledWindow{
 
            ConfigFileReader.writeToFile(bookmarks);
 
-           stack.visible_child_name = "list-view";
-           listBox.getBookmarks(stack, ""); 
+           stackManager.getStack().visible_child_name = "list-view";
+           bookmarkListManager.getList().getBookmarks(""); 
         });
 
         var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);

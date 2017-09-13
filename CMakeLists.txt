@@ -48,11 +48,14 @@
         src/ConfigFileReader.vala
         src/Constants.vala        
         src/Bookmark.vala
+        src/StackManager.vala
+        src/BookmarkListManager.vala
         src/Dialogs/Preferences.vala
         src/Views/AddBookmark.vala
         src/Views/ListBookmarks.vala
         src/Views/WelcomeView.vala
         src/Views/EmptyView.vala
+        src/Views/NotFoundView.vala
         src/Views/HeaderBar.vala
 
     # tell what libraries to use when compiling

@@ -1,7 +1,14 @@
 namespace BookmarkManager {
 public class StackManager : Object {
+    
     static StackManager? instance;
+
     private Gtk.Stack stack;
+    private const string WELCOME_VIEW_ID = "welcome-view";
+    private const string ADD_BOOKMARK_VIEW_ID = "add-bookmark-view";
+    private const string LIST_VIEW_ID = "list-view";
+    private const string EMPTY_VIEW_ID = "empty-view";
+    private const string NOT_FOUND_VIEW_ID = "not-found-view";
 
     // Private constructor
     StackManager() {
@@ -20,5 +27,16 @@ public class StackManager : Object {
     public Gtk.Stack getStack() {
         return this.stack;
     }
+
+    public void loadViews(Gtk.Window window){
+        stack.add_named (new EmptyView(), EMPTY_VIEW_ID);
+        stack.add_named (new ListBookmarks(), LIST_VIEW_ID);
+        stack.add_named (new AddBookmark(), ADD_BOOKMARK_VIEW_ID);
+        stack.add_named (new WelcomeView(), WELCOME_VIEW_ID);
+        stack.add_named (new NotFoundView(), NOT_FOUND_VIEW_ID);
+
+        window.add(stack);
+        window.show_all();
+   }
 }
 }

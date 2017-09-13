@@ -51,12 +51,14 @@
         src/StackManager.vala
         src/BookmarkListManager.vala
         src/Dialogs/Preferences.vala
+        src/Dialogs/Confirm.vala
         src/Views/AddBookmark.vala
         src/Views/ListBookmarks.vala
         src/Views/WelcomeView.vala
         src/Views/EmptyView.vala
         src/Views/NotFoundView.vala
-        src/Views/HeaderBar.vala
+        src/Components/HeaderBar.vala
+        src/Components/HeaderLabel.vala
 
     # tell what libraries to use when compiling
     PACKAGES
@@ -76,3 +78,7 @@
     # add settings schema to pc and recomple all schemas
     include (GSettings)
     add_schema (data/com.github.bartzaalberg.bookmark-manager.gschema.xml)
+    
+    #uncomment for development. The above command doesnt work without app center
+    #execute_process (COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.bartzaalberg.bookmark-manager.gschema.xml "/usr/share/glib-2.0/schemas") 
+    #execute_process (COMMAND glib-compile-schemas "/usr/share/glib-2.0/schemas") 

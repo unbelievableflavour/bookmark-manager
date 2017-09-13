@@ -1,6 +1,8 @@
 namespace BookmarkManager {
 public class BookmarkListManager : Object {
+    
     static BookmarkListManager? instance;
+
     private ListBox listBox;
 
     // Private constructor

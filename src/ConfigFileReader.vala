@@ -153,13 +153,21 @@ public class ConfigFileReader : Gtk.ListBox{
 
         var sshFolder = File.new_for_path (path + "/.ssh/");
         if (!sshFolder.query_exists ()) {
-            sshFolder.make_directory ();
+            try {
+                sshFolder.make_directory ();
+            } catch (Error e) {
+                error ("%s", e.message);
+            }
         }
 
         var file = File.new_for_path (path + "/.ssh/config");
         if (!file.query_exists ()) {
-            file.create (FileCreateFlags.REPLACE_DESTINATION, null);
-            getSshConfigFile();
+            try {
+                file.create (FileCreateFlags.REPLACE_DESTINATION, null);
+                getSshConfigFile();
+            } catch (Error e) {
+                error ("%s", e.message);
+            }
         }
         return file;
     }

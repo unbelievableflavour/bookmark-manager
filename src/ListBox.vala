@@ -4,12 +4,12 @@ namespace BookmarkManager {
 public class ListBox : Gtk.ListBox{
 
     private ConfigFileReader configFileReader = new ConfigFileReader ();
-    StackManager stackManager = StackManager.get_instance();
+    private StackManager stackManager = StackManager.get_instance();
 
     public void empty(){
         this.foreach ((ListBoxRow) => {
             this.remove(ListBoxRow);
-        });    
+        }); 
     }
 
     public void getBookmarks(string searchWord = ""){
@@ -19,30 +19,47 @@ public class ListBox : Gtk.ListBox{
 
         var bookmarks = configFileReader.getBookmarks();
 
-        if(bookmarks.length == 0){ 
+        if(listisEmpty(bookmarks)) {
             stackManager.getStack().visible_child_name = "empty-view";
+            return;
         }
 
-        int matchCount = 0;
-        
-        foreach (Bookmark bookmark in bookmarks) {
-            if(searchWord != ""){
-                if(searchWord in bookmark.getName()){
-                    matchCount++;                
-                    this.add (new ListBoxRow (bookmark));
-                }
-                
-                continue;
-            }          
-            matchCount++;  
-            this.add (new ListBoxRow (bookmark));
-        }
-
-        if(matchCount == 0){ 
+        if(searchWordDoesntMatchAnyInList(searchWord, bookmarks)) {
             stackManager.getStack().visible_child_name = "not-found-view";
+            return;
+        }
+
+        foreach (Bookmark bookmark in bookmarks) {
+            if(searchWord == ""){
+                this.add (new ListBoxRow (bookmark));
+                continue;
+            }
+
+            if(searchWord in bookmark.getName()){             
+                this.add (new ListBoxRow (bookmark));
+            }            
         }
 
         this.show_all();
+    }
+
+    private bool listisEmpty(Bookmark[] bookmarks){
+        return bookmarks.length == 0;    
+    }
+
+    private bool searchWordDoesntMatchAnyInList(string searchWord, Bookmark[] bookmarks){
+        int matchCount = 0;
+        
+        if(searchWord == ""){
+            return false;
+        }
+
+        foreach (Bookmark bookmark in bookmarks) {
+            if(searchWord in bookmark.getName()){
+                matchCount++;                
+            }                
+        }
+        return matchCount == 0;    
     }
 }
 }

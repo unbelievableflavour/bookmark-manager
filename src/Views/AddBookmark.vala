@@ -5,7 +5,7 @@ public class AddBookmark : Gtk.ScrolledWindow{
     BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
 
     public AddBookmark(){ 
-        var general_header = new SettingsHeader ("Add new bookmark");
+        var general_header = new HeaderLabel ("Add new bookmark");
        
         var hostLabel = new Gtk.Label ("Host:");
         var hostNameLabel = new Gtk.Label ("Host Name:");

@@ -33,7 +33,7 @@ public class AddBookmark : Gtk.ScrolledWindow{
            ConfigFileReader.writeToFile(bookmarks);
 
            stack.visible_child_name = "list-view";
-           listBox.getBookmarks("", stack); 
+           listBox.getBookmarks(stack, ""); 
         });
 
         var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);

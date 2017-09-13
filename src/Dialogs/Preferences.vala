@@ -24,7 +24,7 @@ namespace BookmarkManager {
             var save_button = new Gtk.Button.with_label ("Save");
             save_button.clicked.connect (() => {
                 settings.set_string("sshname", usernameEntry.text);
-                listBox.getBookmarks("", stack);
+                listBox.getBookmarks(stack, "");
                 this.destroy ();
             });
 

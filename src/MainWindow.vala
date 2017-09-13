@@ -7,7 +7,6 @@ public class MainWindow : Gtk.Window{
     private const string ADD_BOOKMARK_VIEW_ID = "add-bookmark-view";
     private const string LIST_VIEW_ID = "list-view";
     private Gtk.Stack stack;
-    private int importIndex;
     private ListBox listBox = new ListBox ();
     private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager");
 
@@ -20,7 +19,7 @@ public class MainWindow : Gtk.Window{
 
         set_titlebar (new HeaderBar(stack, listBox));
         
-        listBox.getBookmarks("" , stack); 
+        listBox.getBookmarks(stack, ""); 
 
         var welcome_view = new WelcomeView(stack, listBox);
         var add_bookmark_view = new AddBookmark(stack, listBox);

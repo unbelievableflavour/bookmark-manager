@@ -4,7 +4,6 @@ namespace BookmarkManager {
 public class ListBox : Gtk.ListBox{
 
     private ConfigFileReader configFileReader = new ConfigFileReader ();
-    private int emptyOption;
 
     construct{
         expand = true;
@@ -16,7 +15,7 @@ public class ListBox : Gtk.ListBox{
         });    
     }
 
-    public void getBookmarks(string searchWord = "", Gtk.Stack stack){
+    public void getBookmarks(Gtk.Stack stack, string searchWord = ""){
         this.empty();
 
         var bookmarks = configFileReader.getBookmarks();

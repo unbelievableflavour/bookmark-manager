@@ -8,7 +8,7 @@ public class HeaderBar : Gtk.HeaderBar {
         var searchEntry = new Gtk.SearchEntry ();
         searchEntry.set_placeholder_text("Search Bookmarks");
         searchEntry.search_changed.connect (() => {
-            listBox.getBookmarks(searchEntry.text, stack); 
+            listBox.getBookmarks(stack, searchEntry.text); 
         });
 
         var settings_button = new Gtk.Button.from_icon_name ("document-properties", Gtk.IconSize.LARGE_TOOLBAR);

@@ -7,11 +7,6 @@ public class ConfigFileReader : Gtk.ListBox{
         Bookmark[] bookmarks = {};
 
         var file = getSshConfigFile();
-
-        if (!file.query_exists ()) {
-            stderr.printf ("File '%s' doesn't exist.\n", file.get_path ());
-            return bookmarks;
-        }
         
         try {
             // Open file for reading and wrap returned FileInputStream into a
@@ -88,18 +83,12 @@ public class ConfigFileReader : Gtk.ListBox{
         string[] settings = new string[0];
 
         var file = getSshConfigFile();
-
-        if (!file.query_exists ()) {
-            stderr.printf ("File '%s' doesn't exist.\n", file.get_path ());
-            return settings;
-        }
         
         try {
             // Open file for reading and wrap returned FileInputStream into a
             // DataInputStream, so we can read line by line
             var lines = new DataInputStream (file.read ());
             string line;
-            int i = 0;
 
             // Read lines until end of file (null) is reached
             while ((line = lines.read_line (null)) != null) {
@@ -119,8 +108,6 @@ public class ConfigFileReader : Gtk.ListBox{
                 if(line == ""){
                     continue;
                 }
-
-                i++;
                 settings += line;
             }
 
@@ -171,8 +158,7 @@ public class ConfigFileReader : Gtk.ListBox{
 
         var file = File.new_for_path (path + "/.ssh/config");
         if (!file.query_exists ()) {
-            FileOutputStream fos = file.create (FileCreateFlags.REPLACE_DESTINATION, null);
-
+            file.create (FileCreateFlags.REPLACE_DESTINATION, null);
             getSshConfigFile();
         }
         return file;

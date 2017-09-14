@@ -3,19 +3,11 @@ using Granite.Widgets;
 namespace BookmarkManager {
 public class Bookmark : Object {
 
-    private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager");
-
     private string name;
     private string ip;
     private string user;
     private int port;
     private string forwardAgent;
-
-    public Bookmark() {
-        setIp("127.0.0.1");
-        setUser(settings.get_string("sshname"));
-        setPort(22);
-    }
 
     public string getName(){
         return this.name;

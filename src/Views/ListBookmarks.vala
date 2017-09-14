@@ -1,13 +1,15 @@
 namespace BookmarkManager {
-    public class ListBookmarks : Gtk.ScrolledWindow {
+public class ListBookmarks : Gtk.ScrolledWindow {
        
-       public ListBookmarks(ListBox bookmarkBox){ 
+   BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
 
-            var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
-            box.add(bookmarkBox);
+   public ListBookmarks(){ 
 
-            this.hscrollbar_policy = Gtk.PolicyType.NEVER;
-            this.add (box);
-        }
+        var box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
+        box.add(bookmarkListManager.getList());
+
+        this.hscrollbar_policy = Gtk.PolicyType.NEVER;
+        this.add (box);
     }
+}
 }

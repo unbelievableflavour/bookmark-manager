@@ -25,13 +25,24 @@ public class AddBookmark : Gtk.ScrolledWindow{
         var create_button = new Gtk.Button.with_label ("Create");
         create_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         create_button.clicked.connect (() => {
+
            var bookmark = new Bookmark();
            bookmark.setName(hostEntry.text);
            bookmark.setIp(hostNameEntry.text);  
 
            var ConfigFileReader = new ConfigFileReader();
-
            var bookmarks = ConfigFileReader.getBookmarks();
+
+           if(isNotValid(bookmark)){
+               showDialog("Fields are invalid", "Please correctly fill in all the fields");
+               return;
+           }
+
+           if(alreadyExists(bookmark, bookmarks)){
+               showDialog("Bookmark with this name already exists", "Please choose a different name");
+               return;
+           }
+
            bookmarks += bookmark;
 
            ConfigFileReader.writeToFile(bookmarks);
@@ -64,6 +75,29 @@ public class AddBookmark : Gtk.ScrolledWindow{
         main_grid.attach (button_box, 0, 1, 1, 1);
         
         this.add (main_grid);
+    }
+
+    public bool isNotValid(Bookmark newBookmark){
+        if(newBookmark.getName() == "" || newBookmark.getIp() == ""){
+            return true;
+        }
+        return false;
+    }
+
+    public bool alreadyExists(Bookmark newBookmark, Bookmark[] bookmarks){
+        foreach (Bookmark bookmark in bookmarks) {
+           if(bookmark.getName() == newBookmark.getName()) {
+                return true;
+           }
+        }
+        return false;
+    }
+    
+    public void showDialog(string title, string description){
+        var message_dialog = new Granite.MessageDialog.with_image_from_icon_name (title, description, "dialog-warning", Gtk.ButtonsType.CANCEL);
+        message_dialog.show_all ();        
+        if (message_dialog.run () == Gtk.ResponseType.ACCEPT) {}
+        message_dialog.destroy ();
     }
 }
 }

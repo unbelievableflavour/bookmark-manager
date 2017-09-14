@@ -12,11 +12,12 @@ public class ListBoxRow : Gtk.ListBoxRow {
 
     private Gtk.Image icon = new Gtk.Image.from_icon_name ("terminal", Gtk.IconSize.DND);        
     private Gtk.Box vertical_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
+    private Bookmark bookmark;
 
     public ListBoxRow (Bookmark bookmark){
         
+        this.bookmark = bookmark;
         var sshCommand = generateSSHCommand(bookmark);
-
         var name_label = generateNameLabel(bookmark);
         var summary_label = generateSummaryLabel(sshCommand);
         var start_button = generateStartButton(sshCommand);
@@ -93,7 +94,7 @@ public class ListBoxRow : Gtk.ListBoxRow {
         delete_button.add(delete_image);
         delete_button.set_tooltip_text("Remote this bookmark");
         delete_button.button_press_event.connect (() => {
-            new Confirm();
+            new Confirm(bookmark);
             return true;
         });    
 

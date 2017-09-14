@@ -23,6 +23,7 @@ public class Preferences : Gtk.Dialog {
         });
 
         var save_button = new Gtk.Button.with_label ("Save");
+        save_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         save_button.clicked.connect (() => {
             settings.set_string("sshname", usernameEntry.text);
             bookmarkListManager.getList().getBookmarks("");

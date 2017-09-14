@@ -4,48 +4,35 @@ public class Confirm : Gtk.Dialog {
     private BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
     private StackManager stackManager = StackManager.get_instance();
 
-    public Confirm(){
-        title = "Confirm";
-        resizable = false;
-        deletable = false;
+    public Confirm(Bookmark deletedBookmark){
+        var message_dialog = new Granite.MessageDialog.with_image_from_icon_name ("Delete this bookmark?", "Are you sure you want to delete this bookmark?", "edit-delete", Gtk.ButtonsType.CANCEL);
+        
+        var suggested_button = new Gtk.Button.with_label ("Delete");
+        suggested_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
+        message_dialog.add_action_widget (suggested_button, Gtk.ResponseType.ACCEPT);
 
-        var general_header = new HeaderLabel ("Are You Sure?");
-    
-        var no_button = new Gtk.Button.with_label ("No");
-        no_button.clicked.connect (() => {
-            this.destroy ();
-        });
+        message_dialog.show_all ();
+        if (message_dialog.run () == Gtk.ResponseType.ACCEPT) {
+            deleteBookmark(deletedBookmark);
+        }
+        message_dialog.destroy ();
+    }
 
-        var yes_button = new Gtk.Button.with_label ("Yes");
-        yes_button.clicked.connect (() => {
-           var ConfigFileReader = new ConfigFileReader();
+    private void deleteBookmark(Bookmark deletedBookmark) {
+        var ConfigFileReader = new ConfigFileReader(); 
+        var bookmarks = ConfigFileReader.getBookmarks(); 
+        Bookmark[] newBookmarksList = {};
 
-           var bookmarks = ConfigFileReader.getBookmarks();
-           bookmarks.remove(bookmark);
-           //ConfigFileReader.writeToFile(bookmarks);
-            
-           stackManager.getStack().visible_child_name = "list-view";
-           bookmarkListManager.getList().getBookmarks(""); 
-            
-            this.destroy ();
-        });
+        foreach (Bookmark bookmark in bookmarks) {
+           if(bookmark.getName() != deletedBookmark.getName()) {
+                newBookmarksList += bookmark;
+           }
+        }
 
-        var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
-        button_box.set_layout (Gtk.ButtonBoxStyle.END);
-        button_box.pack_start (no_button);
-        button_box.pack_end (yes_button);
-        button_box.margin = 12;
-        button_box.margin_bottom = 0;
-
-        var general_grid = new Gtk.Grid ();
-        general_grid.row_spacing = 6;
-        general_grid.column_spacing = 12;
-        general_grid.margin = 12;
-        general_grid.attach (general_header, 0, 0, 1, 1);
-        general_grid.attach (button_box, 0, 1, 1, 1);
-
-        ((Gtk.Container) get_content_area ()).add (general_grid);
-        this.show_all ();
+        ConfigFileReader.writeToFile(newBookmarksList); 
+         
+        stackManager.getStack().visible_child_name = "list-view"; 
+        bookmarkListManager.getList().getBookmarks("");  
     }
 }
 }

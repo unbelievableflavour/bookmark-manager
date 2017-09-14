@@ -23,8 +23,8 @@ public class AddBookmark : Gtk.ScrolledWindow{
         });
 
         var create_button = new Gtk.Button.with_label ("Create");
+        create_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         create_button.clicked.connect (() => {
-
            var bookmark = new Bookmark();
            bookmark.setName(hostEntry.text);
            bookmark.setIp(hostNameEntry.text);  

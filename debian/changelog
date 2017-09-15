@@ -1,3 +1,13 @@
+com.github.bartzaalberg.bookmark-manager (1.1.7) UNSTABLE; urgency=low
+
+  * Added Delete option, 
+  * Added Add option
+  * Refactored alot of code
+  * Added new icon
+  * Added no bookmark found screen when searching wont find anything
+
+ -- Bart Zaalberg <bartzaalberg@gmail.com>  Tue, 15 Sep 2017 10:06:00 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.1.6) UNSTABLE; urgency=low
 
   * Fixed a bug where the last bookmark wasn't shown

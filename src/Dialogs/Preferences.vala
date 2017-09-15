@@ -25,6 +25,12 @@ public class Preferences : Gtk.Dialog {
         var save_button = new Gtk.Button.with_label ("Save");
         save_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         save_button.clicked.connect (() => {
+            
+            if(isNotValid(usernameEntry.text)){
+               new Alert("Fields are invalid", "Please correctly fill in all the fields");
+               return;
+            }
+
             settings.set_string("sshname", usernameEntry.text);
             bookmarkListManager.getList().getBookmarks("");
             this.destroy ();
@@ -52,6 +58,13 @@ public class Preferences : Gtk.Dialog {
         
         ((Gtk.Container) get_content_area ()).add (main_grid);
         this.show_all ();
+    }
+
+    public bool isNotValid(string inputField){
+        if(inputField ==  ""){
+            return true;
+        }
+        return false;
     }
 }
 }

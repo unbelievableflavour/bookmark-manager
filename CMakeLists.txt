@@ -52,6 +52,7 @@
         src/BookmarkListManager.vala
         src/Dialogs/Preferences.vala
         src/Dialogs/Confirm.vala
+        src/Dialogs/Alert.vala
         src/Views/AddBookmark.vala
         src/Views/ListBookmarks.vala
         src/Views/WelcomeView.vala

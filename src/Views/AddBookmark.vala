@@ -34,12 +34,12 @@ public class AddBookmark : Gtk.ScrolledWindow{
            var bookmarks = ConfigFileReader.getBookmarks();
 
            if(isNotValid(bookmark)){
-               showDialog("Fields are invalid", "Please correctly fill in all the fields");
+               new Alert("Fields are invalid", "Please correctly fill in all the fields");
                return;
            }
 
            if(alreadyExists(bookmark, bookmarks)){
-               showDialog("Bookmark with this name already exists", "Please choose a different name");
+               new Alert("Bookmark with this name already exists", "Please choose a different name");
                return;
            }
 
@@ -91,13 +91,6 @@ public class AddBookmark : Gtk.ScrolledWindow{
            }
         }
         return false;
-    }
-    
-    public void showDialog(string title, string description){
-        var message_dialog = new Granite.MessageDialog.with_image_from_icon_name (title, description, "dialog-warning", Gtk.ButtonsType.CANCEL);
-        message_dialog.show_all ();        
-        if (message_dialog.run () == Gtk.ResponseType.ACCEPT) {}
-        message_dialog.destroy ();
     }
 }
 }

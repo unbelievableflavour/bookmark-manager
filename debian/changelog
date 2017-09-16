@@ -1,3 +1,9 @@
+com.github.bartzaalberg.bookmark-manager (1.1.9) UNSTABLE; urgency=low
+
+  * Updated screenshot
+
+ -- Bart Zaalberg <bartzaalberg@gmail.com>  Sun, 16 Sep 2017 18:47:00 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.1.8) UNSTABLE; urgency=low
 
   * Added a fix for the not released granite.messageDialog windows i used

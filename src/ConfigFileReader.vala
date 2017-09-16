@@ -16,59 +16,32 @@ public class ConfigFileReader : Gtk.ListBox{
 
             // Read lines until end of file (null) is reached
             while ((line = lines.read_line (null)) != null) {
-        
-                if("host " in line ){
-                    bookmarks += new Bookmark();
 
-                    string host = getfilteredValueFromLine("host", line);
-                    bookmarks[bookmarks.length - 1].setName(host);
+                var splittedLine = line.split(" ");
+                string variableOnLine = getfilteredVariable(splittedLine);
+                string valueOnLine = getfilteredValue(splittedLine);
+
+                if(variableOnLine == null){continue;}
+                
+                if(inArray(variableOnLine, { "host", "Host" })){
+                    bookmarks += new Bookmark();
+                    bookmarks[bookmarks.length - 1].setName(valueOnLine);
+                }
+
+                if(inArray(variableOnLine, { "hostName", "HostName" })){
+                    bookmarks[bookmarks.length - 1].setIp(valueOnLine); 
+                }
+
+                if(inArray(variableOnLine, { "port", "Port" })){
+                    bookmarks[bookmarks.length - 1].setPort(valueOnLine.to_int());
+                }
+
+                if(inArray(variableOnLine, { "user", "User" })){
+                    bookmarks[bookmarks.length - 1].setUser(valueOnLine);
                 }
                 
-                if("Host " in line ){
-                    bookmarks += new Bookmark();
-
-                    string host = getfilteredValueFromLine("Host", line);
-                    bookmarks[bookmarks.length - 1].setName(host);
-                }
-
-                if("hostName" in line ){
-                    string hostName = getfilteredValueFromLine("hostName", line);
-                    bookmarks[bookmarks.length - 1].setIp(hostName); 
-                }
-
-                if("HostName" in line ){
-                    string hostName = getfilteredValueFromLine("HostName", line);
-                    bookmarks[bookmarks.length - 1].setIp(hostName); 
-                }
-
-                if("port" in line ){
-                    int port = int.parse(getfilteredValueFromLine("port", line));
-                    bookmarks[bookmarks.length - 1].setPort(port);                
-                }
-
-                if("Port" in line ){
-                    int port = int.parse(getfilteredValueFromLine("Port", line));
-                    bookmarks[bookmarks.length - 1].setPort(port);                
-                }
-
-                if("user" in line ){
-                    string user = getfilteredValueFromLine("user", line);
-                    bookmarks[bookmarks.length - 1].setUser(user);                     
-                }
-
-                if("User" in line ){
-                    string user = getfilteredValueFromLine("User", line);
-                    bookmarks[bookmarks.length - 1].setUser(user);                     
-                }
-                
-                if("forwardAgent" in line ){
-                    string forwardAgent = getfilteredValueFromLine("forwardAgent", line);
-                    bookmarks[bookmarks.length - 1].setForwardAgent(forwardAgent);
-                }
-
-                if("ForwardAgent" in line ){
-                    string forwardAgent = getfilteredValueFromLine("ForwardAgent", line);
-                    bookmarks[bookmarks.length - 1].setForwardAgent(forwardAgent);
+                if(inArray(variableOnLine, { "forwardAgent", "ForwardAgent" })){
+                    bookmarks[bookmarks.length - 1].setForwardAgent(valueOnLine);
                 }
             }
                
@@ -78,6 +51,14 @@ public class ConfigFileReader : Gtk.ListBox{
             error ("%s", e.message);
         }
     }
+
+    bool inArray ( string needle, string[] haystack )  {
+        if (needle in haystack) { 
+            return true; 
+        }
+        return false;
+    }
+
 
     public string[] getOtherSettings (){
         string[] settings = new string[0];
@@ -92,20 +73,26 @@ public class ConfigFileReader : Gtk.ListBox{
 
             // Read lines until end of file (null) is reached
             while ((line = lines.read_line (null)) != null) {
-                if("host" in line || "Host" in line){
-                    continue;
-                }
-                if("hostName" in line || "HostName" in line){
-                    continue;
-                }
-                if("port" in line || "Port" in line){
-                    continue;
-                }
-                if("User" in line || "user" in line){
-                    continue;
-                }
+                
+                var splittedLine = line.split(" ");
+                string variableOnLine = getfilteredVariable(splittedLine);
 
-                if(line == ""){
+                if(line == "" || variableOnLine == null){
+                    continue;
+                }
+                if(inArray(variableOnLine, { "host", "Host" })){
+                    continue;
+                }
+                if(inArray(variableOnLine, { "hostName", "HostName" })){
+                    continue;
+                }                
+                if(inArray(variableOnLine, { "port", "Port" })){
+                    continue;
+                }
+                if(inArray(variableOnLine, { "user", "User" })){
+                    continue;
+                }
+                if(inArray(variableOnLine, { "forwardAgent", "ForwardAgent" })){
                     continue;
                 }
                 settings += line;
@@ -118,34 +105,32 @@ public class ConfigFileReader : Gtk.ListBox{
         }
     }
 
-    public int countBookmarks (){
-        int count = 1;
-        
-        var file = getSshConfigFile();
-
-        try {
-            // Open file for reading and wrap returned FileInputStream into a
-            // DataInputStream, so we can read line by line
-            var lines = new DataInputStream (file.read ());
-            
-            string line;
-            // Read lines until end of file (null) is reached        
-            while ((line = lines.read_line (null)) != null) {
-                if("host" in line ){
-                    count++;
-                }
+    public string getfilteredVariable(string[] splittedLine){
+        foreach (string part in splittedLine) {
+            if(part == ""){
+                continue;
             }
-           return count;
-
-        } catch (Error e) {
-            error ("%s", e.message);
+            return part;
         }
+        return splittedLine[0];
     }
-    
-    public string getfilteredValueFromLine(string value, string line){
-        string line_new = line.replace (value, "");
 
-        return line_new.replace (" ", "");
+    public string getfilteredValue(string[] splittedLine){
+        var elementsCount = 0;
+        string filteredValue = "";
+        foreach (string part in splittedLine) {
+            if(part == ""){
+                continue;  
+            }          
+            
+            if(elementsCount == 0 ) {
+                elementsCount++;
+                continue;
+            }
+
+            filteredValue += part;
+        }
+        return filteredValue;
     }
 
     private File getSshConfigFile(){
@@ -195,24 +180,19 @@ public class ConfigFileReader : Gtk.ListBox{
     private string convertOtherSettingsToString(string[] settings){
         string rawSettingsString = "";
         
-        for (int a = 0; a < settings.length; a++) {
-            var setting = settings[a];
-            string rawSetting = setting + "
-";
+        foreach (string setting in settings) {
+            string rawSetting = setting + "\n";
             rawSettingsString += rawSetting;
         }
 
-        rawSettingsString += "
-";
-        
+        rawSettingsString += "\n";
         return rawSettingsString;
     }
 
     private string convertBookmarksToString(Bookmark[] bookmarks){
         string rawBookmarksString = "";
         
-        for (int a = 0; a < bookmarks.length + 1; a++) {
-            var bookmark = bookmarks[a];
+        foreach (Bookmark bookmark in bookmarks) { 
             string rawBookmark = convertBookmarktoString(bookmark);
             rawBookmarksString += rawBookmark;
         }
@@ -224,23 +204,22 @@ public class ConfigFileReader : Gtk.ListBox{
             string rawBookmark = "Host " + bookmark.getName(); 
  
             if(bookmark.getIp() != null){ 
-                rawBookmark = rawBookmark + "
-    HostName " + bookmark.getIp().to_string();
+                rawBookmark = rawBookmark + "\n    HostName " + bookmark.getIp().to_string();
             }
-       
-            if(bookmark.getPort() != 0){ 
-                rawBookmark = rawBookmark + "
-    Port " + bookmark.getPort().to_string();
-            }
-     
-            if(bookmark.getUser() != null){ 
-                rawBookmark = rawBookmark + "
-    User " + bookmark.getUser();
-            }
-            
-            rawBookmark = rawBookmark + "
 
-";
+            if(bookmark.getPort() != 0){ 
+                rawBookmark = rawBookmark + "\n    Port " + bookmark.getPort().to_string();
+            }
+
+            if(bookmark.getUser() != null){ 
+                rawBookmark = rawBookmark + "\n    User " + bookmark.getUser();
+            }
+
+            if(bookmark.getForwardAgent() != null){ 
+                rawBookmark = rawBookmark + "\n    ForwardAgent " + bookmark.getForwardAgent();
+            }
+
+            rawBookmark = rawBookmark + "\n\n";
             return rawBookmark;
     }
 }

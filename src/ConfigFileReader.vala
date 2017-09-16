@@ -43,6 +43,9 @@ public class ConfigFileReader : Gtk.ListBox{
                 if(inArray(variableOnLine, { "forwardAgent", "ForwardAgent" })){
                     bookmarks[bookmarks.length - 1].setForwardAgent(valueOnLine);
                 }
+                if(inArray(variableOnLine, { "proxyCommand", "ProxyCommand" })){
+                    bookmarks[bookmarks.length - 1].setProxyCommand(valueOnLine);
+                }
             }
                
            return bookmarks;
@@ -93,6 +96,9 @@ public class ConfigFileReader : Gtk.ListBox{
                     continue;
                 }
                 if(inArray(variableOnLine, { "forwardAgent", "ForwardAgent" })){
+                    continue;
+                }
+                if(inArray(variableOnLine, { "proxyCommand", "ProxyCommand" })){
                     continue;
                 }
                 settings += line;
@@ -217,6 +223,10 @@ public class ConfigFileReader : Gtk.ListBox{
 
             if(bookmark.getForwardAgent() != null){ 
                 rawBookmark = rawBookmark + "\n    ForwardAgent " + bookmark.getForwardAgent();
+            }
+
+            if(bookmark.getProxyCommand() != null){ 
+                rawBookmark = rawBookmark + "\n    ProxyCommand " + bookmark.getProxyCommand();
             }
 
             rawBookmark = rawBookmark + "\n\n";

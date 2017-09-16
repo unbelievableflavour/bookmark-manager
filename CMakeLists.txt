@@ -54,6 +54,7 @@
         src/Dialogs/DeleteConfirm.vala
         src/Dialogs/Alert.vala
         src/Views/AddBookmark.vala
+        src/Views/EditBookmark.vala
         src/Views/ListBookmarks.vala
         src/Views/WelcomeView.vala
         src/Views/EmptyView.vala

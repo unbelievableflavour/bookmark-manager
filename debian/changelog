@@ -1,3 +1,12 @@
+com.github.bartzaalberg.bookmark-manager (1.2.0) UNSTABLE; urgency=low
+
+  * Added edit mode
+  * Updated screenshot again
+  * config is now loaded straight from the file, so that support is much larger
+  * Added AgentForward and ProxyCommand support
+
+ -- Bart Zaalberg <bartzaalberg@gmail.com>  Sun, 16 Sep 2017 21:50:00 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.1.9) UNSTABLE; urgency=low
 
   * Updated screenshot

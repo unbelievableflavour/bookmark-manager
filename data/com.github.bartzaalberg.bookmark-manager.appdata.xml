@@ -13,7 +13,7 @@
        <li>Easily search through your SSH bookmarks</li>
        <li>Simply start a session by clicking on a button</li>
        <li>Add a default parameters for when the config file doesn't contain a variable</li>
-       <li>Add and remove bookmarks</li>
+       <li>Add, remove, and update bookmarks</li>
     </ul>
   </description>
   <screenshots>

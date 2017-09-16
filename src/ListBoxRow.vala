@@ -3,17 +3,19 @@ using Granite.Widgets;
 namespace BookmarkManager {
 public class ListBoxRow : Gtk.ListBoxRow {
 
+    StackManager stackManager = StackManager.get_instance();
+
     private const int PROGRESS_BAR_HEIGHT = 5;
     private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager"); 
 
-    private Gtk.Image start_image = new Gtk.Image.from_icon_name ("media-playback-start", Gtk.IconSize.SMALL_TOOLBAR);
-//    private Gtk.Image edit_image = new Gtk.Image.from_icon_name ("document-properties", Gtk.IconSize.SMALL_TOOLBAR);
+    private Gtk.Image start_image = new Gtk.Image.from_icon_name ("media-playback-start-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
+    private Gtk.Image edit_image = new Gtk.Image.from_icon_name ("document-properties-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
     private Gtk.Image delete_image = new Gtk.Image.from_icon_name ("edit-delete-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
 
     private Gtk.Image icon = new Gtk.Image.from_icon_name ("terminal", Gtk.IconSize.DND);        
     private Gtk.Box vertical_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
     private Bookmark bookmark;
-
+    
     public ListBoxRow (Bookmark bookmark){
         
         this.bookmark = bookmark;
@@ -21,6 +23,7 @@ public class ListBoxRow : Gtk.ListBoxRow {
         var name_label = generateNameLabel(bookmark);
         var summary_label = generateSummaryLabel(sshCommand);
         var start_button = generateStartButton(sshCommand);
+        var edit_button = generateEditButton(bookmark);        
         var delete_button = generateDeleteButton();
 
         vertical_box.add (name_label);
@@ -31,7 +34,7 @@ public class ListBoxRow : Gtk.ListBoxRow {
         bookmark_row.add(icon);
         bookmark_row.add (vertical_box);
         bookmark_row.pack_end (start_button, false, false);
-//        bookmark_row.pack_end (edit_image, false, false);
+        bookmark_row.pack_end (edit_button, false, false);
         bookmark_row.pack_end (delete_button, false, false);
 
         this.add (bookmark_row);
@@ -54,21 +57,11 @@ public class ListBoxRow : Gtk.ListBoxRow {
 
     public string generateSSHCommand(Bookmark bookmark){
         var username = settings.get_string("sshname"); 
-        if(bookmark.getUser() != null){ 
+        if(bookmark.getUser() != null && bookmark.getUser() != ""){ 
             username = bookmark.getUser(); 
         }
- 
-        var port = 22; 
-        if(bookmark.getPort() != 0){ 
-            port = bookmark.getPort(); 
-        }
- 
-        var ip = "127.0.0.1"; 
-        if(bookmark.getIp() != null){ 
-            ip = bookmark.getIp(); 
-        }
 
-        return "ssh " + username + "@" + ip + " -p " + port.to_string();     
+        return "ssh " + username + "@" + bookmark.getName();     
     }
 
     public Gtk.EventBox generateStartButton(string sshCommand){
@@ -99,6 +92,19 @@ public class ListBoxRow : Gtk.ListBoxRow {
         });    
 
         return delete_button;
+    }
+
+    public Gtk.EventBox generateEditButton(Bookmark bookmark){
+        var edit_button = new Gtk.EventBox();
+        edit_button.add(edit_image);
+        edit_button.set_tooltip_text("Edit this bookmark");
+        edit_button.button_press_event.connect (() => {
+            stackManager.setEditBookmark(bookmark);
+            stackManager.getStack().visible_child_name = "edit-bookmark-view";
+            return true;
+        });
+
+        return edit_button;
     }
 }
 }

@@ -1,5 +1,5 @@
 namespace BookmarkManager {
-public class AddBookmark : Gtk.Grid{
+public class EditBookmark : Gtk.Grid{
  
     StackManager stackManager = StackManager.get_instance();
     BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
@@ -11,9 +11,8 @@ public class AddBookmark : Gtk.Grid{
     private Gtk.CheckButton agentForwardCheckButton = new Gtk.CheckButton();
     private Gtk.Entry proxyCommandEntry = new Gtk.Entry ();
 
-    public AddBookmark(){ 
-
-        var general_header = new HeaderLabel ("Add new bookmark");
+    public EditBookmark(){ 
+        var general_header = new HeaderLabel ("Edit a bookmark");
        
         var hostLabel = new Gtk.Label ("Host:*");
         hostLabel.set_alignment(0,0);
@@ -34,27 +33,28 @@ public class AddBookmark : Gtk.Grid{
         proxyCommandLabel.set_alignment(0,0);
 
         hostEntry.set_placeholder_text("server1");
+        hostEntry.set_sensitive(false);
         hostNameEntry.set_placeholder_text("127.0.0.1");
         userNameEntry.set_placeholder_text("james");
         portEntry.set_placeholder_text("80");
         proxyCommandEntry.set_placeholder_text("ssh bookmark nc %h %p");
-
+        
         var back_button = new Gtk.Button.with_label ("Back");
         back_button.clicked.connect (() => {
             stackManager.getStack().visible_child_name = "list-view";
             bookmarkListManager.getList().getBookmarks("");
         });
 
-        var create_button = new Gtk.Button.with_label ("Create");
-        create_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-        create_button.clicked.connect (() => {
-           AddBookmarkToFile();
+        var edit_button = new Gtk.Button.with_label ("Edit");
+        edit_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+        edit_button.clicked.connect (() => {
+           EditBookmarkInFile();
         });
 
         var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
         button_box.set_layout (Gtk.ButtonBoxStyle.END);
         button_box.pack_end (back_button);
-        button_box.pack_end (create_button);
+        button_box.pack_end (edit_button);
         button_box.margin = 12;
         button_box.margin_bottom = 0;
 
@@ -79,33 +79,74 @@ public class AddBookmark : Gtk.Grid{
         
     }
 
-    public void AddBookmarkToFile(){
-        var bookmark = new Bookmark();
-           bookmark.setName(hostEntry.text);
-           bookmark.setIp(hostNameEntry.text);  
-           bookmark.setUser(userNameEntry.text);  
-           bookmark.setPort(portEntry.text.to_int());  
+    public void loadBookmark(Bookmark bookmark){
+       
+        
+        hostEntry.text = "";
+        hostNameEntry.text = "";
+        portEntry.text = "";
+        userNameEntry.text = "";
+        agentForwardCheckButton.active = false;
+        proxyCommandEntry.text = "";
+        
+
+        if(bookmark.getName() != null){
+            hostEntry.text = bookmark.getName();
+        }
+        if(bookmark.getIp() != null){ 
+            hostNameEntry.text = bookmark.getIp();
+        }
+
+        if(bookmark.getPort() != 0){ 
+            portEntry.text = bookmark.getPort().to_string();  
+        }
+
+        if(bookmark.getUser() != null){ 
+            userNameEntry.text = bookmark.getUser();
+        }
+
+        if(bookmark.getForwardAgent() != null){ 
+            agentForwardCheckButton.active = true;
+        }
+
+        if(bookmark.getProxyCommand() != null){ 
+            proxyCommandEntry.text = bookmark.getProxyCommand();
+        }
+        
+    }
+
+    public void EditBookmarkInFile(){
+        
+           var editedBookmark = new Bookmark();
+           editedBookmark.setName(hostEntry.text);
+           editedBookmark.setIp(hostNameEntry.text);  
+           editedBookmark.setUser(userNameEntry.text);  
+           editedBookmark.setPort(portEntry.text.to_int());  
 
            if(agentForwardCheckButton.active == true) {
-               bookmark.setForwardAgent("yes");
+               editedBookmark.setForwardAgent("yes");
            }
              
-           bookmark.setProxyCommand(proxyCommandEntry.text);  
+           editedBookmark.setProxyCommand(proxyCommandEntry.text);  
 
-           var ConfigFileReader = new ConfigFileReader();
-           var bookmarks = ConfigFileReader.getBookmarks();
-
-           if(isNotValid(bookmark)){
+           if(isNotValid(editedBookmark)){
                new Alert("Fields are invalid", "Please correctly fill in all the fields");
                return;
            }
 
-           if(alreadyExists(bookmark, bookmarks)){
-               new Alert("Bookmark with this name already exists", "Please choose a different name");
-               return;
-           }
+           var ConfigFileReader = new ConfigFileReader(); 
+           var bookmarks = ConfigFileReader.getBookmarks(); 
 
-           bookmarks += bookmark;
+           var i = 0;
+
+           foreach (Bookmark bookmark in bookmarks) {
+              if(bookmark.getName() == editedBookmark.getName()) {
+                break;
+              }
+              i++;
+           }
+           
+           bookmarks[i] = editedBookmark;
 
            ConfigFileReader.writeToFile(bookmarks);
 

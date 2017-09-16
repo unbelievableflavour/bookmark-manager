@@ -8,6 +8,7 @@ public class Bookmark : Object {
     private string user;
     private int port;
     private string forwardAgent;
+    private string proxyCommand;
 
     public string getName(){
         return this.name;
@@ -47,6 +48,14 @@ public class Bookmark : Object {
 
     public void setForwardAgent(string forwardAgent){
         this.forwardAgent = forwardAgent;    
+    }
+
+    public string getProxyCommand(){
+        return this.proxyCommand;    
+    }
+
+    public void setProxyCommand(string proxyCommand){
+        this.proxyCommand = proxyCommand;    
     }
 }
 }

@@ -1,3 +1,10 @@
+com.github.bartzaalberg.bookmark-manager (1.1.8) UNSTABLE; urgency=low
+
+  * Added a fix for the not released granite.messageDialog windows i used
+  * Added more entry fields to the AddBookmark form 
+
+ -- Bart Zaalberg <bartzaalberg@gmail.com>  Sun, 16 Sep 2017 18:26:00 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.1.7) UNSTABLE; urgency=low
 
   * Added Delete option, 
@@ -6,7 +13,7 @@ com.github.bartzaalberg.bookmark-manager (1.1.7) UNSTABLE; urgency=low
   * Added new icon
   * Added no bookmark found screen when searching wont find anything
 
- -- Bart Zaalberg <bartzaalberg@gmail.com>  Tue, 15 Sep 2017 10:06:00 +0200
+ -- Bart Zaalberg <bartzaalberg@gmail.com>  Fri, 15 Sep 2017 10:06:00 +0200
 
 com.github.bartzaalberg.bookmark-manager (1.1.6) UNSTABLE; urgency=low
 

@@ -1,20 +1,33 @@
 namespace BookmarkManager {
-public class AddBookmark : Gtk.ScrolledWindow{
+public class AddBookmark : Gtk.Grid{
  
     StackManager stackManager = StackManager.get_instance();
     BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
+
+    private Gtk.Entry hostEntry = new Gtk.Entry ();
+    private Gtk.Entry hostNameEntry = new Gtk.Entry ();
+    private Gtk.Entry userNameEntry = new Gtk.Entry ();
+    private Gtk.Entry portEntry = new Gtk.Entry ();
 
     public AddBookmark(){ 
         var general_header = new HeaderLabel ("Add new bookmark");
        
         var hostLabel = new Gtk.Label ("Host:");
+        hostLabel.set_alignment(0,0);
+
         var hostNameLabel = new Gtk.Label ("Host Name:");
+        hostNameLabel.set_alignment(0,0);
 
-        var hostEntry = new Gtk.Entry ();
+        var userNameLabel = new Gtk.Label ("Username: (optional)");
+        userNameLabel.set_alignment(0,0);
+        
+        var portLabel = new Gtk.Label ("Port: (optional)");
+        portLabel.set_alignment(0,0);
+
         hostEntry.set_placeholder_text("server1");
-
-        var hostNameEntry = new Gtk.Entry ();
         hostNameEntry.set_placeholder_text("127.0.0.1");
+        userNameEntry.set_placeholder_text("james");
+        portEntry.set_placeholder_text("80");
 
         var back_button = new Gtk.Button.with_label ("Back");
         back_button.clicked.connect (() => {
@@ -25,10 +38,39 @@ public class AddBookmark : Gtk.ScrolledWindow{
         var create_button = new Gtk.Button.with_label ("Create");
         create_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         create_button.clicked.connect (() => {
+           AddBookmarkToFile();
+        });
 
-           var bookmark = new Bookmark();
+        var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
+        button_box.set_layout (Gtk.ButtonBoxStyle.END);
+        button_box.pack_end (back_button);
+        button_box.pack_end (create_button);
+        button_box.margin = 12;
+        button_box.margin_bottom = 0;
+
+        this.row_spacing = 12;
+        this.column_spacing = 12;
+        this.margin = 12;
+        this.attach (general_header, 0, 0, 2, 1);
+        this.attach (hostLabel, 0, 1, 1, 1);
+        this.attach (hostEntry, 1, 1, 1, 1);
+        this.attach (hostNameLabel, 0, 2, 1, 1);
+        this.attach (hostNameEntry, 1, 2, 1, 1);
+        this.attach (userNameLabel, 0, 3, 1, 1);
+        this.attach (userNameEntry, 1, 3, 1, 1);
+        this.attach (portLabel, 0, 4, 1, 1);
+        this.attach (portEntry, 1, 4, 1, 1);
+
+        this.attach (button_box, 1, 5, 1, 1);
+        
+    }
+
+    public void AddBookmarkToFile(){
+        var bookmark = new Bookmark();
            bookmark.setName(hostEntry.text);
            bookmark.setIp(hostNameEntry.text);  
+           bookmark.setUser(userNameEntry.text);  
+           bookmark.setPort(portEntry.text.to_int());  
 
            var ConfigFileReader = new ConfigFileReader();
            var bookmarks = ConfigFileReader.getBookmarks();
@@ -48,33 +90,7 @@ public class AddBookmark : Gtk.ScrolledWindow{
            ConfigFileReader.writeToFile(bookmarks);
 
            stackManager.getStack().visible_child_name = "list-view";
-           bookmarkListManager.getList().getBookmarks(""); 
-        });
-
-        var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
-        button_box.set_layout (Gtk.ButtonBoxStyle.END);
-        button_box.pack_end (back_button);
-        button_box.pack_end (create_button);
-        button_box.margin = 12;
-        button_box.margin_bottom = 0;
-
-        // add the preferences to a grid
-        var general_grid = new Gtk.Grid ();
-        general_grid.row_spacing = 6;
-        general_grid.column_spacing = 12;
-        general_grid.margin = 12;
-        general_grid.attach (general_header, 0, 0, 2, 1);
-        general_grid.attach (hostLabel, 0, 1, 1, 1);
-        general_grid.attach (hostEntry, 1, 1, 1, 1);
-        general_grid.attach (hostNameLabel, 0, 2, 1, 1);
-        general_grid.attach (hostNameEntry, 1, 2, 1, 1);
-
-        // Pack everything into the dialog
-        var main_grid = new Gtk.Grid ();
-        main_grid.attach (general_grid, 0, 0, 1, 1);
-        main_grid.attach (button_box, 0, 1, 1, 1);
-        
-        this.add (main_grid);
+           bookmarkListManager.getList().getBookmarks("");    
     }
 
     public bool isNotValid(Bookmark newBookmark){

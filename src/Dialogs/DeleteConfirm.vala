@@ -1,17 +1,20 @@
 namespace BookmarkManager {
-public class Alert : Gtk.Dialog {
+public class DeleteConfirm : Gtk.Dialog {
+      
+    private BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
+    private StackManager stackManager = StackManager.get_instance();
 
-    public Alert(string title, string description){
-        var image = new Gtk.Image.from_icon_name ("dialog-warning", Gtk.IconSize.DIALOG);
+    public DeleteConfirm(Bookmark deletedBookmark){
+        var image = new Gtk.Image.from_icon_name ("edit-delete", Gtk.IconSize.DIALOG);
         image.valign = Gtk.Align.START;
 
-        var primary_label = new Gtk.Label (title);
+        var primary_label = new Gtk.Label ("Delete this bookmark?");
         primary_label.selectable = true;
         primary_label.max_width_chars = 50;
         primary_label.wrap = true;
         primary_label.xalign = 0;
 
-        var secondary_label = new Gtk.Label (description);
+        var secondary_label = new Gtk.Label ("Are you sure you want to delete this bookmark?");
         secondary_label.use_markup = true;
         secondary_label.selectable = true;
         secondary_label.max_width_chars = 50;
@@ -39,14 +42,40 @@ public class Alert : Gtk.Dialog {
             this.destroy ();
         });
 
+        var suggested_button = new Gtk.Button.with_label ("Delete"); 
+        suggested_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION); 
+        
+        suggested_button.clicked.connect (() => {
+            deleteBookmark(deletedBookmark);
+            this.destroy ();
+        });
+
         var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
         button_box.set_layout (Gtk.ButtonBoxStyle.END);
         button_box.pack_start (close_button);
+        button_box.pack_start (suggested_button);
         button_box.margin = 12;
         button_box.margin_bottom = 0;
 
         get_content_area ().add (button_box);
         this.show_all ();
+    }
+
+    private void deleteBookmark(Bookmark deletedBookmark) {
+        var ConfigFileReader = new ConfigFileReader(); 
+        var bookmarks = ConfigFileReader.getBookmarks(); 
+        Bookmark[] newBookmarksList = {};
+
+        foreach (Bookmark bookmark in bookmarks) {
+           if(bookmark.getName() != deletedBookmark.getName()) {
+                newBookmarksList += bookmark;
+           }
+        }
+
+        ConfigFileReader.writeToFile(newBookmarksList); 
+         
+        stackManager.getStack().visible_child_name = "list-view"; 
+        bookmarkListManager.getList().getBookmarks("");  
     }
 }
 }

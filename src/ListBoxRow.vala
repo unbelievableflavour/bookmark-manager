@@ -94,7 +94,7 @@ public class ListBoxRow : Gtk.ListBoxRow {
         delete_button.add(delete_image);
         delete_button.set_tooltip_text("Remote this bookmark");
         delete_button.button_press_event.connect (() => {
-            new Confirm(bookmark);
+            new DeleteConfirm(bookmark);
             return true;
         });    
 

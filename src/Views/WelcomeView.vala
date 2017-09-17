@@ -6,7 +6,7 @@ public class WelcomeView : Gtk.ScrolledWindow {
     StackManager stackManager = StackManager.get_instance();
 
     public WelcomeView(){ 
-        var welcome_view = new Welcome("Welcome!", "We see this is you're first time");
+        var welcome_view = new Welcome("Welcome!", "We see this is your first time");
             welcome_view.append("document-properties", "Setup your information", "Change your ssh name, password, etc..");
 
         welcome_view.activated.connect ((option) => {

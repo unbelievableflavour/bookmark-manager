@@ -1,3 +1,10 @@
+com.github.bartzaalberg.bookmark-manager (1.2.1) UNSTABLE; urgency=low
+
+  * Fixed a bug where proxyCommand would show up without spaces
+  * Changed text for when a form is invalid
+
+ -- Bart Zaalberg <bartzaalberg@gmail.com>  Sun, 17 Sep 2017 13:39:00 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.2.0) UNSTABLE; urgency=low
 
   * Added edit mode

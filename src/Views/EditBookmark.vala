@@ -117,55 +117,46 @@ public class EditBookmark : Gtk.Grid{
 
     public void EditBookmarkInFile(){
         
-           var editedBookmark = new Bookmark();
-           editedBookmark.setName(hostEntry.text);
-           editedBookmark.setIp(hostNameEntry.text);  
-           editedBookmark.setUser(userNameEntry.text);  
-           editedBookmark.setPort(portEntry.text.to_int());  
+        var editedBookmark = new Bookmark();
+        editedBookmark.setName(hostEntry.text);
+        editedBookmark.setIp(hostNameEntry.text);  
+        editedBookmark.setUser(userNameEntry.text);  
+        editedBookmark.setPort(portEntry.text.to_int());  
 
-           if(agentForwardCheckButton.active == true) {
-               editedBookmark.setForwardAgent("yes");
-           }
-             
-           editedBookmark.setProxyCommand(proxyCommandEntry.text);  
+        if(agentForwardCheckButton.active == true) {
+            editedBookmark.setForwardAgent("yes");
+        }
+         
+        editedBookmark.setProxyCommand(proxyCommandEntry.text);  
 
-           if(isNotValid(editedBookmark)){
-               new Alert("Fields are invalid", "Please correctly fill in all the fields");
-               return;
-           }
+        if(isNotValid(editedBookmark)){
+            new Alert("Fields are invalid", "Please correctly fill in all the required fields");
+            return;
+        }
 
-           var ConfigFileReader = new ConfigFileReader(); 
-           var bookmarks = ConfigFileReader.getBookmarks(); 
+        var ConfigFileReader = new ConfigFileReader(); 
+        var bookmarks = ConfigFileReader.getBookmarks(); 
 
-           var i = 0;
+        var i = 0;
 
-           foreach (Bookmark bookmark in bookmarks) {
-              if(bookmark.getName() == editedBookmark.getName()) {
+        foreach (Bookmark bookmark in bookmarks) {
+            if(bookmark.getName() == editedBookmark.getName()) {
                 break;
-              }
-              i++;
-           }
-           
-           bookmarks[i] = editedBookmark;
+            }
+            i++;
+        }
 
-           ConfigFileReader.writeToFile(bookmarks);
+        bookmarks[i] = editedBookmark;
 
-           stackManager.getStack().visible_child_name = "list-view";
-           bookmarkListManager.getList().getBookmarks("");    
+        ConfigFileReader.writeToFile(bookmarks);
+
+        stackManager.getStack().visible_child_name = "list-view";
+        bookmarkListManager.getList().getBookmarks("");    
     }
 
     public bool isNotValid(Bookmark newBookmark){
         if(newBookmark.getName() == "" || newBookmark.getIp() == ""){
             return true;
-        }
-        return false;
-    }
-
-    public bool alreadyExists(Bookmark newBookmark, Bookmark[] bookmarks){
-        foreach (Bookmark bookmark in bookmarks) {
-           if(bookmark.getName() == newBookmark.getName()) {
-                return true;
-           }
         }
         return false;
     }

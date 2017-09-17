@@ -134,7 +134,13 @@ public class ConfigFileReader : Gtk.ListBox{
                 continue;
             }
 
-            filteredValue += part;
+            if(elementsCount == 1 ) {
+                filteredValue += part;
+                elementsCount++;
+                continue;
+            }
+
+            filteredValue += " " + part;
         }
         return filteredValue;
     }

@@ -81,36 +81,36 @@ public class AddBookmark : Gtk.Grid{
 
     public void AddBookmarkToFile(){
         var bookmark = new Bookmark();
-           bookmark.setName(hostEntry.text);
-           bookmark.setIp(hostNameEntry.text);  
-           bookmark.setUser(userNameEntry.text);  
-           bookmark.setPort(portEntry.text.to_int());  
+        bookmark.setName(hostEntry.text);
+        bookmark.setIp(hostNameEntry.text);  
+        bookmark.setUser(userNameEntry.text);  
+        bookmark.setPort(portEntry.text.to_int());  
 
-           if(agentForwardCheckButton.active == true) {
-               bookmark.setForwardAgent("yes");
-           }
+        if(agentForwardCheckButton.active == true) {
+           bookmark.setForwardAgent("yes");
+        }
              
-           bookmark.setProxyCommand(proxyCommandEntry.text);  
+        bookmark.setProxyCommand(proxyCommandEntry.text);  
 
-           var ConfigFileReader = new ConfigFileReader();
-           var bookmarks = ConfigFileReader.getBookmarks();
+        var ConfigFileReader = new ConfigFileReader();
+        var bookmarks = ConfigFileReader.getBookmarks();
 
-           if(isNotValid(bookmark)){
-               new Alert("Fields are invalid", "Please correctly fill in all the fields");
-               return;
-           }
+        if(isNotValid(bookmark)){
+            new Alert("Fields are invalid", "Please correctly fill in all the required fields");
+            return;
+        }
 
-           if(alreadyExists(bookmark, bookmarks)){
-               new Alert("Bookmark with this name already exists", "Please choose a different name");
-               return;
-           }
+        if(alreadyExists(bookmark, bookmarks)){
+            new Alert("Bookmark with this name already exists", "Please choose a different name");
+            return;
+        }
 
-           bookmarks += bookmark;
+        bookmarks += bookmark;
 
-           ConfigFileReader.writeToFile(bookmarks);
+        ConfigFileReader.writeToFile(bookmarks);
 
-           stackManager.getStack().visible_child_name = "list-view";
-           bookmarkListManager.getList().getBookmarks("");    
+        stackManager.getStack().visible_child_name = "list-view";
+        bookmarkListManager.getList().getBookmarks("");    
     }
 
     public bool isNotValid(Bookmark newBookmark){

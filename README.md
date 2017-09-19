@@ -1,7 +1,16 @@
 # Bookmark Manager
 Manager for your ssh configs
 
-![Screenshot](https://raw.githubusercontent.com/bartzaalberg/Bookmark-Manager/master/screenshot.png)
+<p align="center">
+    <a href="https://appcenter.elementary.io/com.github.bartzaalberg.bookmark-manager">
+        <img src="https://appcenter.elementary.io/badge.svg" alt="Get it on AppCenter">
+    </a>
+</p>
+
+<p align="center">
+    <img 
+    src="https://raw.githubusercontent.com/bartzaalberg/bookmark-manager/master/screenshot.png" />
+</p>
 
 ### Simple App for elementary OS
 

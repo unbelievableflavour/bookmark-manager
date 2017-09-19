@@ -18,6 +18,7 @@ public class Preferences : Gtk.Dialog {
         usernameEntry.set_tooltip_text ("This variable will be used when no variable is given in the ssh config");            
 
         var close_button = new Gtk.Button.with_label ("Close");
+        close_button.margin_right = 6;
         close_button.clicked.connect (() => {
             this.destroy ();
         });

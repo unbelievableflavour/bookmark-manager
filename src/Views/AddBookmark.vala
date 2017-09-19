@@ -40,6 +40,7 @@ public class AddBookmark : Gtk.Grid{
         proxyCommandEntry.set_placeholder_text("ssh bookmark nc %h %p");
 
         var back_button = new Gtk.Button.with_label ("Back");
+        back_button.margin_right = 6;
         back_button.clicked.connect (() => {
             stackManager.getStack().visible_child_name = "list-view";
             bookmarkListManager.getList().getBookmarks("");

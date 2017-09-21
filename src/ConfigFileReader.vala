@@ -223,7 +223,7 @@ public class ConfigFileReader : Gtk.ListBox{
                 rawBookmark = rawBookmark + "\n    Port " + bookmark.getPort().to_string();
             }
 
-            if(bookmark.getUser() != null){ 
+            if(bookmark.getUser() != null && bookmark.getUser() != ""){ 
                 rawBookmark = rawBookmark + "\n    User " + bookmark.getUser();
             }
 
@@ -231,7 +231,7 @@ public class ConfigFileReader : Gtk.ListBox{
                 rawBookmark = rawBookmark + "\n    ForwardAgent " + bookmark.getForwardAgent();
             }
 
-            if(bookmark.getProxyCommand() != null){ 
+            if(bookmark.getProxyCommand() != null && bookmark.getProxyCommand() != ""){ 
                 rawBookmark = rawBookmark + "\n    ProxyCommand " + bookmark.getProxyCommand();
             }
 

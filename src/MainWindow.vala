@@ -10,7 +10,6 @@ public class MainWindow : Gtk.Window{
 
     construct {
         set_default_size(600, 810);
-        set_size_request (600, 810);
         set_titlebar (new HeaderBar());
        
         stackManager.loadViews(this);

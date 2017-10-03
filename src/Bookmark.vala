@@ -173,7 +173,7 @@ public class Bookmark : Object {
         this.identitiesOnly = identitiesOnly;
     }
 
-    public string getcontrolMaster(){
+    public string getControlMaster(){
         return this.controlMaster;
     }
 

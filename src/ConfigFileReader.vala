@@ -20,34 +20,99 @@ public class ConfigFileReader : Gtk.ListBox{
                 var splittedLine = line.split(" ");
                 string variableOnLine = getfilteredVariable(splittedLine);
                 string valueOnLine = getfilteredValue(splittedLine);
-
-                if(variableOnLine == null){continue;}
                 
+                if(variableOnLine == null){continue;}
+ 
                 if(inArray(variableOnLine, { "host", "Host" })){
                     bookmarks += new Bookmark();
                     bookmarks[bookmarks.length - 1].setName(valueOnLine);
+                    continue;
                 }
-
+                if(bookmarks.length == 0){
+                    continue;
+                }
                 if(inArray(variableOnLine, { "hostName", "HostName" })){
-                    bookmarks[bookmarks.length - 1].setIp(valueOnLine); 
+                    bookmarks[bookmarks.length - 1].setIp(valueOnLine);
+                    continue;
                 }
-
                 if(inArray(variableOnLine, { "port", "Port" })){
                     bookmarks[bookmarks.length - 1].setPort(valueOnLine.to_int());
+                    continue;
                 }
-
                 if(inArray(variableOnLine, { "user", "User" })){
                     bookmarks[bookmarks.length - 1].setUser(valueOnLine);
+                    continue;
                 }
-                
                 if(inArray(variableOnLine, { "forwardAgent", "ForwardAgent" })){
                     bookmarks[bookmarks.length - 1].setForwardAgent(valueOnLine);
+                    continue;
                 }
                 if(inArray(variableOnLine, { "proxyCommand", "ProxyCommand" })){
                     bookmarks[bookmarks.length - 1].setProxyCommand(valueOnLine);
+                    continue;
+                }
+                if(inArray(variableOnLine, { "serverAliveInterval", "ServerAliveInterval" })){
+                    bookmarks[bookmarks.length - 1].setServerAliveInterval(valueOnLine.to_int());
+                    continue;
+                }
+                if(inArray(variableOnLine, { "logLevel", "LogLevel" })){
+                    bookmarks[bookmarks.length - 1].setLogLevel(valueOnLine);
+                    continue;
+                }
+                if(inArray(variableOnLine, { "strictHostKeyChecking", "StrictHostKeyChecking" })){
+                    bookmarks[bookmarks.length - 1].setStrictHostKeyChecking(valueOnLine);
+                    continue;
+                }
+                if(inArray(variableOnLine, { "userKnownHostsFile", "UserKnownHostsFile" })){
+                    bookmarks[bookmarks.length - 1].setUserKnownHostsFile(valueOnLine);
+                    continue;
+                }
+                if(inArray(variableOnLine, { "visualHostKey", "VisualHostKey" })){
+                    bookmarks[bookmarks.length - 1].setVisualHostKey(valueOnLine);
+                    continue;
+                }
+                if(inArray(variableOnLine, { "compression", "Compression" })){
+                    bookmarks[bookmarks.length - 1].setCompression(valueOnLine);
+                    continue;
+                }
+                if(inArray(variableOnLine, { "localForward", "LocalForward" })){
+                    bookmarks[bookmarks.length - 1].setLocalForward(valueOnLine);
+                    continue;
+                }
+                if(inArray(variableOnLine, { "remoteForward", "RemoteForward" })){
+                    bookmarks[bookmarks.length - 1].setRemoteForward(valueOnLine);
+                    continue;
+                }
+                if(inArray(variableOnLine, { "dynamicForward", "DynamicForward" })){
+                    bookmarks[bookmarks.length - 1].setDynamicForward(valueOnLine);
+                    continue;
+                }
+                if(inArray(variableOnLine, { "forwardX11", "ForwardX11" })){
+                    bookmarks[bookmarks.length - 1].setForwardX11(valueOnLine);
+                    continue;                
+                }
+                if(inArray(variableOnLine, { "identityFile", "IdentityFile" })){
+                    bookmarks[bookmarks.length - 1].setIdentityFile(valueOnLine);
+                    continue;                
+                }
+                if(inArray(variableOnLine, { "identitiesOnly", "IdentitiesOnly" })){
+                    bookmarks[bookmarks.length - 1].setIdentitiesOnly(valueOnLine);
+                    continue;
+                }
+                if(inArray(variableOnLine, { "controlMaster", "ControlMaster" })){
+                    bookmarks[bookmarks.length - 1].setControlMaster(valueOnLine);
+                    continue;
+                }
+                if(inArray(variableOnLine, { "controlPath", "ControlPath" })){
+                    bookmarks[bookmarks.length - 1].setControlPath(valueOnLine);
+                    continue;
+                }
+                if(inArray(variableOnLine, { "controlPersist", "ControlPersist" })){
+                    bookmarks[bookmarks.length - 1].setControlPersist(valueOnLine);
+                    continue;
                 }
             }
-               
+
            return bookmarks;
 
         } catch (Error e) {
@@ -83,24 +148,11 @@ public class ConfigFileReader : Gtk.ListBox{
                 if(line == "" || variableOnLine == null){
                     continue;
                 }
+
                 if(inArray(variableOnLine, { "host", "Host" })){
-                    continue;
+                    break;
                 }
-                if(inArray(variableOnLine, { "hostName", "HostName" })){
-                    continue;
-                }                
-                if(inArray(variableOnLine, { "port", "Port" })){
-                    continue;
-                }
-                if(inArray(variableOnLine, { "user", "User" })){
-                    continue;
-                }
-                if(inArray(variableOnLine, { "forwardAgent", "ForwardAgent" })){
-                    continue;
-                }
-                if(inArray(variableOnLine, { "proxyCommand", "ProxyCommand" })){
-                    continue;
-                }
+
                 settings += line;
             }
 
@@ -216,26 +268,86 @@ public class ConfigFileReader : Gtk.ListBox{
             string rawBookmark = "Host " + bookmark.getName(); 
  
             if(bookmark.getIp() != null){ 
-                rawBookmark = rawBookmark + "\n    HostName " + bookmark.getIp().to_string();
+                rawBookmark += "\n    HostName " + bookmark.getIp().to_string();
             }
 
             if(bookmark.getPort() != 0){ 
-                rawBookmark = rawBookmark + "\n    Port " + bookmark.getPort().to_string();
+                rawBookmark += "\n    Port " + bookmark.getPort().to_string();
             }
 
             if(bookmark.getUser() != null && bookmark.getUser() != ""){ 
-                rawBookmark = rawBookmark + "\n    User " + bookmark.getUser();
+                rawBookmark += "\n    User " + bookmark.getUser();
             }
 
             if(bookmark.getForwardAgent() != null){ 
-                rawBookmark = rawBookmark + "\n    ForwardAgent " + bookmark.getForwardAgent();
+                rawBookmark += "\n    ForwardAgent " + bookmark.getForwardAgent();
             }
 
             if(bookmark.getProxyCommand() != null && bookmark.getProxyCommand() != ""){ 
-                rawBookmark = rawBookmark + "\n    ProxyCommand " + bookmark.getProxyCommand();
+                rawBookmark += "\n    ProxyCommand " + bookmark.getProxyCommand();
             }
 
-            rawBookmark = rawBookmark + "\n\n";
+            if(bookmark.getServerAliveInterval() != 0){ 
+                rawBookmark += "\n    ServerAliveInterval " + bookmark.getServerAliveInterval().to_string();
+            }
+
+            if(bookmark.getLogLevel() != null && bookmark.getLogLevel() != ""){ 
+                rawBookmark += "\n    LogLevel " + bookmark.getLogLevel();
+            }
+
+            if(bookmark.getStrictHostKeyChecking() != null && bookmark.getStrictHostKeyChecking() != ""){ 
+                rawBookmark += "\n    StrictHostKeyChecking " + bookmark.getStrictHostKeyChecking();
+            }
+
+            if(bookmark.getUserKnownHostsFile() != null && bookmark.getUserKnownHostsFile() != ""){ 
+                rawBookmark += "\n    UserKnownHostsFile " + bookmark.getUserKnownHostsFile();
+            }
+
+            if(bookmark.getVisualHostKey() != null && bookmark.getVisualHostKey() != ""){ 
+                rawBookmark += "\n    VisualHostKey " + bookmark.getVisualHostKey();
+            }
+
+            if(bookmark.getCompression() != null && bookmark.getCompression() != ""){ 
+                rawBookmark += "\n    Compression " + bookmark.getCompression();
+            }
+
+            if(bookmark.getLocalForward() != null && bookmark.getLocalForward() != ""){ 
+                rawBookmark += "\n    LocalForward " + bookmark.getLocalForward();
+            }
+
+            if(bookmark.getRemoteForward() != null && bookmark.getRemoteForward() != ""){ 
+                rawBookmark += "\n    RemoteForward " + bookmark.getRemoteForward();
+            }
+
+            if(bookmark.getDynamicForward() != null && bookmark.getDynamicForward() != ""){ 
+                rawBookmark += "\n    DynamicForward " + bookmark.getDynamicForward();
+            }
+
+            if(bookmark.getForwardX11() != null && bookmark.getForwardX11() != ""){ 
+                rawBookmark += "\n    ForwardX11 " + bookmark.getForwardX11();
+            }
+
+            if(bookmark.getIdentityFile() != null && bookmark.getIdentityFile() != ""){ 
+                rawBookmark += "\n    IdentityFile " + bookmark.getIdentityFile();
+            }
+
+            if(bookmark.getIdentitiesOnly() != null && bookmark.getIdentitiesOnly() != ""){ 
+                rawBookmark += "\n    IdentitiesOnly " + bookmark.getIdentitiesOnly();
+            }
+
+            if(bookmark.getControlMaster() != null && bookmark.getControlMaster() != ""){ 
+                rawBookmark += "\n    ControlMaster " + bookmark.getControlMaster();
+            }
+
+            if(bookmark.getControlPath() != null && bookmark.getControlPath() != ""){ 
+                rawBookmark += "\n    ControlPath " + bookmark.getControlPath();
+            }
+
+            if(bookmark.getControlPersist() != null && bookmark.getControlPersist() != ""){ 
+                rawBookmark += "\n    ControlPersist " + bookmark.getControlPersist();
+            }
+
+            rawBookmark += "\n\n";
             return rawBookmark;
     }
 }

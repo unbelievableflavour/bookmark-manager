@@ -1,3 +1,11 @@
+com.github.bartzaalberg.bookmark-manager (1.2.3) UNSTABLE; urgency=low
+
+  * Removed minimum size. Window can now be smaller!
+  * Added support for alot of parameters in the filereader.Will be added to the form later.
+  * Made the filereader alot faster.
+
+ -- Bart Zaalberg <bartzaalberg@gmail.com>  Thu, 04 Oct 2017 10:32:00 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.2.2) UNSTABLE; urgency=low
 
   * Fixed a bug where ProxyCommand and User would be added empty to the config file when they wouldn't have been filled in.

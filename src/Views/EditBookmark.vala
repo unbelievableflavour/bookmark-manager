@@ -81,8 +81,7 @@ public class EditBookmark : Gtk.Grid{
     }
 
     public void loadBookmark(Bookmark bookmark){
-       
-        
+               
         hostEntry.text = "";
         hostNameEntry.text = "";
         portEntry.text = "";
@@ -118,36 +117,31 @@ public class EditBookmark : Gtk.Grid{
 
     public void EditBookmarkInFile(){
         
-        var editedBookmark = new Bookmark();
-        editedBookmark.setName(hostEntry.text);
-        editedBookmark.setIp(hostNameEntry.text);  
-        editedBookmark.setUser(userNameEntry.text);  
-        editedBookmark.setPort(portEntry.text.to_int());  
-
-        if(agentForwardCheckButton.active == true) {
-            editedBookmark.setForwardAgent("yes");
-        }
-         
-        editedBookmark.setProxyCommand(proxyCommandEntry.text);  
-
-        if(isNotValid(editedBookmark)){
-            new Alert("Fields are invalid", "Please correctly fill in all the required fields");
-            return;
-        }
+        var bookmarkName = hostEntry.text;
 
         var ConfigFileReader = new ConfigFileReader(); 
         var bookmarks = ConfigFileReader.getBookmarks(); 
 
-        var i = 0;
+        var bookmark = getCorrectBookmarkByName(bookmarkName, bookmarks);
+        bookmark.setName(hostEntry.text);
+        bookmark.setIp(hostNameEntry.text);  
+        bookmark.setUser(userNameEntry.text);  
+        bookmark.setPort(portEntry.text.to_int());
 
-        foreach (Bookmark bookmark in bookmarks) {
-            if(bookmark.getName() == editedBookmark.getName()) {
-                break;
-            }
-            i++;
+        if(agentForwardCheckButton.active == true) {
+            bookmark.setForwardAgent("yes");
+        }
+         
+        bookmark.setProxyCommand(proxyCommandEntry.text);  
+
+        if(isNotValid(bookmark)){
+            new Alert("Fields are invalid", "Please correctly fill in all the required fields");
+            return;
         }
 
-        bookmarks[i] = editedBookmark;
+        var index = getCorrectBookmarkIndex(bookmark, bookmarks);
+        
+        bookmarks[index] = bookmark;
 
         ConfigFileReader.writeToFile(bookmarks);
 
@@ -160,6 +154,26 @@ public class EditBookmark : Gtk.Grid{
             return true;
         }
         return false;
+    }
+
+    public int getCorrectBookmarkIndex(Bookmark editedBookmark, Bookmark[] bookmarks){
+        var index = 0;           
+        foreach (Bookmark bookmark in bookmarks) {
+            if(bookmark.getName() == editedBookmark.getName()) {
+                return index;
+            }
+            index++;
+        }
+        return index;
+    }
+
+    public Bookmark getCorrectBookmarkByName(string bookmarkName, Bookmark[] bookmarks){           
+        foreach (Bookmark bookmark in bookmarks) {
+            if(bookmark.getName() == bookmarkName) {
+                return bookmark;
+            }
+        }
+        return new Bookmark();
     }
 }
 }

@@ -69,12 +69,23 @@ public class ListBoxRow : Gtk.ListBoxRow {
         start_button.add(start_image);
         start_button.set_tooltip_text("Start an SSH session");
         start_button.button_press_event.connect (() => {
+            
+            string result;
+	        string error;
+	        int status;
+            
             try {
-                Process.spawn_command_line_async (
-                    "pantheon-terminal --execute='" + sshCommand + "'"
-                );
+                Process.spawn_command_line_sync ("pantheon-terminal --execute='" + sshCommand + "'",
+									        out result,
+									        out error,
+									        out status);
+              
+                if(error != null && error != ""){
+                    new Alert("An error occured",error);                
+                }
+		     
             } catch (SpawnError e) {
-	            stdout.printf ("Error: %s\n", e.message);
+	            new Alert("An error occured", e.message);
             }
             return true;
         });    

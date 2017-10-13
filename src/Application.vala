@@ -18,6 +18,7 @@ public class App:Granite.Application{
 
     public override void activate() {
         var window = new MainWindow ();
+        window.destroy.connect (Gtk.main_quit);
         window.show_all();
     }
 

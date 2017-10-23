@@ -34,10 +34,16 @@ public class AddBookmark : Gtk.Grid{
         proxyCommandLabel.set_alignment(0,0);
 
         hostEntry.set_placeholder_text("server1");
+        hostEntry.halign = Gtk.Align.FILL;
         hostNameEntry.set_placeholder_text("127.0.0.1");
+        hostNameEntry.halign = Gtk.Align.FILL;
         userNameEntry.set_placeholder_text("james");
+        userNameEntry.halign = Gtk.Align.FILL;
         portEntry.set_placeholder_text("80");
+        portEntry.halign = Gtk.Align.FILL;
         proxyCommandEntry.set_placeholder_text("ssh bookmark nc %h %p");
+        proxyCommandEntry.halign = Gtk.Align.FILL;
+        agentForwardCheckButton.halign = Gtk.Align.FILL;
 
         var back_button = new Gtk.Button.with_label ("Back");
         back_button.margin_right = 6;
@@ -56,12 +62,15 @@ public class AddBookmark : Gtk.Grid{
         button_box.set_layout (Gtk.ButtonBoxStyle.END);
         button_box.pack_end (back_button);
         button_box.pack_end (create_button);
-        button_box.margin = 12;
+        button_box.margin_left = 12;
         button_box.margin_bottom = 0;
+        button_box.halign = Gtk.Align.END;
 
+        this.column_homogeneous = true;
         this.row_spacing = 12;
         this.column_spacing = 12;
         this.margin = 12;
+
         this.attach (general_header, 0, 0, 2, 1);
         this.attach (hostLabel, 0, 1, 1, 1);
         this.attach (hostEntry, 1, 1, 1, 1);

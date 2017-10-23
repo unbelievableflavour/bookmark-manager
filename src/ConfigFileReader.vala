@@ -1,5 +1,3 @@
-using Granite.Widgets;
-
 namespace BookmarkManager {
 public class ConfigFileReader : Gtk.ListBox{
 

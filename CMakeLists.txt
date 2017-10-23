@@ -15,6 +15,8 @@
     set (PKGDATADIR "${DATADIR}/com.github.bartzaalberg.bookmark-manager")
 
     set (EXEC_NAME "com.github.bartzaalberg.bookmark-manager")
+    set (EXEC_NAME2 "com.github.bartzaalberg.bookmark-manager-quicklist")
+    set (EXEC_NAME3 "com.github.bartzaalberg.bookmark-manager-quicklist-polkit")
     set (VERSION "0.1")
     set (VERSION_INFO "whats up world")
 
@@ -38,6 +40,25 @@
     # make sure it's the desired version of vala
     ensure_vala_version("0.16" MINIMUM)
 
+    #------------------------------------------------------------------------------------------
+
+    # files we want to compile
+    include(ValaPrecompile)
+    vala_precompile(VALA_C ${EXEC_NAME2}
+        src/DesktopFileManager/DesktopFileApplication.vala
+        src/DesktopFileManager/DesktopFileManager.vala
+        src/ConfigFileReader.vala
+        src/Bookmark.vala
+
+    # tell what libraries to use when compiling
+    PACKAGES
+        gtk+-3.0
+    )
+
+    # tell cmake what to call the executable we just made
+    add_executable(${EXEC_NAME2} ${VALA_C})
+
+    #------------------------------------------------------------------------------------------
     # files we want to compile
     include(ValaPrecompile)
     vala_precompile(VALA_C ${EXEC_NAME}
@@ -71,9 +92,29 @@
     # tell cmake what to call the executable we just made
     add_executable(${EXEC_NAME} ${VALA_C})
 
+    #------------------------------------------------------------------------------------------
+
+    # files we want to compile
+    include(ValaPrecompile)
+    vala_precompile(VALA_C ${EXEC_NAME3}
+        src/Polkit/Application.vala
+
+    # tell what libraries to use when compiling
+    PACKAGES
+        gtk+-3.0
+        gio-2.0
+    )
+
+    # tell cmake what to call the executable we just made
+    add_executable(${EXEC_NAME3} ${VALA_C})
+    target_compile_options (${EXEC_NAME3} PUBLIC -fPIE)
+
+    #------------------------------------------------------------------------------------------
+
     # install the binaries we just made
     install (TARGETS ${EXEC_NAME} RUNTIME DESTINATION bin)
-
+    install (TARGETS ${EXEC_NAME2} RUNTIME DESTINATION bin)
+    install (TARGETS ${EXEC_NAME3} RUNTIME DESTINATION bin)
     #add the data directory and activated the cmakelists in that folder
     add_subdirectory (data)
     
@@ -81,6 +122,6 @@
     include (GSettings)
     add_schema (data/com.github.bartzaalberg.bookmark-manager.gschema.xml)
     
-    #uncomment for development. The above command doesnt work without app center
-    #execute_process (COMMAND cp ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.bartzaalberg.bookmark-manager.gschema.xml "/usr/share/glib-2.0/schemas") 
-    #execute_process (COMMAND glib-compile-schemas "/usr/share/glib-2.0/schemas") 
+    # install the polkit action file
+    install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.bartzaalberg.bookmark-manager.pkexec.policy DESTINATION ${DATADIR}/applications/)
+    install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.bartzaalberg.bookmark-manager.pkexec.policy DESTINATION /usr/share/polkit-1/actions/)

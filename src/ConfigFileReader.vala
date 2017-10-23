@@ -1,5 +1,5 @@
 namespace BookmarkManager {
-public class ConfigFileReader : Gtk.ListBox{
+public class ConfigFileReader : Object{
 
    public Bookmark[] getBookmarks (){
         Bookmark[] bookmarks = {};

@@ -11,11 +11,38 @@ public class Preferences : Gtk.Dialog {
         deletable = false;
 
         var general_header = new HeaderLabel ("Preferences");
+        var experimental_header = new HeaderLabel ("Experimental");
         
         var usernameLabel = new Gtk.Label ("Default Username:");
+        usernameLabel.halign = Gtk.Align.START;
         var usernameEntry = new Gtk.Entry ();
         usernameEntry.set_text (settings.get_string ("sshname"));
-        usernameEntry.set_tooltip_text ("This variable will be used when no variable is given in the ssh config");            
+        usernameEntry.set_tooltip_text ("This variable will be used when no variable is given in the ssh config");
+
+        var addBookmarksToDockUpdateLabel = new Gtk.Label ("Add your bookmarks to your dock");
+        addBookmarksToDockUpdateLabel.halign = Gtk.Align.START;
+        var addBookmarksToDockUpdateButton = new Gtk.Button.with_label ("Update Bookmarks");
+        addBookmarksToDockUpdateButton.clicked.connect (() => {
+            string result;
+	        string error;
+	        int status;
+            
+            try {
+                Process.spawn_command_line_sync ("com.github.bartzaalberg.bookmark-manager-quicklist-polkit",
+									        out result,
+									        out error,
+									        out status);
+              
+                if(error != null && error != "" && status != 0){
+                    new Alert("An error occured",error);                
+                }else{
+                    new Alert("Success","Your bookmarks have been added to your dock.If you have added more bookmarks. Please click this button again, because it won't happen dynamically.");
+                }
+		     
+            } catch (SpawnError e) {
+	            new Alert("An error occured", e.message);
+            }
+        });
 
         var close_button = new Gtk.Button.with_label ("Close");
         close_button.margin_right = 6;
@@ -49,9 +76,12 @@ public class Preferences : Gtk.Dialog {
         general_grid.column_spacing = 12;
         general_grid.margin = 12;
         general_grid.attach (general_header, 0, 0, 2, 1);
-
         general_grid.attach (usernameLabel, 0, 1, 1, 1);
         general_grid.attach (usernameEntry, 1, 1, 1, 1);
+
+        general_grid.attach (experimental_header, 0, 2, 2, 1);
+        general_grid.attach (addBookmarksToDockUpdateLabel, 0, 3, 1, 1);
+        general_grid.attach (addBookmarksToDockUpdateButton, 1, 3, 1, 1);
     
         var main_grid = new Gtk.Grid ();
         main_grid.attach (general_grid, 0, 0, 1, 1);

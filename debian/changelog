@@ -1,3 +1,11 @@
+com.github.bartzaalberg.bookmark-manager (1.3.0) UNSTABLE; urgency=low
+
+  * Added an experimental setup to add your bookmarks to the applications launcher and dock
+  * Added an About action which redirects you to the store
+  * Errors are now noted INSIDE the application when starting a session
+
+ -- Bart Zaalberg <bartzaalberg@gmail.com>  Tue, 24 Oct 2017 13:56:00 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.2.4) UNSTABLE; urgency=low
 
   * Added travis support for the builds

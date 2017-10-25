@@ -82,6 +82,10 @@
         src/Views/NotFoundView.vala
         src/Components/HeaderBar.vala
         src/Components/HeaderLabel.vala
+        src/Components/BookmarkFormLabel.vala
+        src/Components/BookmarkFormEntry.vala
+        src/Components/BookmarkFormCheckButton.vala
+        src/Components/BookmarkForm.vala
 
     # tell what libraries to use when compiling
     PACKAGES

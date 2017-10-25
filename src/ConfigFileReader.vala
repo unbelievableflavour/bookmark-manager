@@ -220,6 +220,16 @@ public class ConfigFileReader : Object{
                 error ("%s", e.message);
             }
         }
+
+        var backupFile = File.new_for_path (path + "/.ssh/config_backup");
+        if (!backupFile.query_exists ()) {
+            try {
+                file.copy (backupFile, 0, null);
+            } catch (Error e) {
+                error ("%s", e.message);
+            }
+        }
+
         return file;
     }
 

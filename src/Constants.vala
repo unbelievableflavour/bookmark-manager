@@ -10,5 +10,8 @@ namespace BookmarkManager.Constants {
     public const string VERSION_INFO = "Unstable";
     public const string APP_YEARS = "2017-2018";
 
+    public const int APPLICATION_HEIGHT = 810;
+    public const int APPLICATION_WIDTH = 600;
+
     public const Gdk.RGBA BRAND_COLOR = { 0, 0.6, 1.1, 1 };
 }

@@ -41,7 +41,11 @@ public class ListBoxRow : Gtk.ListBoxRow {
     }
 
     public Gtk.Label generateNameLabel(Bookmark bookmark){
-        var name_label = new Gtk.Label ("<b>%s</b>".printf (bookmark.getName()));
+        var name = bookmark.getName();         
+        if(bookmark.getNickname() != null){
+            name = bookmark.getNickname();
+        }
+        var name_label = new Gtk.Label ("<b>%s</b>".printf (name));
         name_label.use_markup = true;
         name_label.halign = Gtk.Align.START;
 

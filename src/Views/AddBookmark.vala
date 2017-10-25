@@ -4,6 +4,7 @@ public class AddBookmark : Gtk.Grid{
     StackManager stackManager = StackManager.get_instance();
     BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
 
+    private Gtk.Entry nicknameEntry = new Gtk.Entry ();
     private Gtk.Entry hostEntry = new Gtk.Entry ();
     private Gtk.Entry hostNameEntry = new Gtk.Entry ();
     private Gtk.Entry userNameEntry = new Gtk.Entry ();
@@ -15,24 +16,29 @@ public class AddBookmark : Gtk.Grid{
 
         var general_header = new HeaderLabel ("Add new bookmark");
        
+        var nicknameLabel = new Gtk.Label ("Nickname:");
+        nicknameLabel.halign = Gtk.Align.START;
+
         var hostLabel = new Gtk.Label ("Host:*");
-        hostLabel.set_alignment(0,0);
+        hostLabel.halign = Gtk.Align.START;
 
         var hostNameLabel = new Gtk.Label ("Host name:*");
-        hostNameLabel.set_alignment(0,0);
+        hostNameLabel.halign = Gtk.Align.START;
 
         var userNameLabel = new Gtk.Label ("Username:");
-        userNameLabel.set_alignment(0,0);
+        userNameLabel.halign = Gtk.Align.START;
         
         var portLabel = new Gtk.Label ("Port:");
-        portLabel.set_alignment(0,0);
+        portLabel.halign = Gtk.Align.START;
 
         var agentForwardLabel = new Gtk.Label ("Use agent forwarding:");
-        agentForwardLabel.set_alignment(0,0);
+        agentForwardLabel.halign = Gtk.Align.START;
         
         var proxyCommandLabel = new Gtk.Label ("Proxy command:");
-        proxyCommandLabel.set_alignment(0,0);
+        proxyCommandLabel.halign = Gtk.Align.START;
 
+        nicknameEntry.set_placeholder_text("if not set. Host is used");
+        nicknameEntry.halign = Gtk.Align.FILL;
         hostEntry.set_placeholder_text("server1");
         hostEntry.halign = Gtk.Align.FILL;
         hostNameEntry.set_placeholder_text("127.0.0.1");
@@ -72,25 +78,27 @@ public class AddBookmark : Gtk.Grid{
         this.margin = 12;
 
         this.attach (general_header, 0, 0, 2, 1);
-        this.attach (hostLabel, 0, 1, 1, 1);
-        this.attach (hostEntry, 1, 1, 1, 1);
-        this.attach (hostNameLabel, 0, 2, 1, 1);
-        this.attach (hostNameEntry, 1, 2, 1, 1);
-        this.attach (userNameLabel, 0, 3, 1, 1);
-        this.attach (userNameEntry, 1, 3, 1, 1);
-        this.attach (portLabel, 0, 4, 1, 1);
-        this.attach (portEntry, 1, 4, 1, 1);
-        this.attach (agentForwardLabel, 0, 5, 1, 1);
-        this.attach (agentForwardCheckButton, 1, 5, 1, 1);
-        this.attach (proxyCommandLabel, 0, 6, 1, 1);
-        this.attach (proxyCommandEntry, 1, 6, 1, 1);
+        this.attach (nicknameLabel, 0, 1, 1, 1);
+        this.attach (nicknameEntry, 1, 1, 1, 1);
+        this.attach (hostLabel, 0, 2, 1, 1);
+        this.attach (hostEntry, 1, 2, 1, 1);
+        this.attach (hostNameLabel, 0, 3, 1, 1);
+        this.attach (hostNameEntry, 1, 3, 1, 1);
+        this.attach (userNameLabel, 0, 4, 1, 1);
+        this.attach (userNameEntry, 1, 4, 1, 1);
+        this.attach (portLabel, 0, 5, 1, 1);
+        this.attach (portEntry, 1, 5, 1, 1);
+        this.attach (agentForwardLabel, 0, 6, 1, 1);
+        this.attach (agentForwardCheckButton, 1, 6, 1, 1);
+        this.attach (proxyCommandLabel, 0, 7, 1, 1);
+        this.attach (proxyCommandEntry, 1, 7, 1, 1);
 
-        this.attach (button_box, 1, 7, 1, 1);
-        
+        this.attach (button_box, 1, 8, 1, 1);   
     }
 
     public void AddBookmarkToFile(){
         var bookmark = new Bookmark();
+        bookmark.setNickname(nicknameEntry.text);
         bookmark.setName(hostEntry.text);
         bookmark.setIp(hostNameEntry.text);  
         bookmark.setUser(userNameEntry.text);  

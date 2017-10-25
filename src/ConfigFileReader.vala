@@ -29,6 +29,10 @@ public class ConfigFileReader : Object{
                 if(bookmarks.length == 0){
                     continue;
                 }
+                if(inArray(variableOnLine, { "#nickname", "#Nickname" })){
+                    bookmarks[bookmarks.length - 1].setNickname(valueOnLine);
+                    continue;
+                }
                 if(inArray(variableOnLine, { "hostName", "HostName" })){
                     bookmarks[bookmarks.length - 1].setIp(valueOnLine);
                     continue;
@@ -265,6 +269,10 @@ public class ConfigFileReader : Object{
     private string convertBookmarktoString(Bookmark bookmark){
             string rawBookmark = "Host " + bookmark.getName(); 
  
+            if(bookmark.getNickname() != null && bookmark.getNickname() != ""){ 
+                rawBookmark += "\n    #nickname " + bookmark.getNickname();
+            }
+
             if(bookmark.getIp() != null){ 
                 rawBookmark += "\n    HostName " + bookmark.getIp().to_string();
             }

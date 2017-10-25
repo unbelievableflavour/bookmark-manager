@@ -1,6 +1,8 @@
 namespace BookmarkManager {
 public class Bookmark : Object {
 
+    private string nickname;
+
     private string name;
     private string ip;
     private string user;
@@ -26,6 +28,14 @@ public class Bookmark : Object {
     private string controlMaster;
     private string controlPath;
     private string controlPersist;
+
+    public string getNickname(){
+        return this.nickname;
+    }
+
+    public void setNickname(string nickname){
+        this.nickname = nickname;
+    }
 
     public string getName(){
         return this.name;

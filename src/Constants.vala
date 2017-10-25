@@ -1,10 +1,14 @@
 namespace BookmarkManager.Constants {
     public const string APP_NAME = "Bookmark Manager";
     public const string EXEC_NAME = "bookmark-manager";
-    public const Gdk.RGBA BRAND_COLOR = { 0, 0.6, 1.1, 1 };
-
     public const string DESKTOP_NAME = "com.github.bartzaalberg.bookmark-manager.desktop";
-    public const string APPLICATION_ID = "com.github.bartzaalberg.bookmark-manager.desktop";
+    public const string APPLICATION_ID = DESKTOP_NAME;
+    public const string ICON = "com.github.bartzaalberg.bookmark-manager";
+    public const string MAIN_URL = "https://github.com/bartzaalberg/Bookmark-Manager";
+    public const string BUG_URL = MAIN_URL + "/issues";
     public const string VERSION = "0.0.1";
     public const string VERSION_INFO = "Unstable";
+    public const string APP_YEARS = "2017-2018";
+
+    public const Gdk.RGBA BRAND_COLOR = { 0, 0.6, 1.1, 1 };
 }

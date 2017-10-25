@@ -6,14 +6,13 @@ public class App:Granite.Application{
     construct {
         application_id = Constants.APPLICATION_ID;
         program_name = Constants.APP_NAME;
-        app_years = "2017-2018";
+        app_years = Constants.APP_YEARS;
         exec_name = Constants.EXEC_NAME;
         app_launcher = Constants.DESKTOP_NAME;
-
         build_version = Constants.VERSION;
-        app_icon = "com.github.bartzaalberg.bookmark-manager";
-        main_url = "https://github.com/bartzaalberg/Bookmark-Manager";
-        bug_url = "https://github.com/bartzaalberg/Bookmark-Manager/issues";
+        app_icon = Constants.ICON;
+        main_url = Constants.MAIN_URL;
+        bug_url = Constants.BUG_URL;
     }
 
     public override void activate() {

@@ -1,24 +1,28 @@
 namespace BookmarkManager {
 public class Cheatsheet : Gtk.Dialog {
   
+    private HeaderLabel general_header = new HeaderLabel ("Cheatsheet");
+
     public Cheatsheet(){
         title = "Cheatsheet";
         resizable = false;
         deletable = false;
 
-        var general_header = new HeaderLabel ("Cheatsheet");
-        
-        var addBookmarkLabel = generateLabel ("Add bookmark");
-        var addBookmarkEntry = generateEntry ("ctrl + a");
+        Gtk.Label[] labels = {};
+        Gtk.Label[] shortcuts = {};
 
-        var listBookmarksLabel = generateLabel ("List bookmarks");
-        var listBookmarksEntry = generateEntry ("ctrl + l");
+        labels += generateLabel ("Add bookmark");
+        shortcuts += generateEntry ("ctrl + a");
 
-        var searchLabel = generateLabel ("Search");
-        var searchEntry = generateEntry ("ctrl + f");
+        labels += generateLabel ("List bookmarks");
+        shortcuts += generateEntry ("ctrl + l");
 
-        var cheatsheetLabel = generateLabel ("Open the cheatsheet");
-        var cheatsheetEntry = generateEntry ("ctrl + h");
+
+        labels += generateLabel ("Search");
+        shortcuts += generateEntry ("ctrl + f");
+
+        labels += generateLabel ("Open the cheatsheet");
+        shortcuts += generateEntry ("ctrl + h");
         
         var close_button = new Gtk.Button.with_label ("Close");
         close_button.margin_right = 6;
@@ -32,27 +36,35 @@ public class Cheatsheet : Gtk.Dialog {
         button_box.margin = 12;
         button_box.margin_bottom = 0;
 
-        var general_grid = new Gtk.Grid ();
-        general_grid.row_spacing = 6;
-        general_grid.column_spacing = 12;
-        general_grid.margin = 12;
-        general_grid.attach (general_header, 0, 0, 2, 1);
-
-        general_grid.attach (addBookmarkLabel, 0, 1, 1, 1);
-        general_grid.attach (addBookmarkEntry, 1, 1, 1, 1);
-        general_grid.attach (listBookmarksLabel, 0, 2, 1, 1);
-        general_grid.attach (listBookmarksEntry, 1, 2, 1, 1);
-        general_grid.attach (searchLabel, 0, 3, 1, 1);
-        general_grid.attach (searchEntry, 1, 3, 1, 1);
-        general_grid.attach (cheatsheetLabel, 0, 4, 1, 1);
-        general_grid.attach (cheatsheetEntry, 1, 4, 1, 1);
+        var cheatsheet_grid = generateGrid(shortcuts, labels);
 
         var main_grid = new Gtk.Grid ();
-        main_grid.attach (general_grid, 0, 0, 1, 1);
+        main_grid.attach (cheatsheet_grid, 0, 0, 1, 1);
         main_grid.attach (button_box, 0, 1, 1, 1);
         
         ((Gtk.Container) get_content_area ()).add (main_grid);
         this.show_all ();
+    }
+
+    public Gtk.Grid generateGrid(Gtk.Label[] shortcuts, Gtk.Label[] labels){
+        var grid = new Gtk.Grid ();
+        grid.row_spacing = 6;
+        grid.column_spacing = 12;
+        grid.margin = 12;
+        grid.attach (general_header, 0, 0, 2, 1);
+
+        var gridPosition = 1;
+        var index = 0;
+
+        foreach(Gtk.Label shortcut in shortcuts){
+            grid.attach (labels[index], 0, gridPosition, 1, 1);
+            grid.attach (shortcuts[index], 1, gridPosition, 1, 1);
+
+            gridPosition++;
+            index++;
+        }
+
+        return grid;
     }
 
     public Gtk.Label generateLabel (string labelText){

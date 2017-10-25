@@ -7,10 +7,11 @@ public class MainWindow : Gtk.Window{
 
     private BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
     private StackManager stackManager = StackManager.get_instance();
+    private HeaderBar headerBar = new HeaderBar();
 
     construct {
         set_default_size(600, 810);
-        set_titlebar (new HeaderBar());
+        set_titlebar (headerBar);
        
         stackManager.loadViews(this);
 
@@ -21,6 +22,38 @@ public class MainWindow : Gtk.Window{
         if(settings.get_string ("sshname") == ""){
             stackManager.getStack().visible_child_name = "welcome-view";
         }
+       
+        addShortcuts();
+        
+    }
+
+    private void addShortcuts(){
+        key_press_event.connect ((e) => { 
+            switch (e.keyval) { 
+                case Gdk.Key.a:
+                  if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {  
+                    stackManager.getStack().visible_child_name = "add-bookmark-view";
+                  }
+                  break;
+                case Gdk.Key.l:    
+                  if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {  
+                    stackManager.getStack().visible_child_name = "list-view";
+                  } 
+                  break;
+                case Gdk.Key.h:
+                  if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {  
+                    new Cheatsheet(); 
+                  }
+                  break;
+                case Gdk.Key.f:    
+                  if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {  
+                    headerBar.searchEntry.grab_focus();
+                  }
+                  break;
+            }
+ 
+            return false; 
+        });            
     }
 }
 }

@@ -74,6 +74,7 @@
         src/Dialogs/Preferences.vala
         src/Dialogs/DeleteConfirm.vala
         src/Dialogs/Alert.vala
+        src/Dialogs/Cheatsheet.vala
         src/Views/AddBookmark.vala
         src/Views/EditBookmark.vala
         src/Views/ListBookmarks.vala

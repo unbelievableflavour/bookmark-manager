@@ -6,14 +6,14 @@ public class ListBox : Gtk.ListBox{
     private ConfigFileReader configFileReader = new ConfigFileReader ();
     private StackManager stackManager = StackManager.get_instance();
 
-    public void empty(){
+    public void emptyList(){
         this.foreach ((ListBoxRow) => {
             this.remove(ListBoxRow);
         }); 
     }
 
     public void getBookmarks(string searchWord = ""){
-        this.empty();
+        emptyList();
 
         stackManager.getStack().visible_child_name = "list-view";
 
@@ -31,16 +31,16 @@ public class ListBox : Gtk.ListBox{
 
         foreach (Bookmark bookmark in bookmarks) {
             if(searchWord == ""){
-                this.add (new ListBoxRow (bookmark));
+                add (new ListBoxRow (bookmark));
                 continue;
             }
 
             if(searchWord in bookmark.getName()){             
-                this.add (new ListBoxRow (bookmark));
+                add (new ListBoxRow (bookmark));
             }            
         }
 
-        this.show_all();
+        show_all();
     }
 
     private bool listisEmpty(Bookmark[] bookmarks){

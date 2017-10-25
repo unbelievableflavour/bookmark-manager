@@ -11,44 +11,22 @@ public class Preferences : Gtk.Dialog {
         deletable = false;
 
         var general_header = new HeaderLabel ("Preferences");
-        var experimental_header = new HeaderLabel ("Experimental");
-        
-        var usernameLabel = new Gtk.Label ("Default Username:");
-        usernameLabel.halign = Gtk.Align.START;
+                
+        var usernameLabel = generateLabel ("Default Username:");
+
         var usernameEntry = new Gtk.Entry ();
         usernameEntry.set_text (settings.get_string ("sshname"));
         usernameEntry.set_tooltip_text ("This variable will be used when no variable is given in the ssh config");
 
-        var addBookmarksToDockUpdateLabel = new Gtk.Label ("Add your bookmarks to your dock");
-        addBookmarksToDockUpdateLabel.halign = Gtk.Align.START;
+        var experimental_header = new HeaderLabel ("Experimental");
+
+        var addBookmarksToDockUpdateLabel = generateLabel ("Add your bookmarks to your dock");
         var addBookmarksToDockUpdateButton = new Gtk.Button.with_label ("Update Bookmarks");
         addBookmarksToDockUpdateButton.clicked.connect (() => {
-            string result;
-	        string error;
-	        int status;
-            
-            try {
-                Process.spawn_command_line_sync ("com.github.bartzaalberg.bookmark-manager-quicklist-polkit",
-									        out result,
-									        out error,
-									        out status);
-              
-                if(error != null && error != "" && status != 0){
-                    new Alert("An error occured",error);                
-                }else{
-                    new Alert("Success","Your bookmarks have been added to your dock.If you have added more bookmarks. Please click this button again, because it won't happen dynamically.");
-                }
-		     
-            } catch (SpawnError e) {
-	            new Alert("An error occured", e.message);
-            }
+           runQuickListUpdater();
         });
 
-        var close_button = new Gtk.Button.with_label ("Close");
-        close_button.margin_right = 6;
-        close_button.clicked.connect (() => {
-            this.destroy ();
-        });
+        var close_button = generateCloseButton();
 
         var save_button = new Gtk.Button.with_label ("Save");
         save_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
@@ -96,6 +74,45 @@ public class Preferences : Gtk.Dialog {
             return true;
         }
         return false;
+    }
+
+    public void runQuickListUpdater(){
+        string result;
+        string error;
+        int status;
+        
+        try {
+            Process.spawn_command_line_sync ("com.github.bartzaalberg.bookmark-manager-quicklist-polkit",
+								        out result,
+								        out error,
+								        out status);
+          
+            if(error != null && error != "" && status != 0){
+                new Alert("An error occured",error);                
+            }else{
+                new Alert("Success","Your bookmarks have been added to your dock.If you have added more bookmarks. Please click this button again, because it won't happen dynamically.");
+            }
+	     
+        } catch (SpawnError e) {
+            new Alert("An error occured", e.message);
+        }
+    }
+
+    public Gtk.Label generateLabel (string labelText){
+        var label = new Gtk.Label (labelText);
+        label.halign = Gtk.Align.START;
+
+        return label;
+    }
+
+    public Gtk.Button generateCloseButton(){
+        var close_button = new Gtk.Button.with_label ("Close");
+        close_button.margin_right = 6;
+        close_button.clicked.connect (() => {
+            this.destroy ();
+        });
+
+        return close_button;
     }
 }
 }

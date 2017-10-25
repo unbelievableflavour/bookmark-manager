@@ -3,9 +3,9 @@ public class AddBookmark : BookmarkForm{
  
     StackManager stackManager = StackManager.get_instance();
     BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
+    ConfigFileReader configFileReader = new ConfigFileReader();
 
-    public AddBookmark(){ 
-
+    public AddBookmark(){
         general_header.set_text("Add new bookmark");
 
         var create_button = new Gtk.Button.with_label ("Create");
@@ -30,9 +30,8 @@ public class AddBookmark : BookmarkForm{
         }
              
         bookmark.setProxyCommand(proxyCommandEntry.text);  
-
-        var ConfigFileReader = new ConfigFileReader();
-        var bookmarks = ConfigFileReader.getBookmarks();
+       
+        var bookmarks = configFileReader.getBookmarks();
 
         if(isNotValid(bookmark)){
             new Alert("Fields are invalid", "Please correctly fill in all the required fields");
@@ -46,7 +45,7 @@ public class AddBookmark : BookmarkForm{
 
         bookmarks += bookmark;
 
-        ConfigFileReader.writeToFile(bookmarks);
+        configFileReader.writeToFile(bookmarks);
 
         stackManager.getStack().visible_child_name = "list-view";
         bookmarkListManager.getList().getBookmarks("");    

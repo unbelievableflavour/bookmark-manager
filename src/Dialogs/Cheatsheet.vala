@@ -17,18 +17,13 @@ public class Cheatsheet : Gtk.Dialog {
         labels += generateLabel ("List bookmarks");
         shortcuts += generateEntry ("ctrl + l");
 
-
         labels += generateLabel ("Search");
         shortcuts += generateEntry ("ctrl + f");
 
         labels += generateLabel ("Open the cheatsheet");
         shortcuts += generateEntry ("ctrl + h");
         
-        var close_button = new Gtk.Button.with_label ("Close");
-        close_button.margin_right = 6;
-        close_button.clicked.connect (() => {
-            this.destroy ();
-        });
+        var close_button = generateCloseButton();
 
         var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
         button_box.set_layout (Gtk.ButtonBoxStyle.END);
@@ -42,8 +37,8 @@ public class Cheatsheet : Gtk.Dialog {
         main_grid.attach (cheatsheet_grid, 0, 0, 1, 1);
         main_grid.attach (button_box, 0, 1, 1, 1);
         
-        ((Gtk.Container) get_content_area ()).add (main_grid);
-        this.show_all ();
+        get_content_area ().add (main_grid);
+        show_all ();
     }
 
     public Gtk.Grid generateGrid(Gtk.Label[] shortcuts, Gtk.Label[] labels){
@@ -81,5 +76,14 @@ public class Cheatsheet : Gtk.Dialog {
         return entry;
     }
     
+    public Gtk.Button generateCloseButton(){
+        var close_button = new Gtk.Button.with_label ("Close");
+        close_button.margin_right = 6;
+        close_button.clicked.connect (() => {
+            this.destroy ();
+        });
+
+        return close_button;
+    }
 }
 }

@@ -267,94 +267,94 @@ public class ConfigFileReader : Object{
     }
 
     private string convertBookmarktoString(Bookmark bookmark){
-            string rawBookmark = "Host " + bookmark.getName(); 
- 
-            if(bookmark.getNickname() != null && bookmark.getNickname() != ""){ 
-                rawBookmark += "\n    #nickname " + bookmark.getNickname();
-            }
+        string rawBookmark = "Host " + bookmark.getName(); 
 
-            if(bookmark.getIp() != null){ 
-                rawBookmark += "\n    HostName " + bookmark.getIp().to_string();
-            }
+        if(bookmark.getNickname() != null && bookmark.getNickname() != ""){ 
+            rawBookmark += "\n    #nickname " + bookmark.getNickname();
+        }
 
-            if(bookmark.getPort() != 0){ 
-                rawBookmark += "\n    Port " + bookmark.getPort().to_string();
-            }
+        if(bookmark.getIp() != null){ 
+            rawBookmark += "\n    HostName " + bookmark.getIp().to_string();
+        }
 
-            if(bookmark.getUser() != null && bookmark.getUser() != ""){ 
-                rawBookmark += "\n    User " + bookmark.getUser();
-            }
+        if(bookmark.getPort() != 0){ 
+            rawBookmark += "\n    Port " + bookmark.getPort().to_string();
+        }
 
-            if(bookmark.getForwardAgent() != null){ 
-                rawBookmark += "\n    ForwardAgent " + bookmark.getForwardAgent();
-            }
+        if(bookmark.getUser() != null && bookmark.getUser() != ""){ 
+            rawBookmark += "\n    User " + bookmark.getUser();
+        }
 
-            if(bookmark.getProxyCommand() != null && bookmark.getProxyCommand() != ""){ 
-                rawBookmark += "\n    ProxyCommand " + bookmark.getProxyCommand();
-            }
+        if(bookmark.getForwardAgent() != null){ 
+            rawBookmark += "\n    ForwardAgent " + bookmark.getForwardAgent();
+        }
 
-            if(bookmark.getServerAliveInterval() != 0){ 
-                rawBookmark += "\n    ServerAliveInterval " + bookmark.getServerAliveInterval().to_string();
-            }
+        if(bookmark.getProxyCommand() != null && bookmark.getProxyCommand() != ""){ 
+            rawBookmark += "\n    ProxyCommand " + bookmark.getProxyCommand();
+        }
 
-            if(bookmark.getLogLevel() != null && bookmark.getLogLevel() != ""){ 
-                rawBookmark += "\n    LogLevel " + bookmark.getLogLevel();
-            }
+        if(bookmark.getServerAliveInterval() != 0){ 
+            rawBookmark += "\n    ServerAliveInterval " + bookmark.getServerAliveInterval().to_string();
+        }
 
-            if(bookmark.getStrictHostKeyChecking() != null && bookmark.getStrictHostKeyChecking() != ""){ 
-                rawBookmark += "\n    StrictHostKeyChecking " + bookmark.getStrictHostKeyChecking();
-            }
+        if(bookmark.getLogLevel() != null && bookmark.getLogLevel() != ""){ 
+            rawBookmark += "\n    LogLevel " + bookmark.getLogLevel();
+        }
 
-            if(bookmark.getUserKnownHostsFile() != null && bookmark.getUserKnownHostsFile() != ""){ 
-                rawBookmark += "\n    UserKnownHostsFile " + bookmark.getUserKnownHostsFile();
-            }
+        if(bookmark.getStrictHostKeyChecking() != null && bookmark.getStrictHostKeyChecking() != ""){ 
+            rawBookmark += "\n    StrictHostKeyChecking " + bookmark.getStrictHostKeyChecking();
+        }
 
-            if(bookmark.getVisualHostKey() != null && bookmark.getVisualHostKey() != ""){ 
-                rawBookmark += "\n    VisualHostKey " + bookmark.getVisualHostKey();
-            }
+        if(bookmark.getUserKnownHostsFile() != null && bookmark.getUserKnownHostsFile() != ""){ 
+            rawBookmark += "\n    UserKnownHostsFile " + bookmark.getUserKnownHostsFile();
+        }
 
-            if(bookmark.getCompression() != null && bookmark.getCompression() != ""){ 
-                rawBookmark += "\n    Compression " + bookmark.getCompression();
-            }
+        if(bookmark.getVisualHostKey() != null && bookmark.getVisualHostKey() != ""){ 
+            rawBookmark += "\n    VisualHostKey " + bookmark.getVisualHostKey();
+        }
 
-            if(bookmark.getLocalForward() != null && bookmark.getLocalForward() != ""){ 
-                rawBookmark += "\n    LocalForward " + bookmark.getLocalForward();
-            }
+        if(bookmark.getCompression() != null && bookmark.getCompression() != ""){ 
+            rawBookmark += "\n    Compression " + bookmark.getCompression();
+        }
 
-            if(bookmark.getRemoteForward() != null && bookmark.getRemoteForward() != ""){ 
-                rawBookmark += "\n    RemoteForward " + bookmark.getRemoteForward();
-            }
+        if(bookmark.getLocalForward() != null && bookmark.getLocalForward() != ""){ 
+            rawBookmark += "\n    LocalForward " + bookmark.getLocalForward();
+        }
 
-            if(bookmark.getDynamicForward() != null && bookmark.getDynamicForward() != ""){ 
-                rawBookmark += "\n    DynamicForward " + bookmark.getDynamicForward();
-            }
+        if(bookmark.getRemoteForward() != null && bookmark.getRemoteForward() != ""){ 
+            rawBookmark += "\n    RemoteForward " + bookmark.getRemoteForward();
+        }
 
-            if(bookmark.getForwardX11() != null && bookmark.getForwardX11() != ""){ 
-                rawBookmark += "\n    ForwardX11 " + bookmark.getForwardX11();
-            }
+        if(bookmark.getDynamicForward() != null && bookmark.getDynamicForward() != ""){ 
+            rawBookmark += "\n    DynamicForward " + bookmark.getDynamicForward();
+        }
 
-            if(bookmark.getIdentityFile() != null && bookmark.getIdentityFile() != ""){ 
-                rawBookmark += "\n    IdentityFile " + bookmark.getIdentityFile();
-            }
+        if(bookmark.getForwardX11() != null && bookmark.getForwardX11() != ""){ 
+            rawBookmark += "\n    ForwardX11 " + bookmark.getForwardX11();
+        }
 
-            if(bookmark.getIdentitiesOnly() != null && bookmark.getIdentitiesOnly() != ""){ 
-                rawBookmark += "\n    IdentitiesOnly " + bookmark.getIdentitiesOnly();
-            }
+        if(bookmark.getIdentityFile() != null && bookmark.getIdentityFile() != ""){ 
+            rawBookmark += "\n    IdentityFile " + bookmark.getIdentityFile();
+        }
 
-            if(bookmark.getControlMaster() != null && bookmark.getControlMaster() != ""){ 
-                rawBookmark += "\n    ControlMaster " + bookmark.getControlMaster();
-            }
+        if(bookmark.getIdentitiesOnly() != null && bookmark.getIdentitiesOnly() != ""){ 
+            rawBookmark += "\n    IdentitiesOnly " + bookmark.getIdentitiesOnly();
+        }
 
-            if(bookmark.getControlPath() != null && bookmark.getControlPath() != ""){ 
-                rawBookmark += "\n    ControlPath " + bookmark.getControlPath();
-            }
+        if(bookmark.getControlMaster() != null && bookmark.getControlMaster() != ""){ 
+            rawBookmark += "\n    ControlMaster " + bookmark.getControlMaster();
+        }
 
-            if(bookmark.getControlPersist() != null && bookmark.getControlPersist() != ""){ 
-                rawBookmark += "\n    ControlPersist " + bookmark.getControlPersist();
-            }
+        if(bookmark.getControlPath() != null && bookmark.getControlPath() != ""){ 
+            rawBookmark += "\n    ControlPath " + bookmark.getControlPath();
+        }
 
-            rawBookmark += "\n\n";
-            return rawBookmark;
+        if(bookmark.getControlPersist() != null && bookmark.getControlPersist() != ""){ 
+            rawBookmark += "\n    ControlPersist " + bookmark.getControlPersist();
+        }
+
+        rawBookmark += "\n\n";
+        return rawBookmark;
     }
 }
 }

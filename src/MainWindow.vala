@@ -10,6 +10,10 @@ public class MainWindow : Gtk.Window{
     private HeaderBar headerBar = new HeaderBar();
 
     construct {
+        if(settings.get_string ("sshname") == ""){ 
+           settings.set_string ("sshname", Environment.get_user_name ());
+        }
+
         set_default_size(Constants.APPLICATION_WIDTH, Constants.APPLICATION_HEIGHT);
         set_titlebar (headerBar);
        
@@ -19,10 +23,6 @@ public class MainWindow : Gtk.Window{
 
         stackManager.getStack().visible_child_name = "list-view";
 
-        if(settings.get_string ("sshname") == ""){
-            stackManager.getStack().visible_child_name = "welcome-view";
-        }
-       
         addShortcuts();
         
     }

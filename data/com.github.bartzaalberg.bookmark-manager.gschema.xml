@@ -9,22 +9,6 @@
       </description>
     </key>
 
-    <key name="bottles-of-beer" type="i">
-      <default>99</default>
-      <summary>Bottles of beer</summary>
-      <description>
-        Number of bottles of beer on the wall
-      </description>
-    </key>
-
-    <key name="lighting" type="b">
-      <default>false</default>
-      <summary>Is the light switched on?</summary>
-      <description>
-        State of an imaginary light switch.
-      </description>
-    </key>
-
   </schema>
 </schemalist>
 

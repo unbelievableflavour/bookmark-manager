@@ -78,7 +78,6 @@
         src/Views/AddBookmark.vala
         src/Views/EditBookmark.vala
         src/Views/ListBookmarks.vala
-        src/Views/WelcomeView.vala
         src/Views/EmptyView.vala
         src/Views/NotFoundView.vala
         src/Components/HeaderBar.vala

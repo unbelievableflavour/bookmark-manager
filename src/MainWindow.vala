@@ -21,8 +21,6 @@ public class MainWindow : Gtk.Window{
 
         bookmarkListManager.getList().getBookmarks("");
 
-        stackManager.getStack().visible_child_name = "list-view";
-
         addShortcuts();
         
     }

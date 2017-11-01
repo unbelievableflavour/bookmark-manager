@@ -26,15 +26,7 @@ public class BookmarkForm : Gtk.Grid{
         var agentForwardLabel = new BookmarkFormLabel ("Use agent forwarding:");
         var proxyCommandLabel = new BookmarkFormLabel ("Proxy command:");
 
-        var back_button = new Gtk.Button.with_label ("Back");
-        back_button.margin_right = 6;
-        back_button.clicked.connect (() => {
-            stackManager.getStack().visible_child_name = "list-view";
-            bookmarkListManager.getList().getBookmarks("");
-        });
-
         button_box.set_layout (Gtk.ButtonBoxStyle.END);
-        button_box.pack_end (back_button);
         button_box.margin_left = 12;
         button_box.margin_bottom = 0;
 

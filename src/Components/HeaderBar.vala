@@ -6,6 +6,9 @@ public class HeaderBar : Gtk.HeaderBar {
     StackManager stackManager = StackManager.get_instance();
     BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();    
     public Gtk.SearchEntry searchEntry = new Gtk.SearchEntry ();
+    Gtk.Button return_button = new Gtk.Button ();
+    Gtk.Button add_button = new Gtk.Button.from_icon_name ("document-new", Gtk.IconSize.LARGE_TOOLBAR);
+    Gtk.MenuButton menu_button = new Gtk.MenuButton ();
 
     public HeaderBar(){
 
@@ -14,11 +17,14 @@ public class HeaderBar : Gtk.HeaderBar {
         searchEntry.set_placeholder_text("Search Bookmarks");
         searchEntry.set_tooltip_text("Search for bookmarks");
         searchEntry.search_changed.connect (() => {
-            bookmarkListManager.getList().getBookmarks(searchEntry.text); 
+            showReturnButton(false);
+            showAddButton(true);
+            bookmarkListManager.getList().getBookmarks(searchEntry.text);
         });
 
-        var add_button = generateAddButton();
-        var menu_button = generateMenuButton();
+        generateAddButton();
+        generateMenuButton();
+        generateReturnButton();
 
         var cheatsheet = new Gtk.MenuItem.with_label ("Markdown Cheatsheet");
         cheatsheet.activate.connect (() => {
@@ -40,26 +46,49 @@ public class HeaderBar : Gtk.HeaderBar {
 
         this.show_close_button = true;
         this.pack_start (add_button);
+        this.pack_start (return_button);
         this.pack_end (menu_button);        
         this.pack_end (searchEntry);
     }
 
-    private Gtk.MenuButton generateMenuButton(){
-        var menu_button = new Gtk.MenuButton ();
+    private void generateMenuButton(){
         menu_button.has_tooltip = true;
         menu_button.tooltip_text = ("Settings");
         menu_button.set_image (new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR));
-        return menu_button;
     }
 
-    private Gtk.Button generateAddButton(){
-        var add_button = new Gtk.Button.from_icon_name ("document-new", Gtk.IconSize.LARGE_TOOLBAR);
+    private void generateAddButton(){
         add_button.set_tooltip_text("Create a new bookmark");
         add_button.clicked.connect (() => {
-            stackManager.getStack().visible_child_name = "add-bookmark-view";
+            showReturnButton(true);
+            showAddButton(false);
+            stackManager.getStack().visible_child_name = "add-bookmark-view";            
         });
+    }
 
-        return add_button;
+    private void generateReturnButton(){
+        return_button.label = "Back";
+        return_button.no_show_all = true;
+        return_button.get_style_context ().add_class ("back-button");
+        return_button.visible = false;
+        return_button.clicked.connect (() => {
+            showReturnButton(false);
+            showAddButton(true);
+            stackManager.getStack().visible_child_name = "list-view";
+            bookmarkListManager.getList().getBookmarks("");
+        });
+    }
+
+    public void showSearchEntry(bool answer){
+        searchEntry.visible = answer;
+    }
+
+    public void showAddButton(bool answer){
+        add_button.visible = answer;
+    }
+
+    public void showReturnButton(bool answer){
+        return_button.visible = answer;
     }
 }
 }

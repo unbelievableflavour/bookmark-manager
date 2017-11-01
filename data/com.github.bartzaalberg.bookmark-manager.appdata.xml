@@ -16,6 +16,207 @@
        <li>Add, remove, and update bookmarks</li>
     </ul>
   </description>
+  <releases>
+    <release version="1.3.4" date="2017-10-30">
+      <description>
+        <p>1.3.4</p>
+        <ul>
+          <li>fixed a bug where first screen would be empty</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.3.3" date="2017-10-30">
+      <description>
+        <p>No more welcome screen</p>
+        <ul>
+          <li>Removed welcome screen</li>
+          <li>Standard is now environment user</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.3.2" date="2017-10-27">
+      <description>
+        <p>Nicknames,Shortcuts, and a big refactor</p>
+        <ul>
+          <li>Added nicknames for bookmarks</li>
+          <li>Added cheatsheet and shortcuts</li>
+          <li>Did alot of refactoring</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.3.1" date="2017-10-24">
+      <description>
+        <p>1.3.1</p>
+        <ul>
+          <li>The last release didn't include all the commits. This one does.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.3.0" date="2017-10-24">
+      <description>
+        <p>1.3.0</p>
+        <ul>
+          <li>Added an experimental setup to add your bookmarks to the applications launcher and dock</li>
+          <li>Added an About action which redirects you to the store</li>
+          <li>Errors are now noted INSIDE the application when starting a session</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.2.4" date="2017-10-13">
+      <description>
+        <p>1.2.4</p>
+        <ul>
+          <li>Added travis support for the builds</li>
+          <li>Fixed a bug which would keep the application running in the background</li>
+          <li>Fixed a bug which would remove settings which are not yet supported in the edit form</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.2.3" date="2017-10-04">
+      <description>
+        <p>1.2.3</p>
+        <ul>
+          <li>Removed minimum size. Window can now be smaller!</li>
+          <li>Added support for alot of parameters in the filereader.Will be added to the form later</li>
+          <li>Made the filereader alot faster.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.2.2" date="2017-09-21">
+      <description>
+        <p>1.2.2</p>
+        <ul>
+          <li>Fixed a bug where ProxyCommand and User would be added empty to the config file when they wouldn't have been filled in.</li>
+          <li>Added some margin for buttons</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.2.1" date="2017-09-17">
+      <description>
+        <p>1.2.1</p>
+        <ul>
+          <li>Fixed a bug where ProxyCommand would show up without spaces</li>
+          <li>Changed text for when a form is invalid</li>
+          <li>Changed text on the welcome screen</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.2.0" date="2017-09-16">
+      <description>
+        <p>1.2.0</p>
+        <ul>
+          <li>Added edit mode</li>
+          <li>Updated screenshot again</li>
+          <li>Config is now loaded straight from the file, so that support is much larger</li>
+          <li>Added AgentForward and ProxyCommand support</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.9" date="2017-09-16">
+      <description>
+        <p>1.1.9</p>
+        <ul>
+          <li>Updated screenshot</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.8" date="2017-09-16">
+      <description>
+        <p>1.1.8</p>
+        <ul>
+          <li>Added a fix for the not released granite.messageDialog windows i used</li>
+          <li>Added more entry fields to the AddBookmark form </li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.7" date="2017-09-15">
+      <description>
+        <p>1.1.7</p>
+        <ul>
+          <li>Added Delete option</li>
+          <li>Added Add option</li>
+          <li>Refactored alot of code</li>
+          <li>Added new icon</li>
+          <li>Added no bookmark found screen when searching wont find anything</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.6" date="2017-09-12">
+      <description>
+        <p>1.1.6</p>
+        <ul>
+          <li>Fixed a bug where the last bookmark wasn't shown</li>
+          <li>Made preferences more logical.(added save button, tooltip, better naming)</li>
+          <li>Added a workaround for a bug where some hosts wouldn't show up</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.5" date="2017-09-10">
+      <description>
+        <p>1.1.5</p>
+        <ul>
+          <li>Changed the description and my name</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.4" date="2017-09-10">
+      <description>
+        <p>1.1.4</p>
+        <ul>
+          <li>Updated screenshot because the last contained a white background</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.3" date="2017-09-06">
+      <description>
+        <p>1.1.3</p>
+        <ul>
+          <li>Made sure there is always a ~/.ssh directory and config file</li>
+          <li>Added a nice empty file message when the file is empty</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.2" date="2017-09-05">
+      <description>
+        <p>1.1.2</p>
+        <ul>
+          <li>Fixed scheme loading</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.1" date="2017-09-04">
+      <description>
+        <p>1.1.1</p>
+        <ul>
+          <li>Added debhelper dependency</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1.0" date="2017-09-04">
+      <description>
+        <p>1.1.0</p>
+        <ul>
+          <li>Added support for use of ssh username and port number</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0.1" date="2017-08-25">
+      <description>
+        <p>1.0.1</p>
+        <ul>
+          <li>Lowered minimal cmake version</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.0.0" date="2017-08-25">
+      <description>
+        <p>1.0.0</p>
+        <ul>
+          <li>First release</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/bartzaalberg/Bookmark-Manager/master/screenshot.png</image>

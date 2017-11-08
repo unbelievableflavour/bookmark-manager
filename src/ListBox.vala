@@ -5,6 +5,7 @@ public class ListBox : Gtk.ListBox{
 
     private ConfigFileReader configFileReader = new ConfigFileReader ();
     private StackManager stackManager = StackManager.get_instance();
+    private HeaderBar headerBar = HeaderBar.get_instance();
 
     public void emptyList(){
         this.foreach ((ListBoxRow) => {
@@ -20,12 +21,13 @@ public class ListBox : Gtk.ListBox{
         var bookmarks = configFileReader.getBookmarks();
 
         if(listisEmpty(bookmarks)) {
+            headerBar.searchEntry.sensitive = false;
             stackManager.getStack().visible_child_name = "empty-view";
             return;
         }
 
         if(searchWordDoesntMatchAnyInList(searchWord, bookmarks)) {
-            stackManager.getStack().visible_child_name = "not-found-view";
+            stackManager.getStack().visible_child_name = "not-found-view";            
             return;
         }
 

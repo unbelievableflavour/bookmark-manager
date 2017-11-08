@@ -7,7 +7,7 @@ public class MainWindow : Gtk.Window{
 
     private BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
     private StackManager stackManager = StackManager.get_instance();
-    private HeaderBar headerBar = new HeaderBar();
+    private HeaderBar headerBar = HeaderBar.get_instance();
 
     construct {
         if(settings.get_string ("sshname") == ""){ 

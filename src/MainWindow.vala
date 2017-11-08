@@ -5,7 +5,7 @@ public class MainWindow : Gtk.Window{
 
     private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager");
 
-    private BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
+    private ListBox listBox = ListBox.get_instance();
     private StackManager stackManager = StackManager.get_instance();
     private HeaderBar headerBar = HeaderBar.get_instance();
 
@@ -19,7 +19,7 @@ public class MainWindow : Gtk.Window{
        
         stackManager.loadViews(this);
 
-        bookmarkListManager.getList().getBookmarks("");
+        listBox.getBookmarks("");
 
         addShortcuts();
         

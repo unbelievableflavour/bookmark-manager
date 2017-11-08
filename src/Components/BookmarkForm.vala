@@ -2,7 +2,7 @@ namespace BookmarkManager {
 public class BookmarkForm : Gtk.Grid{
  
     StackManager stackManager = StackManager.get_instance();
-    BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
+    private ListBox listBox = ListBox.get_instance();
 
     protected HeaderLabel general_header = new HeaderLabel ("A bookmark form");
 

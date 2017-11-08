@@ -3,9 +3,21 @@ using Granite.Widgets;
 namespace BookmarkManager {
 public class ListBox : Gtk.ListBox{
 
+    static ListBox? instance;
+
     private ConfigFileReader configFileReader = new ConfigFileReader ();
     private StackManager stackManager = StackManager.get_instance();
     private HeaderBar headerBar = HeaderBar.get_instance();
+
+    ListBox() {
+    }
+ 
+    public static ListBox get_instance() {
+        if (instance == null) {
+            instance = new ListBox();
+        }
+        return instance;
+    }
 
     public void emptyList(){
         this.foreach ((ListBoxRow) => {

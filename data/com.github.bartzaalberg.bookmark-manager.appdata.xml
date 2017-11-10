@@ -17,6 +17,16 @@
     </ul>
   </description>
   <releases>
+    <release version="1.3.5" date="2017-11-10">
+      <description>
+        <p>1.3.5</p>
+        <ul>
+          <li>HeaderBar is now dynamic</li>
+          <li>Searchbar is disabled when no bookmarks are found</li>
+          <li>Added a cool dynamic cancel button in the headerBar</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.3.4" date="2017-10-30">
       <description>
         <p>1.3.4</p>

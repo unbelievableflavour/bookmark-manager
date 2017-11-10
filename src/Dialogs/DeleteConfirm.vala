@@ -1,7 +1,7 @@
 namespace BookmarkManager {
 public class DeleteConfirm : Gtk.Dialog {
       
-    private BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
+    private ListBox listBox = ListBox.get_instance();
     private StackManager stackManager = StackManager.get_instance();
 
 //    public DeleteConfirm(Bookmark deletedBookmark){
@@ -94,7 +94,7 @@ public class DeleteConfirm : Gtk.Dialog {
         ConfigFileReader.writeToFile(newBookmarksList); 
          
         stackManager.getStack().visible_child_name = "list-view"; 
-        bookmarkListManager.getList().getBookmarks("");  
+        listBox.getBookmarks("");  
     }
 
     

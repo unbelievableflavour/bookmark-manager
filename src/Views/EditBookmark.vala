@@ -2,7 +2,7 @@ namespace BookmarkManager {
 public class EditBookmark : BookmarkForm{
  
     StackManager stackManager = StackManager.get_instance();
-    BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
+    private ListBox listBox = ListBox.get_instance();
 
     public EditBookmark(){ 
 
@@ -88,8 +88,7 @@ public class EditBookmark : BookmarkForm{
 
         ConfigFileReader.writeToFile(bookmarks);
 
-        stackManager.getStack().visible_child_name = "list-view";
-        bookmarkListManager.getList().getBookmarks("");    
+        listBox.getBookmarks("");    
     }
 
     public int getCorrectBookmarkIndex(Bookmark editedBookmark, Bookmark[] bookmarks){

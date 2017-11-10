@@ -70,7 +70,6 @@
         src/Constants.vala        
         src/Bookmark.vala
         src/StackManager.vala
-        src/BookmarkListManager.vala
         src/Dialogs/Preferences.vala
         src/Dialogs/DeleteConfirm.vala
         src/Dialogs/Alert.vala

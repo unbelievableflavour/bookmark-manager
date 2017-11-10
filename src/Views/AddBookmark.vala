@@ -2,7 +2,7 @@ namespace BookmarkManager {
 public class AddBookmark : BookmarkForm{
  
     StackManager stackManager = StackManager.get_instance();
-    BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
+    private ListBox listBox = ListBox.get_instance();
     ConfigFileReader configFileReader = new ConfigFileReader();
 
     public AddBookmark(){
@@ -47,8 +47,7 @@ public class AddBookmark : BookmarkForm{
 
         configFileReader.writeToFile(bookmarks);
 
-        stackManager.getStack().visible_child_name = "list-view";
-        bookmarkListManager.getList().getBookmarks("");    
+        listBox.getBookmarks("");
     }
 
     public bool alreadyExists(Bookmark newBookmark, Bookmark[] bookmarks){

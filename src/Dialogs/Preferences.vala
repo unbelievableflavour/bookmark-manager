@@ -2,7 +2,7 @@ namespace BookmarkManager {
 public class Preferences : Gtk.Dialog {
   
     private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager");
-    BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();
+    private ListBox listBox = ListBox.get_instance();
 
     public Preferences(){
         title = "Preferences";
@@ -38,7 +38,7 @@ public class Preferences : Gtk.Dialog {
                 settings.set_string("sshname", usernameEntry.text);
             }
 
-            bookmarkListManager.getList().getBookmarks("");
+            listBox.getBookmarks("");
             this.destroy ();
         });
 

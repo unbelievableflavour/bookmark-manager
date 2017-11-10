@@ -2,24 +2,26 @@ using Granite.Widgets;
 
 namespace BookmarkManager {
 public class HeaderBar : Gtk.HeaderBar {
+    
+    static HeaderBar? instance;
 
     StackManager stackManager = StackManager.get_instance();
-    BookmarkListManager bookmarkListManager = BookmarkListManager.get_instance();    
+    ListBox listBox = ListBox.get_instance();    
     public Gtk.SearchEntry searchEntry = new Gtk.SearchEntry ();
-    Gtk.Button return_button = new Gtk.Button ();
+    public Gtk.Button return_button = new Gtk.Button ();
     Gtk.Button add_button = new Gtk.Button.from_icon_name ("document-new", Gtk.IconSize.LARGE_TOOLBAR);
     Gtk.MenuButton menu_button = new Gtk.MenuButton ();
 
-    public HeaderBar(){
-
+    HeaderBar() {
         Granite.Widgets.Utils.set_color_primary (this, Constants.BRAND_COLOR);
         
         searchEntry.set_placeholder_text("Search Bookmarks");
         searchEntry.set_tooltip_text("Search for bookmarks");
+        searchEntry.sensitive = true;
         searchEntry.search_changed.connect (() => {
             showReturnButton(false);
             showAddButton(true);
-            bookmarkListManager.getList().getBookmarks(searchEntry.text);
+            listBox.getBookmarks(searchEntry.text);
         });
 
         generateAddButton();
@@ -50,6 +52,13 @@ public class HeaderBar : Gtk.HeaderBar {
         this.pack_end (menu_button);        
         this.pack_end (searchEntry);
     }
+ 
+    public static HeaderBar get_instance() {
+        if (instance == null) {
+            instance = new HeaderBar();
+        }
+        return instance;
+    }
 
     private void generateMenuButton(){
         menu_button.has_tooltip = true;
@@ -75,7 +84,7 @@ public class HeaderBar : Gtk.HeaderBar {
             showReturnButton(false);
             showAddButton(true);
             stackManager.getStack().visible_child_name = "list-view";
-            bookmarkListManager.getList().getBookmarks("");
+            listBox.getBookmarks("");
         });
     }
 

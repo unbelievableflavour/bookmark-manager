@@ -3,8 +3,20 @@ using Granite.Widgets;
 namespace BookmarkManager {
 public class ListBox : Gtk.ListBox{
 
+    static ListBox? instance;
+
     private ConfigFileReader configFileReader = new ConfigFileReader ();
     private StackManager stackManager = StackManager.get_instance();
+
+    ListBox() {
+    }
+ 
+    public static ListBox get_instance() {
+        if (instance == null) {
+            instance = new ListBox();
+        }
+        return instance;
+    }
 
     public void emptyList(){
         this.foreach ((ListBoxRow) => {
@@ -15,17 +27,19 @@ public class ListBox : Gtk.ListBox{
     public void getBookmarks(string searchWord = ""){
         emptyList();
 
+        HeaderBar.get_instance().searchEntry.sensitive = true;
         stackManager.getStack().visible_child_name = "list-view";
 
         var bookmarks = configFileReader.getBookmarks();
 
         if(listisEmpty(bookmarks)) {
+            HeaderBar.get_instance().searchEntry.sensitive = false;
             stackManager.getStack().visible_child_name = "empty-view";
             return;
         }
 
         if(searchWordDoesntMatchAnyInList(searchWord, bookmarks)) {
-            stackManager.getStack().visible_child_name = "not-found-view";
+            stackManager.getStack().visible_child_name = "not-found-view";            
             return;
         }
 

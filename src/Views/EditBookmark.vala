@@ -88,7 +88,6 @@ public class EditBookmark : BookmarkForm{
 
         ConfigFileReader.writeToFile(bookmarks);
 
-        stackManager.getStack().visible_child_name = "list-view";
         listBox.getBookmarks("");    
     }
 

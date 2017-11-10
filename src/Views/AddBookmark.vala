@@ -47,8 +47,7 @@ public class AddBookmark : BookmarkForm{
 
         configFileReader.writeToFile(bookmarks);
 
-        stackManager.getStack().visible_child_name = "list-view";
-        listBox.getBookmarks("");    
+        listBox.getBookmarks("");
     }
 
     public bool alreadyExists(Bookmark newBookmark, Bookmark[] bookmarks){

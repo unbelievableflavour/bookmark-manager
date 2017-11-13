@@ -71,7 +71,7 @@ public class ListBoxRow : Gtk.ListBoxRow {
     public Gtk.EventBox generateStartButton(string sshCommand){
         var start_button = new Gtk.EventBox();
         start_button.add(start_image);
-        start_button.set_tooltip_text("Start an SSH session");
+        start_button.set_tooltip_text("Start an SSH session in a terminal");
         start_button.button_press_event.connect (() => {
             
             string result;

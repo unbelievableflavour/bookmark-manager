@@ -72,7 +72,7 @@ public class ListBoxRow : Gtk.ListBoxRow {
     public Gtk.EventBox generateStartButton(string sshCommand){
         var start_button = new Gtk.EventBox();
         start_button.add(start_image);
-        start_button.set_tooltip_text("Start an SSH session in a terminal");
+        start_button.set_tooltip_text(_("Start an SSH session in a terminal"));
         start_button.button_press_event.connect (() => {
             
             string result;
@@ -101,7 +101,7 @@ public class ListBoxRow : Gtk.ListBoxRow {
     public Gtk.EventBox generateDeleteButton(){
         var delete_button = new Gtk.EventBox();
         delete_button.add(delete_image);
-        delete_button.set_tooltip_text("Remote this bookmark");
+        delete_button.set_tooltip_text(_("Remote this bookmark"));
         delete_button.button_press_event.connect (() => {
             new DeleteConfirm(bookmark);
             return true;
@@ -113,7 +113,7 @@ public class ListBoxRow : Gtk.ListBoxRow {
     public Gtk.EventBox generateEditButton(Bookmark bookmark){
         var edit_button = new Gtk.EventBox();
         edit_button.add(edit_image);
-        edit_button.set_tooltip_text("Edit this bookmark");
+        edit_button.set_tooltip_text(_("Edit this bookmark"));
         edit_button.button_press_event.connect (() => {
             headerBar.showReturnButton(true);
             headerBar.showAddButton(false);

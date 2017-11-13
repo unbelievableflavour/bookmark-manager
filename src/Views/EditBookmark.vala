@@ -6,11 +6,11 @@ public class EditBookmark : BookmarkForm{
 
     public EditBookmark(){ 
 
-        general_header.set_text("Edit a bookmark");
+        general_header.set_text(_("Edit a bookmark"));
 
         hostEntry.set_sensitive(false);
 
-        var edit_button = new Gtk.Button.with_label ("Edit");
+        var edit_button = new Gtk.Button.with_label (_("Edit"));
         edit_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         edit_button.clicked.connect (() => {
            EditBookmarkInFile();
@@ -78,7 +78,7 @@ public class EditBookmark : BookmarkForm{
         bookmark.setProxyCommand(proxyCommandEntry.text);  
 
         if(isNotValid(bookmark)){
-            new Alert("Fields are invalid", "Please correctly fill in all the required fields");
+            new Alert(_("Fields are invalid"), _("Please correctly fill in all the required fields"));
             return;
         }
 

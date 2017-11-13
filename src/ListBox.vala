@@ -28,6 +28,9 @@ public class ListBox : Gtk.ListBox{
         emptyList();
 
         HeaderBar.get_instance().searchEntry.sensitive = true;
+        HeaderBar.get_instance().showReturnButton(false);
+        HeaderBar.get_instance().showAddButton(true);
+
         stackManager.getStack().visible_child_name = "list-view";
 
         var bookmarks = configFileReader.getBookmarks();

@@ -1,26 +1,26 @@
 namespace BookmarkManager {
 public class Cheatsheet : Gtk.Dialog {
   
-    private HeaderLabel general_header = new HeaderLabel ("Cheatsheet");
+    private HeaderLabel general_header = new HeaderLabel (_("Cheatsheet"));
 
     public Cheatsheet(){
-        title = "Cheatsheet";
+        title = _("Cheatsheet");
         resizable = false;
         deletable = false;
 
         Gtk.Label[] labels = {};
         Gtk.Label[] shortcuts = {};
 
-        labels += generateLabel ("Add bookmark");
+        labels += generateLabel (_("Add bookmark"));
         shortcuts += generateEntry ("ctrl + a");
 
-        labels += generateLabel ("List bookmarks");
+        labels += generateLabel (_("List bookmarks"));
         shortcuts += generateEntry ("ctrl + l");
 
-        labels += generateLabel ("Search");
+        labels += generateLabel (_("Search"));
         shortcuts += generateEntry ("ctrl + f");
 
-        labels += generateLabel ("Open the cheatsheet");
+        labels += generateLabel (_("Open the cheatsheet"));
         shortcuts += generateEntry ("ctrl + h");
         
         var close_button = generateCloseButton();
@@ -77,7 +77,7 @@ public class Cheatsheet : Gtk.Dialog {
     }
     
     public Gtk.Button generateCloseButton(){
-        var close_button = new Gtk.Button.with_label ("Close");
+        var close_button = new Gtk.Button.with_label (_("Close"));
         close_button.margin_right = 6;
         close_button.clicked.connect (() => {
             this.destroy ();

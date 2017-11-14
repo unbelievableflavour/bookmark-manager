@@ -5,7 +5,7 @@ public class DeleteConfirm : Object {
     private StackManager stackManager = StackManager.get_instance();
 
     public DeleteConfirm(Bookmark deletedBookmark){
-        var message_dialog = new Granite.MessageDialog.with_image_from_icon_name ("Delete this bookmark?", "Are you sure you want to delete this bookmark?", "edit-delete", Gtk.ButtonsType.CANCEL);
+        var message_dialog = new Granite.MessageDialog.with_image_from_icon_name (_("Delete this bookmark?"), _("Are you sure you want to delete this bookmark?"), "edit-delete", Gtk.ButtonsType.CANCEL);
 
         var suggested_button = new Gtk.Button.with_label ("Delete");
         suggested_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);

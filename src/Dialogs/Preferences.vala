@@ -5,30 +5,30 @@ public class Preferences : Gtk.Dialog {
     private ListBox listBox = ListBox.get_instance();
 
     public Preferences(){
-        title = "Preferences";
+        title = _("Preferences");
         set_default_size (630, 430);
         resizable = false;
         deletable = false;
 
-        var general_header = new HeaderLabel ("Preferences");
+        var general_header = new HeaderLabel (_("Preferences"));
                 
-        var usernameLabel = generateLabel ("Default Username:");
+        var usernameLabel = generateLabel (_("Default Username:"));
 
         var usernameEntry = new Gtk.Entry ();
         usernameEntry.set_text (settings.get_string ("sshname"));
-        usernameEntry.set_tooltip_text ("This variable will be used when no variable is given in the ssh config");
+        usernameEntry.set_tooltip_text (_("This variable will be used when no variable is given in the ssh config"));
 
-        var experimental_header = new HeaderLabel ("Experimental");
+        var experimental_header = new HeaderLabel (_("Experimental"));
 
-        var addBookmarksToDockUpdateLabel = generateLabel ("Add your bookmarks to your dock");
-        var addBookmarksToDockUpdateButton = new Gtk.Button.with_label ("Update Bookmarks");
+        var addBookmarksToDockUpdateLabel = generateLabel (_("Add your bookmarks to your dock"));
+        var addBookmarksToDockUpdateButton = new Gtk.Button.with_label (_("Update Bookmarks"));
         addBookmarksToDockUpdateButton.clicked.connect (() => {
            runQuickListUpdater();
         });
 
         var close_button = generateCloseButton();
 
-        var save_button = new Gtk.Button.with_label ("Save");
+        var save_button = new Gtk.Button.with_label (_("Save"));
         save_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         save_button.clicked.connect (() => {            
             
@@ -88,13 +88,13 @@ public class Preferences : Gtk.Dialog {
 								        out status);
           
             if(error != null && error != "" && status != 0){
-                new Alert("An error occured",error);                
+                new Alert(_("An error occured"), error);                
             }else{
-                new Alert("Success","Your bookmarks have been added to your dock.If you have added more bookmarks. Please click this button again, because it won't happen dynamically.");
+                new Alert(_("Success"),_("Your bookmarks have been added to your dock.If you have added more bookmarks. Please click this button again, because it won't happen dynamically."));
             }
 	     
         } catch (SpawnError e) {
-            new Alert("An error occured", e.message);
+            new Alert(_("An error occured"), e.message);
         }
     }
 

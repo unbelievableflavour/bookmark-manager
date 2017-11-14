@@ -4,27 +4,27 @@ public class BookmarkForm : Gtk.Grid{
     StackManager stackManager = StackManager.get_instance();
     private ListBox listBox = ListBox.get_instance();
 
-    protected HeaderLabel general_header = new HeaderLabel ("A bookmark form");
+    protected HeaderLabel general_header = new HeaderLabel (_("A bookmark form"));
 
-    protected Gtk.Entry nicknameEntry = new BookmarkFormEntry ("if not set. Host is used");
-    protected Gtk.Entry hostEntry = new BookmarkFormEntry ("server1");
-    protected Gtk.Entry hostNameEntry = new BookmarkFormEntry ("127.0.0.1");
-    protected Gtk.Entry userNameEntry = new BookmarkFormEntry ("james");
-    protected Gtk.Entry portEntry = new BookmarkFormEntry ("80");
+    protected Gtk.Entry nicknameEntry = new BookmarkFormEntry (_("if not set. Host is used"));
+    protected Gtk.Entry hostEntry = new BookmarkFormEntry (_("server1"));
+    protected Gtk.Entry hostNameEntry = new BookmarkFormEntry (_("127.0.0.1"));
+    protected Gtk.Entry userNameEntry = new BookmarkFormEntry (_("james"));
+    protected Gtk.Entry portEntry = new BookmarkFormEntry (_("80"));
     protected Gtk.CheckButton agentForwardCheckButton = new BookmarkFormCheckButton();
-    protected Gtk.Entry proxyCommandEntry = new BookmarkFormEntry ("ssh bookmark nc %h %p");
+    protected Gtk.Entry proxyCommandEntry = new BookmarkFormEntry (_("ssh bookmark nc %h %p"));
 
     protected Gtk.ButtonBox button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
 
     public BookmarkForm(){
 
-        var nicknameLabel = new BookmarkFormLabel ("Nickname:");
-        var hostLabel = new BookmarkFormLabel ("Host:*");
-        var hostNameLabel = new BookmarkFormLabel ("Host name:*");
-        var userNameLabel = new BookmarkFormLabel ("Username:");
-        var portLabel = new BookmarkFormLabel ("Port:");
-        var agentForwardLabel = new BookmarkFormLabel ("Use agent forwarding:");
-        var proxyCommandLabel = new BookmarkFormLabel ("Proxy command:");
+        var nicknameLabel = new BookmarkFormLabel (_("Nickname:"));
+        var hostLabel = new BookmarkFormLabel (_("Host:*"));
+        var hostNameLabel = new BookmarkFormLabel (_("Host name:*"));
+        var userNameLabel = new BookmarkFormLabel (_("Username:"));
+        var portLabel = new BookmarkFormLabel (_("Port:"));
+        var agentForwardLabel = new BookmarkFormLabel (_("Use agent forwarding:"));
+        var proxyCommandLabel = new BookmarkFormLabel (_("Proxy command:"));
 
         button_box.set_layout (Gtk.ButtonBoxStyle.END);
         button_box.margin_left = 12;

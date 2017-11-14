@@ -6,9 +6,9 @@ public class AddBookmark : BookmarkForm{
     ConfigFileReader configFileReader = new ConfigFileReader();
 
     public AddBookmark(){
-        general_header.set_text("Add new bookmark");
+        general_header.set_text(_("Add new bookmark"));
 
-        var create_button = new Gtk.Button.with_label ("Create");
+        var create_button = new Gtk.Button.with_label (_("Create"));
         create_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         create_button.clicked.connect (() => {
            AddBookmarkToFile();
@@ -34,12 +34,12 @@ public class AddBookmark : BookmarkForm{
         var bookmarks = configFileReader.getBookmarks();
 
         if(isNotValid(bookmark)){
-            new Alert("Fields are invalid", "Please correctly fill in all the required fields");
+            new Alert(_("Fields are invalid"), _("Please correctly fill in all the required fields"));
             return;
         }
 
         if(alreadyExists(bookmark, bookmarks)){
-            new Alert("Bookmark with this name already exists", "Please choose a different name");
+            new Alert(_("Bookmark with this name already exists"), _("Please choose a different name"));
             return;
         }
 

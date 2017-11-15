@@ -18,6 +18,10 @@ A Vala application to get your ssh bookmarks from your config file and use them 
 
 ## Installation
 
+As first you need elementary SDK
+
+ `sudo apt install elementary-sdk`
+
 ### Dependencies
 
 These dependencies must be present before building

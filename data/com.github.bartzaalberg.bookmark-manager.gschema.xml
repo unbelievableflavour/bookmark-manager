@@ -8,7 +8,13 @@
         This is the name used for ssh
       </description>
     </key>
+    <key name="terminalname" type="s">
+      <default l10n="messages">""</default>
+      <summary>Terminal Name</summary>
+      <description>
+        The name of the terminal used for starting your ssh sessions
+      </description>
+    </key>
 
   </schema>
 </schemalist>
-

@@ -1,7 +1,7 @@
 namespace BookmarkManager {
 public class DesktopFileManager {
 
-    private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager"); 
+    private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager");
 
     public File getBackupDesktopConfigFile(){
         var backupFile = File.new_for_path ("/usr/local/share/applications/com.github.bartzaalberg.bookmark-manager.backup");
@@ -43,7 +43,7 @@ public class DesktopFileManager {
                 desktopBookmarksRaw += convertBookmarksToActionsString(bookmarks) + "\n";
                 continue;
             }
-            desktopBookmarksRaw += line + "\n";    
+            desktopBookmarksRaw += line + "\n";
         }
 
         desktopBookmarksRaw += "\n";
@@ -54,7 +54,7 @@ public class DesktopFileManager {
                 normalFile.delete(null);
                 FileOutputStream fos = normalFile.create (FileCreateFlags.REPLACE_DESTINATION, null);
                 DataOutputStream dos = new DataOutputStream (fos);
-                
+
                 dos.put_string (desktopBookmarksRaw, null);
             }
         } catch (Error e) {
@@ -64,34 +64,35 @@ public class DesktopFileManager {
 
     private string convertBookmarksToDesktopFileString(Bookmark[] bookmarks){
         string rawBookmarksString = "";
-        
-        foreach (Bookmark bookmark in bookmarks) { 
+
+        foreach (Bookmark bookmark in bookmarks) {
             string rawBookmark = generateSSHCommand(bookmark);
             rawBookmarksString += rawBookmark;
         }
-        
+
         return rawBookmarksString;
     }
 
     private string convertBookmarksToActionsString(Bookmark[] bookmarks){
         string rawBookmarksString = "Actions=AboutDialog;";
-        
-        foreach (Bookmark bookmark in bookmarks) { 
+
+        foreach (Bookmark bookmark in bookmarks) {
             rawBookmarksString += bookmark.getName() + ";";
         }
-        
+
         return rawBookmarksString;
     }
 
     public string generateSSHCommand(Bookmark bookmark){
-        var username = settings.get_string("sshname"); 
-        if(bookmark.getUser() != null && bookmark.getUser() != ""){ 
-            username = bookmark.getUser(); 
+        var username = settings.get_string("sshname");
+        var terminalName = settings.get_string("terminalname");
+        if(bookmark.getUser() != null && bookmark.getUser() != ""){
+            username = bookmark.getUser();
         }
 
         var actionString = "[Desktop Action " + bookmark.getName() + "]\n";
         actionString += "Name=ssh " + bookmark.getName() + "\n";
-        actionString += "Exec=pantheon-terminal --execute='ssh " + username + "@" + bookmark.getName() + "'\n";
+        actionString += "Exec=" + terminalName + " --execute='ssh " + username + "@" + bookmark.getName() + "'\n";
         actionString += "\n";
 
         return actionString;

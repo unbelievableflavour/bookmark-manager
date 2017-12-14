@@ -10,52 +10,54 @@ public class MainWindow : Gtk.Window{
     private HeaderBar headerBar = HeaderBar.get_instance();
 
     construct {
-        if(settings.get_string ("sshname") == ""){ 
+        if(settings.get_string ("sshname") == ""){
            settings.set_string ("sshname", Environment.get_user_name ());
+        }
+        if(settings.get_string ("terminalname") == ""){
+           settings.set_string ("terminalname", "pantheon-terminal");
         }
 
         set_default_size(Constants.APPLICATION_WIDTH, Constants.APPLICATION_HEIGHT);
         set_titlebar (headerBar);
-       
+
         stackManager.loadViews(this);
 
         listBox.getBookmarks("");
 
         addShortcuts();
-        
     }
 
     private void addShortcuts(){
-        key_press_event.connect ((e) => { 
-            switch (e.keyval) { 
+        key_press_event.connect ((e) => {
+            switch (e.keyval) {
                 case Gdk.Key.a:
-                  if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {  
+                  if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
                     stackManager.getStack().visible_child_name = "add-bookmark-view";
                     headerBar.showReturnButton(true);
                     headerBar.showAddButton(false);
                   }
                   break;
-                case Gdk.Key.l:    
-                  if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {  
+                case Gdk.Key.l:
+                  if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
                     stackManager.getStack().visible_child_name = "list-view";
                     headerBar.showReturnButton(false);
                     headerBar.showAddButton(true);
-                  } 
-                  break;
-                case Gdk.Key.h:
-                  if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {  
-                    new Cheatsheet(); 
                   }
                   break;
-                case Gdk.Key.f:    
-                  if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {  
+                case Gdk.Key.h:
+                  if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
+                    new Cheatsheet();
+                  }
+                  break;
+                case Gdk.Key.f:
+                  if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
                     headerBar.searchEntry.grab_focus();
                   }
                   break;
             }
- 
-            return false; 
-        });            
+
+            return false;
+        });
     }
 }
 }

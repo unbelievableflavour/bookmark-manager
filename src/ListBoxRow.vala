@@ -81,6 +81,9 @@ public class ListBoxRow : Gtk.ListBoxRow {
 
             
             if(settings.get_boolean("use-terminal")){
+
+                stackManager.addATerminal();
+
                 try {
                     stackManager.terminal.run_command(sshCommand);
 		         

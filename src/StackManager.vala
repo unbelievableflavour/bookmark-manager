@@ -16,6 +16,8 @@ public class StackManager : Object {
 	private GLib.Pid child_pid;
     public Terminal terminal = new Terminal ();
 
+    Gtk.Paned pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+
     EditBookmark editBookmarkPage;
 
     // Private constructor
@@ -46,39 +48,38 @@ public class StackManager : Object {
         stack.add_named (new NotFoundView(), NOT_FOUND_VIEW_ID);
         stack.add_named (editBookmarkPage, EDIT_BOOKMARK_VIEW_ID);
 
-        if(settings.get_boolean("use-terminal")){
-            var pane = createViewWithTerminal();
-            window.add(pane);
-        } else{
-            window.add(stack);
-        }
+        var pane = createViewWithTerminal();
+        window.add(pane);
 
         window.show_all();
    }
 
     public Gtk.Paned createViewWithTerminal(){
         terminal.expand = true;
-       
-        Gtk.ScrolledWindow view_box = new Gtk.ScrolledWindow(null, null);
-        view_box.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-        view_box.set_size_request (700,200);
-        view_box.add(terminal);
 
         Gtk.ScrolledWindow result_box = new Gtk.ScrolledWindow(null, null);
         result_box.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
         result_box.set_size_request (200,200);
         result_box.add(stack);
         
-        var pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
-            pane.expand = true;
-            pane.pack1 (view_box, true, false);
-            pane.pack2 (result_box, false, false);
+        pane.expand = true;
+        pane.pack2 (result_box, false, false);
 
         return pane;
     }
 
     public void setEditBookmark(Bookmark bookmark){
         editBookmarkPage.loadBookmark(bookmark);
+    }
+
+    public void addATerminal(){
+        Gtk.ScrolledWindow view_box = new Gtk.ScrolledWindow(null, null);
+        view_box.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
+        view_box.set_size_request (700,200);
+        view_box.add(terminal);
+
+        pane.pack1 (view_box, true, false);
+        pane.show_all();
     }
 }
 }

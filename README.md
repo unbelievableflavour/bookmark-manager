@@ -28,10 +28,11 @@ These dependencies must be present before building
  - `valac`
  - `gtk+-3.0`
  - `granite`
+ - `vte-2.91`
 
  You can install these on a Ubuntu-based system by executing this command:
  
- `sudo apt install valac libgtk-3-dev libgranite-dev`
+ `sudo apt install valac libgtk-3-dev libgranite-dev vte-2.91`
 
 
 ### Building

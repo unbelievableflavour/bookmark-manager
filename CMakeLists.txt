@@ -23,6 +23,7 @@
     set (DEPS_PACKAGES
         gtk+-3.0
         granite
+        vte-2.91
     )
 
     find_package (PkgConfig)
@@ -92,11 +93,13 @@
         src/Components/BookmarkFormEntry.vala
         src/Components/BookmarkFormCheckButton.vala
         src/Components/BookmarkForm.vala
+        src/Components/Terminal.vala
 
     # tell what libraries to use when compiling
     PACKAGES
         gtk+-3.0
         granite
+        vte-2.91
     )
 
     # tell cmake what to call the executable we just made

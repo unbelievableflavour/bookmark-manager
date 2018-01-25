@@ -15,6 +15,11 @@
         The name of the terminal used for starting your ssh sessions
       </description>
     </key>
+    <key name="use-terminal" type="b">
+		<default>false</default>
+		<summary>Use terminal inside the application</summary>
+		<description>Use terminal inside the application</description>
+	</key>
 
   </schema>
 </schemalist>

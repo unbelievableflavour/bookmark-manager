@@ -32,12 +32,16 @@ public class Preferences : Gtk.Dialog {
            runQuickListUpdater();
         });
 
+        var use_terminal_label = generateLabel (_("Use terminal inside app:"));
+        var use_terminal = new Gtk.Switch ();
+            use_terminal.halign = Gtk.Align.START;
+            settings.bind ("use-terminal", use_terminal, "active", SettingsBindFlags.DEFAULT);
+
         var close_button = generateCloseButton();
 
         var save_button = new Gtk.Button.with_label (_("Save"));
         save_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
-        save_button.clicked.connect (() => {
-
+        save_button.clicked.connect (() => {            
             if(usernameEntry.text ==  ""){
                 settings.set_string ("sshname", Environment.get_user_name ());
             }else{
@@ -76,6 +80,9 @@ public class Preferences : Gtk.Dialog {
         general_grid.attach (addBookmarksToDockUpdateLabel, 0, 4, 1, 1);
         general_grid.attach (addBookmarksToDockUpdateButton, 1, 4, 1, 1);
 
+        general_grid.attach (use_terminal_label, 0, 4, 1, 1);
+        general_grid.attach (use_terminal, 1, 4, 1, 1);
+    
         var main_grid = new Gtk.Grid ();
         main_grid.attach (general_grid, 0, 0, 1, 1);
         main_grid.attach (button_box, 0, 1, 1, 1);

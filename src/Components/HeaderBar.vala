@@ -69,8 +69,6 @@ public class HeaderBar : Gtk.HeaderBar {
     private void generateAddButton(){
         add_button.set_tooltip_text(_("Create a new bookmark"));
         add_button.clicked.connect (() => {
-            showReturnButton(true);
-            showAddButton(false);
             stackManager.getStack().visible_child_name = "add-bookmark-view";            
         });
     }
@@ -81,15 +79,9 @@ public class HeaderBar : Gtk.HeaderBar {
         return_button.get_style_context ().add_class ("back-button");
         return_button.visible = false;
         return_button.clicked.connect (() => {
-            showReturnButton(false);
-            showAddButton(true);
             stackManager.getStack().visible_child_name = "list-view";
             listBox.getBookmarks("");
         });
-    }
-
-    public void showSearchEntry(bool answer){
-        searchEntry.visible = answer;
     }
 
     public void showAddButton(bool answer){

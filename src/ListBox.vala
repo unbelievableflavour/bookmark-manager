@@ -21,15 +21,11 @@ public class ListBox : Gtk.ListBox{
     public void emptyList(){
         this.foreach ((ListBoxRow) => {
             this.remove(ListBoxRow);
-        }); 
+        });
     }
 
     public void getBookmarks(string searchWord = ""){
         emptyList();
-
-        HeaderBar.get_instance().searchEntry.sensitive = true;
-        HeaderBar.get_instance().showReturnButton(false);
-        HeaderBar.get_instance().showAddButton(true);
 
         stackManager.getStack().visible_child_name = "list-view";
 
@@ -42,7 +38,7 @@ public class ListBox : Gtk.ListBox{
         }
 
         if(searchWordDoesntMatchAnyInList(searchWord, bookmarks)) {
-            stackManager.getStack().visible_child_name = "not-found-view";            
+            stackManager.getStack().visible_child_name = "not-found-view";
             return;
         }
 

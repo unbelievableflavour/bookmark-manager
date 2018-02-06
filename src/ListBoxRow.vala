@@ -79,14 +79,14 @@ public class ListBoxRow : Gtk.ListBoxRow {
 	        string error;
 	        int status;
 
-            
+
             if(settings.get_boolean("use-terminal")){
 
                 stackManager.addATerminal();
 
                 try {
                     stackManager.terminal.run_command(sshCommand);
-		         
+
                 } catch (SpawnError e) {
 	                new Alert("An error occured", e.message);
                 }
@@ -99,7 +99,7 @@ public class ListBoxRow : Gtk.ListBoxRow {
 									        out result,
 									        out error,
 									        out status);
-             
+
                 if(error != null && error != ""){
                     new Alert("An error occured",error);
                 }
@@ -130,8 +130,6 @@ public class ListBoxRow : Gtk.ListBoxRow {
         edit_button.add(edit_image);
         edit_button.set_tooltip_text(_("Edit this bookmark"));
         edit_button.button_press_event.connect (() => {
-            headerBar.showReturnButton(true);
-            headerBar.showAddButton(false);
             stackManager.setEditBookmark(bookmark);
             stackManager.getStack().visible_child_name = "edit-bookmark-view";
             return true;

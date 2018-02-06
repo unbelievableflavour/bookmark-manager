@@ -33,15 +33,11 @@ public class MainWindow : Gtk.Window{
                 case Gdk.Key.a:
                   if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
                     stackManager.getStack().visible_child_name = "add-bookmark-view";
-                    headerBar.showReturnButton(true);
-                    headerBar.showAddButton(false);
                   }
                   break;
                 case Gdk.Key.l:
                   if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
                     stackManager.getStack().visible_child_name = "list-view";
-                    headerBar.showReturnButton(false);
-                    headerBar.showAddButton(true);
                   }
                   break;
                 case Gdk.Key.h:

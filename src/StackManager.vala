@@ -48,6 +48,38 @@ public class StackManager : Object {
         stack.add_named (new NotFoundView(), NOT_FOUND_VIEW_ID);
         stack.add_named (editBookmarkPage, EDIT_BOOKMARK_VIEW_ID);
 
+        stack.notify["visible-child"].connect (() => {
+            var headerBar = HeaderBar.get_instance();
+
+            if(stack.get_visible_child_name() == ADD_BOOKMARK_VIEW_ID){
+                headerBar.showReturnButton(true);
+                headerBar.showAddButton(false);
+            }
+
+            if(stack.get_visible_child_name() == LIST_VIEW_ID){
+                headerBar.searchEntry.sensitive = true;
+                headerBar.showReturnButton(false);
+                headerBar.showAddButton(true);
+            }
+
+            if(stack.get_visible_child_name() == EMPTY_VIEW_ID){
+                headerBar.searchEntry.sensitive = true;
+                headerBar.showReturnButton(false);
+                headerBar.showAddButton(true);
+            }
+
+            if(stack.get_visible_child_name() == NOT_FOUND_VIEW_ID){
+                headerBar.searchEntry.sensitive = true;
+                headerBar.showReturnButton(false);
+                headerBar.showAddButton(true);
+            }
+
+            if(stack.get_visible_child_name() == EDIT_BOOKMARK_VIEW_ID){
+                headerBar.showReturnButton(true);
+                headerBar.showAddButton(false);
+            }
+        });
+
         var pane = createViewWithTerminal();
         window.add(pane);
 

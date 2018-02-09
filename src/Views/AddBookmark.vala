@@ -1,7 +1,6 @@
 namespace BookmarkManager {
 public class AddBookmark : BookmarkForm{
  
-    StackManager stackManager = StackManager.get_instance();
     private ListBox listBox = ListBox.get_instance();
     ConfigFileReader configFileReader = new ConfigFileReader();
 
@@ -23,7 +22,7 @@ public class AddBookmark : BookmarkForm{
         bookmark.setName(hostEntry.text);
         bookmark.setIp(hostNameEntry.text);  
         bookmark.setUser(userNameEntry.text);  
-        bookmark.setPort(portEntry.text.to_int());  
+        bookmark.setPort(int.parse(portEntry.text));  
 
         if(agentForwardCheckButton.active == true) {
            bookmark.setForwardAgent("yes");

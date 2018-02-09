@@ -1,8 +1,5 @@
 namespace BookmarkManager {
 public class BookmarkForm : Gtk.Grid{
- 
-    StackManager stackManager = StackManager.get_instance();
-    private ListBox listBox = ListBox.get_instance();
 
     protected HeaderLabel general_header = new HeaderLabel (_("A bookmark form"));
 
@@ -27,7 +24,7 @@ public class BookmarkForm : Gtk.Grid{
         var proxyCommandLabel = new BookmarkFormLabel (_("Proxy command:"));
 
         button_box.set_layout (Gtk.ButtonBoxStyle.END);
-        button_box.margin_left = 12;
+        button_box.set_margin_start(12);
         button_box.margin_bottom = 0;
 
         column_homogeneous = true;

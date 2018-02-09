@@ -7,7 +7,6 @@ public class ListBoxRow : Gtk.ListBoxRow {
 
     private const int PROGRESS_BAR_HEIGHT = 5;
     private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager");
-    private HeaderBar headerBar = HeaderBar.get_instance();
 
     private Gtk.Image start_image = new Gtk.Image.from_icon_name ("media-playback-start-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
     private Gtk.Image edit_image = new Gtk.Image.from_icon_name ("document-properties-symbolic", Gtk.IconSize.SMALL_TOOLBAR);

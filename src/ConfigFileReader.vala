@@ -38,7 +38,7 @@ public class ConfigFileReader : Object{
                     continue;
                 }
                 if(inArray(variableOnLine, { "port", "Port" })){
-                    bookmarks[bookmarks.length - 1].setPort(valueOnLine.to_int());
+                    bookmarks[bookmarks.length - 1].setPort(int.parse(valueOnLine));
                     continue;
                 }
                 if(inArray(variableOnLine, { "user", "User" })){
@@ -54,7 +54,7 @@ public class ConfigFileReader : Object{
                     continue;
                 }
                 if(inArray(variableOnLine, { "serverAliveInterval", "ServerAliveInterval" })){
-                    bookmarks[bookmarks.length - 1].setServerAliveInterval(valueOnLine.to_int());
+                    bookmarks[bookmarks.length - 1].setServerAliveInterval(int.parse(valueOnLine));
                     continue;
                 }
                 if(inArray(variableOnLine, { "logLevel", "LogLevel" })){

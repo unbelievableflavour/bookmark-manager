@@ -3,8 +3,6 @@ public class StackManager : Object {
     
     static StackManager? instance;
 
-    private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager"); 
-
     private Gtk.Stack stack;
     private const string ADD_BOOKMARK_VIEW_ID = "add-bookmark-view";
     private const string LIST_VIEW_ID = "list-view";
@@ -12,8 +10,6 @@ public class StackManager : Object {
     private const string NOT_FOUND_VIEW_ID = "not-found-view";
     private const string EDIT_BOOKMARK_VIEW_ID = "edit-bookmark-view";
 
-    private string shell;
-	private GLib.Pid child_pid;
     public Terminal terminal = new Terminal ();
 
     Gtk.Paned pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);

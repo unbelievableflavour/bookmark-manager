@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2017 Your Name <you@email.com> -->
+<!-- Copyright 2018 Your Name <bartzaalberg@outlook.com> -->
 <component type="desktop">
   <id>com.github.bartzaalberg.bookmark-manager.desktop</id>
   <metadata_license>CC0</metadata_license>
   <project_license>GPL-3.0+</project_license>
   <name>Bookmark Manager</name>
-  <summary>Manage the .ssh/config file bookmarks</summary>
+  <summary>Manage your SSH bookmarks</summary>
   <description>
-    <p>A simple tool to manage the .ssh/config file bookmarks.</p>
+    <p>A simple tool to manage your SSH bookmarks from the .ssh/config file. Add, edit, and remove straight from the application. Start in a terminal inside the app, or use your own favorite terminal. You can even add your bookmarks to your app launcher as shortcuts!</p>
     <p>Features:</p>
      <ul>
        <li>Easily search through your SSH bookmarks</li>
        <li>Simply start a session by clicking on a button</li>
        <li>Add a default parameters for when the config file doesn't contain a variable</li>
        <li>Add, remove, and update bookmarks</li>
+       <li>Choose between all your terminals, and the in-app terminal</li>
+       <li>Add your SSH bookmarks to the app launcher!</li>
     </ul>
   </description>
   <releases>
@@ -248,8 +250,9 @@
   </screenshots>
   <developer_name>Bart Zaalberg</developer_name>
   <custom>
-    <value key="x-appcenter-color-primary">rgb(224,247,255)</value>
-    <value key="x-appcenter-color-primary-text">#000</value>
+    <value key="x-appcenter-color-primary">#7A69A1</value>
+    <value key="x-appcenter-color-primary-text">#FFF</value>
+    <value key="x-appcenter-suggested-price">3</value>
   </custom>
   <url type="homepage">https://github.com/bartzaalberg/bookmark-manager</url>
   <url type="bugtracker">https://github.com/bartzaalberg/bookmark-manager/issues</url>

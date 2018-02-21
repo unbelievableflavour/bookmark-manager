@@ -50,6 +50,11 @@ public class MainWindow : Gtk.Window{
                     headerBar.searchEntry.grab_focus();
                   }
                   break;
+                case Gdk.Key.q:
+                  if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {  
+                    Gtk.main_quit();
+                  }
+                  break;
             }
 
             return false;

@@ -247,11 +247,17 @@
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/bartzaalberg/Bookmark-Manager/master/screenshot.png</image>
     </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/bartzaalberg/Bookmark-Manager/master/screenshot2.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/bartzaalberg/Bookmark-Manager/master/screenshot3.png</image>
+    </screenshot>
   </screenshots>
   <developer_name>Bart Zaalberg</developer_name>
   <custom>
-    <value key="x-appcenter-color-primary">#7A69A1</value>
-    <value key="x-appcenter-color-primary-text">#FFF</value>
+    <value key="x-appcenter-color-primary">#0a8ce4</value>
+    <value key="x-appcenter-color-primary-text">#FFFFFF</value>
     <value key="x-appcenter-suggested-price">3</value>
   </custom>
   <url type="homepage">https://github.com/bartzaalberg/bookmark-manager</url>

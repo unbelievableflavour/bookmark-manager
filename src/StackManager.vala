@@ -19,6 +19,7 @@ public class StackManager : Object {
     // Private constructor
     StackManager() {
         stack = new Gtk.Stack ();
+        stack.get_style_context().add_class("stack-manager");
         stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT;
     }
  

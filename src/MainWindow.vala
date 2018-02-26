@@ -10,6 +10,9 @@ public class MainWindow : Gtk.Window{
     private HeaderBar headerBar = HeaderBar.get_instance();
 
     construct {
+
+        loadGresources();
+
         if(settings.get_string ("sshname") == ""){
            settings.set_string ("sshname", Environment.get_user_name ());
         }
@@ -25,6 +28,12 @@ public class MainWindow : Gtk.Window{
         listBox.getBookmarks("");
 
         addShortcuts();
+    }
+
+    private void loadGresources(){
+        var provider = new Gtk.CssProvider ();
+        provider.load_from_resource ("/com/github/bartzaalberg/bookmark-manager/application.css");
+        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 
     private void addShortcuts(){

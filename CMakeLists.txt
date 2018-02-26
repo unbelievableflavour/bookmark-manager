@@ -102,8 +102,11 @@
         vte-2.91
     )
 
-    # tell cmake what to call the executable we just made
-    add_executable(${EXEC_NAME} ${VALA_C})
+    include (GResource)
+    glib_compile_resources (GLIB_RESOURCES_ICONS SOURCE /data/icons/icons.gresource.xml)
+
+    # tell cmake what to call the executable we just made and install
+    add_executable(${EXEC_NAME} ${VALA_C} ${GLIB_RESOURCES_ICONS})
 
     #------------------------------------------------------------------------------------------
 

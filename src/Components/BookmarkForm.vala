@@ -15,6 +15,8 @@ public class BookmarkForm : Gtk.Grid{
 
     public BookmarkForm(){
 
+        get_style_context().add_class("form-component");
+
         var nicknameLabel = new BookmarkFormLabel (_("Nickname:"));
         var hostLabel = new BookmarkFormLabel (_("Host:*"));
         var hostNameLabel = new BookmarkFormLabel (_("Host name:*"));

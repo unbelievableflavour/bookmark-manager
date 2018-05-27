@@ -19,6 +19,19 @@
     </ul>
   </description>
   <releases>
+    <release version="1.4.1" date="2018-05-27">
+      <description>
+        <p>App refactor and small fixes</p>
+        <ul>
+          <li>Added extra screenshot for appcenter</li>
+          <li>Changed colour for appcenter</li>
+          <li>Added CSS support</li>
+          <li>Fixed the background styling on form page</li>
+          <li>Added quit command</li>
+          <li>Refactored code and removed deprecated code</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.4.0" date="2018-01-25">
       <description>
         <p>First release of the new year!</p>

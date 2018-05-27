@@ -17,7 +17,7 @@
     set (EXEC_NAME "com.github.bartzaalberg.bookmark-manager")
     set (EXEC_NAME2 "com.github.bartzaalberg.bookmark-manager-quicklist")
     set (EXEC_NAME3 "com.github.bartzaalberg.bookmark-manager-quicklist-polkit")
-    set (VERSION "1.4.0")
+    set (VERSION "1.4.1")
     set (VERSION_INFO "whats up world")
 
     set (DEPS_PACKAGES

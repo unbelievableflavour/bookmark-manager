@@ -75,7 +75,7 @@
         src/ListBoxRow.vala
         src/ListBox.vala
         src/ConfigFileReader.vala
-        src/Constants.vala        
+        src/Constants.vala
         src/Bookmark.vala
         src/StackManager.vala
         src/Dialogs/Preferences.vala
@@ -133,11 +133,10 @@
     install (TARGETS ${EXEC_NAME3} RUNTIME DESTINATION bin)
     #add the data directory and activated the cmakelists in that folder
     add_subdirectory (data)
-    
+
     # add settings schema to pc and recomple all schemas
     include (GSettings)
     add_schema (data/com.github.bartzaalberg.bookmark-manager.gschema.xml)
-    
+
     # install the polkit action file
-    install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.bartzaalberg.bookmark-manager.pkexec.policy DESTINATION ${DATADIR}/applications/)
     install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.github.bartzaalberg.bookmark-manager.pkexec.policy DESTINATION /usr/share/polkit-1/actions/)

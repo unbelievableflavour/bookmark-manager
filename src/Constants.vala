@@ -6,7 +6,7 @@ namespace BookmarkManager.Constants {
     public const string ICON = "com.github.bartzaalberg.bookmark-manager";
     public const string MAIN_URL = "https://github.com/bartzaalberg/Bookmark-Manager";
     public const string BUG_URL = MAIN_URL + "/issues";
-    public const string VERSION = "1.4.1";
+    public const string VERSION = "1.4.2";
     public const string VERSION_INFO = "Unstable";
     public const string APP_YEARS = "2017-2018";
 

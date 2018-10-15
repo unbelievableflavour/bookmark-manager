@@ -19,6 +19,15 @@
     </ul>
   </description>
   <releases>
+    <release version="1.4.2" date="2018-10-15">
+      <description>
+        <p>Release for Juno and Houston Ci</p>
+        <ul>
+          <li>Added Houston CI</li>
+          <li>Released for Juno</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.4.1" date="2018-05-27">
       <description>
         <p>App refactor and small fixes</p>

@@ -17,7 +17,7 @@ public class MainWindow : Gtk.Window{
            settings.set_string ("sshname", Environment.get_user_name ());
         }
         if(settings.get_string ("terminalname") == ""){
-           settings.set_string ("terminalname", "pantheon-terminal");
+           settings.set_string ("terminalname", "io.elementary.terminal");
         }
 
         set_default_size(Constants.APPLICATION_WIDTH, Constants.APPLICATION_HEIGHT);

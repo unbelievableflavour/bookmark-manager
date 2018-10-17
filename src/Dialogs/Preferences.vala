@@ -49,7 +49,7 @@ public class Preferences : Gtk.Dialog {
             }
 
             if(terminalNameEntry.text ==  ""){
-                settings.set_string ("terminalname", "pantheon-terminal");
+                settings.set_string ("terminalname", "io.elementary.terminal");
             }else{
                 settings.set_string("terminalname", terminalNameEntry.text);
             }

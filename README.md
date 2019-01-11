@@ -34,26 +34,15 @@ These dependencies must be present before building
  
  `sudo apt install valac libgtk-3-dev libgranite-dev vte-2.91`
 
-
 ### Building
 ```
-mkdir build
+meson build --prefix=/usr
 cd build
-sudo cmake -DCMAKE_INSTALL_PREFIX=/usr ../
-make pot
-sudo make
+ninja
 ```
 
-
 ### Installing
-`sudo make install`
+`sudo ninja install`
 
-### Testing
-
-You can run the tests by going to the test dir:
-
-`/src/Tests/tests.sh`
-
-And then running the test script.
-
-`./tests.sh`
+### Recompile the schema after installation
+`sudo glib-compile-schemas /usr/share/glib-2.0/schemas`

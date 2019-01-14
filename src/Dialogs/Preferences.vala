@@ -76,12 +76,13 @@ public class Preferences : Gtk.Dialog {
         general_grid.attach (terminalNameLabel, 0, 2, 1, 1);
         general_grid.attach (terminalNameEntry, 1, 2, 1, 1);
 
-        general_grid.attach (experimental_header, 0, 3, 2, 1);
-        general_grid.attach (addBookmarksToDockUpdateLabel, 0, 4, 1, 1);
-        general_grid.attach (addBookmarksToDockUpdateButton, 1, 4, 1, 1);
+        general_grid.attach (use_terminal_label, 0, 3, 1, 1);
+        general_grid.attach (use_terminal, 1, 3, 1, 1);
 
-        general_grid.attach (use_terminal_label, 0, 5, 1, 1);
-        general_grid.attach (use_terminal, 1, 5, 1, 1);
+        general_grid.attach (experimental_header, 0, 4, 2, 1);
+
+        general_grid.attach (addBookmarksToDockUpdateLabel, 0, 5, 1, 1);
+        general_grid.attach (addBookmarksToDockUpdateButton, 1, 5, 1, 1);
     
         var main_grid = new Gtk.Grid ();
         main_grid.attach (general_grid, 0, 0, 1, 1);

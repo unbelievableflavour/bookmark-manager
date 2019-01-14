@@ -74,11 +74,6 @@ public class ListBoxRow : Gtk.ListBoxRow {
         start_button.set_tooltip_text(_("Start an SSH session in a terminal"));
         start_button.button_press_event.connect (() => {
 
-            string result;
-	        string error;
-	        int status;
-
-
             if(settings.get_boolean("use-terminal")){
 
                 stackManager.addATerminal();

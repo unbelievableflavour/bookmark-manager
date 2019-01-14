@@ -1,3 +1,13 @@
+com.github.bartzaalberg.bookmark-manager (1.5.0) STABLE; urgency=low
+
+  * Changed the default terminal name to juno standard
+  * Moved to Meson
+  * Added Polish translations
+  * Moved in-app terminal out of experimentary
+  * Fixed freeze when terminal is open
+
+-- Bart Zaalberg <bartzaalberg@gmail.com>  Mon, 14 Jan 2019 17:08:00 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.4.2) STABLE; urgency=low
 
   * Added Houston CI

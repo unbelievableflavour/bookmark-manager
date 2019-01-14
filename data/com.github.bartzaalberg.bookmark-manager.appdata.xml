@@ -19,6 +19,18 @@
     </ul>
   </description>
   <releases>
+    <release version="1.5.0" date="2019-01-14">
+      <description>
+        <p>Juno ready</p>
+        <ul>
+          <li>Changed the default terminal name to juno standard</li>
+          <li>Moved to Meson</li>
+          <li>Added Polish translations</li>
+          <li>Moved in-app terminal out of experimentary</li>
+          <li>Fixed freeze when terminal is open</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.4.2" date="2018-10-15">
       <description>
         <p>Release for Juno and Houston Ci</p>

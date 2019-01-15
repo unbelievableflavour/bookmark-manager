@@ -16,7 +16,7 @@ public class MainWindow : Gtk.Window{
         if(settings.get_string ("sshname") == ""){
            settings.set_string ("sshname", Environment.get_user_name ());
         }
-        if(settings.get_string ("terminalname") == ""){
+        if(settings.get_string ("terminalname") == "" || settings.get_string ("terminalname") == "pantheon-terminal"){
            settings.set_string ("terminalname", "io.elementary.terminal");
         }
 
@@ -60,7 +60,7 @@ public class MainWindow : Gtk.Window{
                   }
                   break;
                 case Gdk.Key.q:
-                  if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {  
+                  if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
                     Gtk.main_quit();
                   }
                   break;

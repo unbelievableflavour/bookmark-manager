@@ -1,5 +1,5 @@
 <schemalist>
-  <schema id="com.github.bartzaalberg.bookmark-manager" path="/org/example/my-app/" gettext-domain="my-app">
+  <schema id="com.github.bartzaalberg.bookmark-manager" path="/com/github/bartzaalberg/bookmark-manager/" gettext-domain="my-app">
 
     <key name="sshname" type="s">
       <default l10n="messages">""</default>

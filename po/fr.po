@@ -83,7 +83,7 @@ msgstr "Rechercher dans les signets"
 
 #: ../src/Components/HeaderBar.vala:31
 msgid "Markdown Cheatsheet"
-msgstr "Raccourcis clavier Mardown"
+msgstr "Raccourcis clavier"
 
 #: ../src/Components/HeaderBar.vala:36 ../src/Dialogs/Preferences.vala:8
 #: ../src/Dialogs/Preferences.vala:13

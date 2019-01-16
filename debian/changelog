@@ -1,3 +1,13 @@
+com.github.bartzaalberg.bookmark-manager (1.5.1) STABLE; urgency=low
+
+  * Changed schema location
+  * Application is now single-instance
+  * Added French translations
+  * Fixed other translations
+  * Attempted to add translation for desktop, and appdata
+
+-- Bart Zaalberg <bartzaalberg@gmail.com>  Wed, 16 Jan 2019 09:08:00 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.5.0) STABLE; urgency=low
 
   * Changed the default terminal name to juno standard

@@ -1,0 +1,31 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:7
+#: data/com.github.bartzaalberg.bookmark-manager.desktop.in:2
+msgid "Bookmark Manager"
+msgstr "Bookmark Beheerder"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:8
+#: data/com.github.bartzaalberg.bookmark-manager.desktop.in:4
+msgid "Manage your SSH bookmarks"
+msgstr "Beheer je SSH bookmarks"
+
+#: data/com.github.bartzaalberg.bookmark-manager.desktop.xml.in:16
+msgid "About Bookmark Manager"
+msgstr "Over Bookmark Beheerder"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:10
+msgid ""
+"A simple tool to manage your SSH bookmarks from the .ssh/config file. "
+"Add, edit, and remove straight from the application. Start in a terminal "
+"inside the app, or use your own favorite terminal. You can even add your "
+"bookmarks to your app launcher as shortcuts!"
+msgstr ""
+"Een eenvoudige tool voor het beheren van je SSH bookmarks vanuit het ./ssh/config bestand. "
+"Voeg toe, wijzig, en verwijder vanuit de applicatie. Begin een sessie "
+"vanuit de app, of gebruik je eigen terminal. Je kan zelf je "
+"bookmarks toevoegen aan de applicatie launcher!

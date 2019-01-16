@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Bookmark Manager
 GenericName=Bookmark Manager App
-Comment=Manage your SSH bookmarks
+Comment=Application to manage the .ssh/config file
 Categories=Utility;Network;Development;
 Exec=com.github.bartzaalberg.bookmark-manager
 Icon=com.github.bartzaalberg.bookmark-manager

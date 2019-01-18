@@ -18,6 +18,7 @@
        <li>Add your SSH bookmarks to the app launcher!</li>
     </ul>
   </description>
+  <content_rating type="oars-1.0" />
   <releases>
     <release version="1.5.1" date="2019-01-16">
       <description>

@@ -1,6 +1,6 @@
 namespace BookmarkManager {
 public class StackManager : Object {
-    
+
     static StackManager? instance;
 
     private Gtk.Stack stack;
@@ -22,7 +22,7 @@ public class StackManager : Object {
         stack.get_style_context().add_class("stack-manager");
         stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT;
     }
- 
+
     // Public constructor
     public static StackManager get_instance() {
         if (instance == null) {
@@ -79,8 +79,6 @@ public class StackManager : Object {
 
         var pane = createViewWithTerminal();
         window.add(pane);
-
-        window.show_all();
    }
 
     public Gtk.Paned createViewWithTerminal(){
@@ -90,7 +88,7 @@ public class StackManager : Object {
         result_box.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
         result_box.set_size_request (200,200);
         result_box.add(stack);
-        
+
         pane.expand = true;
         pane.pack2 (result_box, false, false);
 

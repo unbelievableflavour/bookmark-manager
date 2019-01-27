@@ -10,7 +10,7 @@ public class ListBox : Gtk.ListBox{
 
     ListBox() {
     }
- 
+
     public static ListBox get_instance() {
         if (instance == null) {
             instance = new ListBox();
@@ -48,31 +48,31 @@ public class ListBox : Gtk.ListBox{
                 continue;
             }
 
-            if(searchWord in bookmark.getName()){             
+            if(searchWord in bookmark.getName()){
                 add (new ListBoxRow (bookmark));
-            }            
+            }
         }
 
         show_all();
     }
 
     private bool listisEmpty(Bookmark[] bookmarks){
-        return bookmarks.length == 0;    
+        return bookmarks.length == 0;
     }
 
     private bool searchWordDoesntMatchAnyInList(string searchWord, Bookmark[] bookmarks){
         int matchCount = 0;
-        
+
         if(searchWord == ""){
             return false;
         }
 
         foreach (Bookmark bookmark in bookmarks) {
             if(searchWord in bookmark.getName()){
-                matchCount++;                
-            }                
+                matchCount++;
+            }
         }
-        return matchCount == 0;    
+        return matchCount == 0;
     }
 }
 }

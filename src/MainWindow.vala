@@ -4,15 +4,12 @@ namespace BookmarkManager {
 public class MainWindow : Gtk.Window{
 
     private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager");
-
-    private ListBox listBox = ListBox.get_instance();
     private StackManager stackManager = StackManager.get_instance();
     private HeaderBar headerBar = HeaderBar.get_instance();
+    private uint configure_id;
 
-    
     public MainWindow (Gtk.Application application) {
         Object (application: application,
-                resizable: true,
                 height_request: Constants.APPLICATION_HEIGHT,
                 width_request: Constants.APPLICATION_WIDTH);
     }
@@ -29,11 +26,7 @@ public class MainWindow : Gtk.Window{
         }
 
         set_titlebar (headerBar);
-
         stackManager.loadViews(this);
-
-        listBox.getBookmarks("");
-
         addShortcuts();
     }
 
@@ -75,6 +68,36 @@ public class MainWindow : Gtk.Window{
 
             return false;
         });
+    }
+
+    public override bool configure_event (Gdk.EventConfigure event) {
+        var settings = new GLib.Settings (Constants.APPLICATION_NAME);
+
+        if (configure_id != 0) {
+            GLib.Source.remove (configure_id);
+        }
+
+        configure_id = Timeout.add (100, () => {
+            configure_id = 0;
+
+            if (is_maximized) {
+                settings.set_boolean ("window-maximized", true);
+            } else {
+                settings.set_boolean ("window-maximized", false);
+
+                Gdk.Rectangle rect;
+                get_allocation (out rect);
+                settings.set ("window-size", "(ii)", rect.width, rect.height);
+
+                int root_x, root_y;
+                get_position (out root_x, out root_y);
+                settings.set ("window-position", "(ii)", root_x, root_y);
+            }
+
+            return false;
+        });
+
+        return base.configure_event (event);
     }
 }
 }

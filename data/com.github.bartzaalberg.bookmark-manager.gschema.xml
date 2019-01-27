@@ -1,5 +1,20 @@
 <schemalist>
   <schema id="com.github.bartzaalberg.bookmark-manager" path="/com/github/bartzaalberg/bookmark-manager/" gettext-domain="my-app">
+	<key name="window-maximized" type="b">
+	  <default>false</default>
+	  <summary>Maximized</summary>
+	  <description>Whether the window is maximized</description>
+	</key>
+	<key name="window-position" type="(ii)">
+	  <default>(1024, 750)</default>
+	  <summary>Window position</summary>
+	  <description>Most recent window position (x, y)</description>
+	</key>
+	<key name="window-size" type="(ii)">
+	  <default>(-1, -1)</default>
+	  <summary>Window size</summary>
+	  <description>Most recent window size (width, height)</description>
+	</key>
     <key name="sshname" type="s">
       <default l10n="messages">""</default>
       <summary>The ssh name</summary>

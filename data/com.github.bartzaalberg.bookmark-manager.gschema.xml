@@ -1,6 +1,5 @@
 <schemalist>
   <schema id="com.github.bartzaalberg.bookmark-manager" path="/com/github/bartzaalberg/bookmark-manager/" gettext-domain="my-app">
-
     <key name="sshname" type="s">
       <default l10n="messages">""</default>
       <summary>The ssh name</summary>
@@ -20,6 +19,5 @@
 		<summary>Use terminal inside the application</summary>
 		<description>Use terminal inside the application</description>
 	</key>
-
   </schema>
 </schemalist>

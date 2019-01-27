@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the com.github.bartzaalberg.bookmark-manager package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: com.github.bartzaalberg.bookmark-manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-14 12:57+0100\n"
+"POT-Creation-Date: 2019-01-27 17:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,242 +17,238 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/Components/BookmarkForm.vala:7
-msgid "A bookmark form"
+#: src/ListBoxRow.vala:74
+msgid "Start an SSH session in a terminal"
 msgstr ""
 
-#: ../src/Components/BookmarkForm.vala:9
-msgid "if not set. Host is used"
+#: src/ListBoxRow.vala:105
+msgid "Remote this bookmark"
 msgstr ""
 
-#: ../src/Components/BookmarkForm.vala:10
-msgid "server1"
+#: src/ListBoxRow.vala:117
+msgid "Edit this bookmark"
 msgstr ""
 
-#: ../src/Components/BookmarkForm.vala:11
-msgid "127.0.0.1"
-msgstr ""
-
-#: ../src/Components/BookmarkForm.vala:12
-msgid "james"
-msgstr ""
-
-#: ../src/Components/BookmarkForm.vala:13
-msgid "80"
-msgstr ""
-
-#: ../src/Components/BookmarkForm.vala:15
-msgid "ssh bookmark nc %h %p"
-msgstr ""
-
-#: ../src/Components/BookmarkForm.vala:21
-msgid "Nickname:"
-msgstr ""
-
-#: ../src/Components/BookmarkForm.vala:22
-msgid "Host:*"
-msgstr ""
-
-#: ../src/Components/BookmarkForm.vala:23
-msgid "Host name:*"
-msgstr ""
-
-#: ../src/Components/BookmarkForm.vala:24
-msgid "Username:"
-msgstr ""
-
-#: ../src/Components/BookmarkForm.vala:25
-msgid "Port:"
-msgstr ""
-
-#: ../src/Components/BookmarkForm.vala:26
-msgid "Use agent forwarding:"
-msgstr ""
-
-#: ../src/Components/BookmarkForm.vala:27
-msgid "Proxy command:"
-msgstr ""
-
-#: ../src/Components/HeaderBar.vala:18
-msgid "Search Bookmarks"
-msgstr ""
-
-#: ../src/Components/HeaderBar.vala:19
-msgid "Search for bookmarks"
-msgstr ""
-
-#: ../src/Components/HeaderBar.vala:31
-msgid "Markdown Cheatsheet"
-msgstr ""
-
-#: ../src/Components/HeaderBar.vala:36 ../src/Dialogs/Preferences.vala:8
-#: ../src/Dialogs/Preferences.vala:13
+#: src/Dialogs/Preferences.vala:8 src/Dialogs/Preferences.vala:13
+#: src/Components/HeaderBar.vala:36
 msgid "Preferences"
 msgstr ""
 
-#: ../src/Components/HeaderBar.vala:65
-msgid "Settings"
-msgstr ""
-
-#: ../src/Components/HeaderBar.vala:70
-msgid "Create a new bookmark"
-msgstr ""
-
-#: ../src/Components/HeaderBar.vala:79
-msgid "Back"
-msgstr ""
-
-#: ../src/Views/WelcomeView.vala:9
-msgid "Welcome!"
-msgstr ""
-
-#: ../src/Views/WelcomeView.vala:9
-msgid "We see this is your first time"
-msgstr ""
-
-#: ../src/Views/WelcomeView.vala:10
-msgid "Setup your information"
-msgstr ""
-
-#: ../src/Views/WelcomeView.vala:10
-msgid "Change your ssh name, password, etc.."
-msgstr ""
-
-#: ../src/Views/EditBookmark.vala:9
-msgid "Edit a bookmark"
-msgstr ""
-
-#: ../src/Views/EditBookmark.vala:13
-msgid "Edit"
-msgstr ""
-
-#: ../src/Views/EditBookmark.vala:81 ../src/Views/AddBookmark.vala:37
-msgid "Fields are invalid"
-msgstr ""
-
-#: ../src/Views/EditBookmark.vala:81 ../src/Views/AddBookmark.vala:37
-msgid "Please correctly fill in all the required fields"
-msgstr ""
-
-#: ../src/Views/AddBookmark.vala:9
-msgid "Add new bookmark"
-msgstr ""
-
-#: ../src/Views/AddBookmark.vala:11
-msgid "Create"
-msgstr ""
-
-#: ../src/Views/AddBookmark.vala:42
-msgid "Bookmark with this name already exists"
-msgstr ""
-
-#: ../src/Views/AddBookmark.vala:42
-msgid "Please choose a different name"
-msgstr ""
-
-#: ../src/Views/NotFoundView.vala:7
-msgid "Nothing was found"
-msgstr ""
-
-#: ../src/Views/NotFoundView.vala:7
-msgid "Try searching for something else"
-msgstr ""
-
-#: ../src/Views/EmptyView.vala:9
-msgid "Add some bookmarks"
-msgstr ""
-
-#: ../src/Views/EmptyView.vala:9
-msgid "Your bookmarks file is empty."
-msgstr ""
-
-#: ../src/Views/EmptyView.vala:10
-msgid "New bookmark"
-msgstr ""
-
-#: ../src/Views/EmptyView.vala:10
-msgid "add a new bookmark with host, ip, etc.."
-msgstr ""
-
-#: ../src/Dialogs/Cheatsheet.vala:4 ../src/Dialogs/Cheatsheet.vala:7
-msgid "Cheatsheet"
-msgstr ""
-
-#: ../src/Dialogs/Cheatsheet.vala:14
-msgid "Add bookmark"
-msgstr ""
-
-#: ../src/Dialogs/Cheatsheet.vala:17
-msgid "List bookmarks"
-msgstr ""
-
-#: ../src/Dialogs/Cheatsheet.vala:20
-msgid "Search"
-msgstr ""
-
-#: ../src/Dialogs/Cheatsheet.vala:23
-msgid "Open the cheatsheet"
-msgstr ""
-
-#: ../src/Dialogs/Cheatsheet.vala:80
-msgid "Close"
-msgstr ""
-
-#: ../src/Dialogs/DeleteConfirm.vala:8
-msgid "Delete this bookmark?"
-msgstr ""
-
-#: ../src/Dialogs/DeleteConfirm.vala:8
-msgid "Are you sure you want to delete this bookmark?"
-msgstr ""
-
-#: ../src/Dialogs/Preferences.vala:15
+#: src/Dialogs/Preferences.vala:15
 msgid "Default Username:"
 msgstr ""
 
-#: ../src/Dialogs/Preferences.vala:19
+#: src/Dialogs/Preferences.vala:19
 msgid "This variable will be used when no variable is given in the ssh config"
 msgstr ""
 
-#: ../src/Dialogs/Preferences.vala:21
+#: src/Dialogs/Preferences.vala:21
+msgid "Terminal:"
+msgstr ""
+
+#: src/Dialogs/Preferences.vala:25
+msgid "This is terminal used to start your ssh sessions"
+msgstr ""
+
+#: src/Dialogs/Preferences.vala:27
 msgid "Experimental"
 msgstr ""
 
-#: ../src/Dialogs/Preferences.vala:23
+#: src/Dialogs/Preferences.vala:29
 msgid "Add your bookmarks to your dock"
 msgstr ""
 
-#: ../src/Dialogs/Preferences.vala:24
+#: src/Dialogs/Preferences.vala:30
 msgid "Update Bookmarks"
 msgstr ""
 
-#: ../src/Dialogs/Preferences.vala:31
+#: src/Dialogs/Preferences.vala:35
+msgid "Use terminal inside app:"
+msgstr ""
+
+#: src/Dialogs/Preferences.vala:42
 msgid "Save"
 msgstr ""
 
-#: ../src/Dialogs/Preferences.vala:91 ../src/Dialogs/Preferences.vala:97
+#: src/Dialogs/Preferences.vala:114 src/Dialogs/Preferences.vala:120
 msgid "An error occured"
 msgstr ""
 
-#: ../src/Dialogs/Preferences.vala:93
+#: src/Dialogs/Preferences.vala:116
 msgid "Success"
 msgstr ""
 
-#: ../src/Dialogs/Preferences.vala:93
+#: src/Dialogs/Preferences.vala:116
 msgid ""
 "Your bookmarks have been added to your dock.If you have added more "
 "bookmarks. Please click this button again, because it won't happen "
 "dynamically."
 msgstr ""
 
-#: ../src/ListBoxRow.vala:75
-msgid "Start an SSH session in a terminal"
+#: src/Dialogs/DeleteConfirm.vala:8
+msgid "Delete this bookmark?"
 msgstr ""
 
-#: ../src/ListBoxRow.vala:104
-msgid "Remote this bookmark"
+#: src/Dialogs/DeleteConfirm.vala:8
+msgid "Are you sure you want to delete this bookmark?"
 msgstr ""
 
-#: ../src/ListBoxRow.vala:116
-msgid "Edit this bookmark"
+#: src/Dialogs/Cheatsheet.vala:4 src/Dialogs/Cheatsheet.vala:7
+msgid "Cheatsheet"
+msgstr ""
+
+#: src/Dialogs/Cheatsheet.vala:14
+msgid "Add bookmark"
+msgstr ""
+
+#: src/Dialogs/Cheatsheet.vala:17
+msgid "List bookmarks"
+msgstr ""
+
+#: src/Dialogs/Cheatsheet.vala:20
+msgid "Search"
+msgstr ""
+
+#: src/Dialogs/Cheatsheet.vala:23
+msgid "Open the cheatsheet"
+msgstr ""
+
+#: src/Dialogs/Cheatsheet.vala:80
+msgid "Close"
+msgstr ""
+
+#: src/Views/AddBookmark.vala:8
+msgid "Add new bookmark"
+msgstr ""
+
+#: src/Views/AddBookmark.vala:10
+msgid "Create"
+msgstr ""
+
+#: src/Views/AddBookmark.vala:36 src/Views/EditBookmark.vala:80
+msgid "Fields are invalid"
+msgstr ""
+
+#: src/Views/AddBookmark.vala:36 src/Views/EditBookmark.vala:80
+msgid "Please correctly fill in all the required fields"
+msgstr ""
+
+#: src/Views/AddBookmark.vala:41
+msgid "Bookmark with this name already exists"
+msgstr ""
+
+#: src/Views/AddBookmark.vala:41
+msgid "Please choose a different name"
+msgstr ""
+
+#: src/Views/EditBookmark.vala:8
+msgid "Edit a bookmark"
+msgstr ""
+
+#: src/Views/EditBookmark.vala:12
+msgid "Edit"
+msgstr ""
+
+#: src/Views/EmptyView.vala:9
+msgid "Add some bookmarks"
+msgstr ""
+
+#: src/Views/EmptyView.vala:9
+msgid "Your bookmarks file is empty."
+msgstr ""
+
+#: src/Views/EmptyView.vala:10
+msgid "New bookmark"
+msgstr ""
+
+#: src/Views/EmptyView.vala:10
+msgid "add a new bookmark with host, ip, etc.."
+msgstr ""
+
+#: src/Views/NotFoundView.vala:7
+msgid "Nothing was found"
+msgstr ""
+
+#: src/Views/NotFoundView.vala:7
+msgid "Try searching for something else"
+msgstr ""
+
+#: src/Components/HeaderBar.vala:18
+msgid "Search Bookmarks"
+msgstr ""
+
+#: src/Components/HeaderBar.vala:19
+msgid "Search for bookmarks"
+msgstr ""
+
+#: src/Components/HeaderBar.vala:31
+msgid "Markdown Cheatsheet"
+msgstr ""
+
+#: src/Components/HeaderBar.vala:65
+msgid "Settings"
+msgstr ""
+
+#: src/Components/HeaderBar.vala:70
+msgid "Create a new bookmark"
+msgstr ""
+
+#: src/Components/HeaderBar.vala:77
+msgid "Back"
+msgstr ""
+
+#: src/Components/BookmarkForm.vala:4
+msgid "A bookmark form"
+msgstr ""
+
+#: src/Components/BookmarkForm.vala:6
+msgid "if not set. Host is used"
+msgstr ""
+
+#: src/Components/BookmarkForm.vala:7
+msgid "server1"
+msgstr ""
+
+#: src/Components/BookmarkForm.vala:8
+msgid "127.0.0.1"
+msgstr ""
+
+#: src/Components/BookmarkForm.vala:9
+msgid "james"
+msgstr ""
+
+#: src/Components/BookmarkForm.vala:10
+msgid "80"
+msgstr ""
+
+#: src/Components/BookmarkForm.vala:12
+msgid "ssh bookmark nc %h %p"
+msgstr ""
+
+#: src/Components/BookmarkForm.vala:20
+msgid "Nickname:"
+msgstr ""
+
+#: src/Components/BookmarkForm.vala:21
+msgid "Host:*"
+msgstr ""
+
+#: src/Components/BookmarkForm.vala:22
+msgid "Host name:*"
+msgstr ""
+
+#: src/Components/BookmarkForm.vala:23
+msgid "Username:"
+msgstr ""
+
+#: src/Components/BookmarkForm.vala:24
+msgid "Port:"
+msgstr ""
+
+#: src/Components/BookmarkForm.vala:25
+msgid "Use agent forwarding:"
+msgstr ""
+
+#: src/Components/BookmarkForm.vala:26
+msgid "Proxy command:"
 msgstr ""

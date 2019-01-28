@@ -7,202 +7,202 @@ public class Bookmark : Object {
     private string ip;
     private string user;
     private int port;
-    private string forwardAgent;
-    private string proxyCommand;
+    private string forward_agent;
+    private string proxy_command;
 
-    private int serverAliveInterval;
-    private string logLevel;
-    private string strictHostKeyChecking;
-    private string userKnownHostsFile;
-    private string visualHostKey;
+    private int server_alive_interval;
+    private string log_level;
+    private string strict_host_key_checking;
+    private string user_known_hosts_file;
+    private string visual_host_key;
     private string compression;
 
-    private string localForward;
-    private string remoteForward;
-    private string dynamicForward;
-    private string forwardX11;
+    private string local_forward;
+    private string remote_forward;
+    private string dynamic_forward;
+    private string forward_x11;
 
-    private string identityFile;
-    private string identitiesOnly;
+    private string identity_file;
+    private string identities_only;
 
-    private string controlMaster;
-    private string controlPath;
-    private string controlPersist;
+    private string control_master;
+    private string control_path;
+    private string control_persist;
 
-    public string getNickname(){
+    public string get_nickname () {
         return this.nickname;
     }
 
-    public void setNickname(string nickname){
+    public void set_nickname (string nickname) {
         this.nickname = nickname;
     }
 
-    public string getName(){
+    public string get_name () {
         return this.name;
     }
 
-    public void setName(string name){
-        this.name = name;    
+    public void set_name (string name) {
+        this.name = name;
     }
 
-    public string getIp(){
-        return this.ip;    
+    public string get_ip () {
+        return this.ip;
     }
 
-    public void setIp(string ip){
+    public void set_ip (string ip) {
         this.ip = ip;
     }
-    
-    public string getUser(){
-        return this.user;    
+
+    public string get_user () {
+        return this.user;
     }
 
-    public void setUser(string user){
-        this.user = user;    
+    public void set_user (string user) {
+        this.user = user;
     }
 
-    public int getPort(){
-        return this.port;    
+    public int get_port () {
+        return this.port;
     }
 
-    public void setPort(int port){
-        this.port = port;    
+    public void set_port (int port) {
+        this.port = port;
     }
 
-    public string getForwardAgent(){
-        return this.forwardAgent;    
+    public string get_forward_agent () {
+        return this.forward_agent;
     }
 
-    public void setForwardAgent(string forwardAgent){
-        this.forwardAgent = forwardAgent;    
+    public void set_forward_agent (string forward_agent) {
+        this.forward_agent = forward_agent;
     }
 
-    public string getProxyCommand(){
-        return this.proxyCommand;    
+    public string get_proxy_command () {
+        return this.proxy_command;
     }
 
-    public void setProxyCommand(string proxyCommand){
-        this.proxyCommand = proxyCommand;    
+    public void set_proxy_command (string proxy_command) {
+        this.proxy_command = proxy_command;
     }
 
-    public int getServerAliveInterval(){
-        return this.serverAliveInterval;    
+    public int get_server_alive_interval () {
+        return this.server_alive_interval;
     }
 
-    public void setServerAliveInterval(int serverAliveInterval){
-        this.serverAliveInterval = serverAliveInterval;
+    public void set_server_alive_interval (int server_alive_interval) {
+        this.server_alive_interval = server_alive_interval;
     }
 
-    public string getLogLevel(){
-        return this.logLevel;    
+    public string get_log_level () {
+        return this.log_level;
     }
 
-    public void setLogLevel(string logLevel){
-        this.logLevel = logLevel;    
+    public void set_log_level (string log_level) {
+        this.log_level = log_level;
     }
 
-    public string getStrictHostKeyChecking(){
-        return this.strictHostKeyChecking;    
+    public string get_strict_host_key_checking () {
+        return this.strict_host_key_checking;
     }
 
-    public void setStrictHostKeyChecking(string strictHostKeyChecking){
-        this.strictHostKeyChecking = strictHostKeyChecking;    
+    public void set_strict_host_key_checking (string strict_host_key_checking) {
+        this.strict_host_key_checking = strict_host_key_checking;
     }
 
-    public string getUserKnownHostsFile(){
-        return this.userKnownHostsFile;    
+    public string get_user_known_hosts_file () {
+        return this.user_known_hosts_file;
     }
 
-    public void setUserKnownHostsFile(string userKnownHostsFile){
-        this.userKnownHostsFile = userKnownHostsFile;    
+    public void set_user_known_hosts_file (string user_known_hosts_file) {
+        this.user_known_hosts_file = user_known_hosts_file;
     }
 
-    public string getVisualHostKey(){
-        return this.visualHostKey;    
+    public string get_visual_host_key () {
+        return this.visual_host_key;
     }
 
-    public void setVisualHostKey(string visualHostKey){
-        this.visualHostKey = visualHostKey;    
+    public void set_visual_host_key (string visual_host_key) {
+        this.visual_host_key = visual_host_key;
     }
 
-    public string getCompression(){
-        return this.compression;    
+    public string get_compression () {
+        return this.compression;
     }
 
-    public void setCompression(string compression){
-        this.compression = compression;    
+    public void set_compression (string compression) {
+        this.compression = compression;
     }
 
-    public string getLocalForward(){
-        return this.localForward;    
+    public string get_local_forward () {
+        return this.local_forward;
     }
 
-    public void setLocalForward(string localForward){
-        this.localForward = localForward;    
+    public void set_local_forward (string local_forward) {
+        this.local_forward = local_forward;
     }
 
-    public string getRemoteForward(){
-        return this.remoteForward;    
+    public string get_remote_forward () {
+        return this.remote_forward;
     }
 
-    public void setRemoteForward(string remoteForward){
-        this.remoteForward = remoteForward;    
+    public void set_remote_forward (string remote_forward) {
+        this.remote_forward = remote_forward;
     }
 
-    public string getDynamicForward(){
-        return this.dynamicForward;    
+    public string get_dynamic_forward () {
+        return this.dynamic_forward;
     }
 
-    public void setDynamicForward(string dynamicForward){
-        this.dynamicForward = dynamicForward;    
+    public void set_dynamic_forward (string dynamic_forward) {
+        this.dynamic_forward = dynamic_forward;
     }
 
-    public string getForwardX11(){
-        return this.forwardX11;    
+    public string get_forward_x11 () {
+        return this.forward_x11;
     }
 
-    public void setForwardX11(string forwardX11){
-        this.forwardX11 = forwardX11;    
+    public void set_forward_x11 (string forward_x11) {
+        this.forward_x11 = forward_x11;
     }
 
-    public string getIdentityFile(){
-        return this.identityFile;    
+    public string get_identity_file () {
+        return this.identity_file;
     }
 
-    public void setIdentityFile(string identityFile){
-        this.identityFile = identityFile;    
+    public void set_identity_file (string identity_file) {
+        this.identity_file = identity_file;
     }
 
-    public string getIdentitiesOnly(){
-        return this.identitiesOnly;    
+    public string get_identities_only () {
+        return this.identities_only;
     }
 
-    public void setIdentitiesOnly(string identitiesOnly){
-        this.identitiesOnly = identitiesOnly;
+    public void set_identities_only (string identities_only) {
+        this.identities_only = identities_only;
     }
 
-    public string getControlMaster(){
-        return this.controlMaster;
+    public string get_control_master () {
+        return this.control_master;
     }
 
-    public void setControlMaster(string controlMaster){
-        this.controlMaster = controlMaster;
+    public void set_control_master (string control_master) {
+        this.control_master = control_master;
     }
 
-    public string getControlPath(){
-        return this.controlPath;
+    public string get_control_path () {
+        return this.control_path;
     }
 
-    public void setControlPath(string controlPath){
-        this.controlPath = controlPath;
+    public void set_control_path (string control_path) {
+        this.control_path = control_path;
     }
 
-    public string getControlPersist(){
-        return this.controlPersist;
+    public string get_control_persist () {
+        return this.control_persist;
     }
 
-    public void setControlPersist(string controlPersist){
-        this.controlPersist = controlPersist;
+    public void set_control_persist (string control_persist) {
+        this.control_persist = control_persist;
     }
 }
 }

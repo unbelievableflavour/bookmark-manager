@@ -1,99 +1,99 @@
 namespace BookmarkManager {
-public class EditBookmark : BookmarkForm{
- 
-    private ListBox listBox = ListBox.get_instance();
+public class EditBookmark : BookmarkForm {
 
-    public EditBookmark(){ 
+    private ListBox list_box = ListBox.get_instance ();
 
-        general_header.set_text(_("Edit a bookmark"));
+    public EditBookmark () {
 
-        hostEntry.set_sensitive(false);
+        general_header.set_text (_("Edit a bookmark"));
+
+        host_entry.set_sensitive (false);
 
         var edit_button = new Gtk.Button.with_label (_("Edit"));
         edit_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
         edit_button.clicked.connect (() => {
-           EditBookmarkInFile();
+           edit_bookmarks_in_file ();
         });
 
         button_box.pack_end (edit_button);
     }
 
-    public void loadBookmark(Bookmark bookmark){
-               
-        nicknameEntry.text = "";
-        hostEntry.text = "";
-        hostNameEntry.text = "";
-        portEntry.text = "";
-        userNameEntry.text = "";
-        agentForwardCheckButton.active = false;
-        proxyCommandEntry.text = "";
-        
-        if(bookmark.getNickname() != null){
-            nicknameEntry.text = bookmark.getNickname();
+    public void load_bookmark (Bookmark bookmark) {
+
+        nickname_entry.text = "";
+        host_entry.text = "";
+        host_name_entry.text = "";
+        port_entry.text = "";
+        username_entry.text = "";
+        agent_forward_check_button.active = false;
+        proxy_command_entry.text = "";
+
+        if (bookmark.get_nickname () != null) {
+            nickname_entry.text = bookmark.get_nickname ();
         }
 
-        if(bookmark.getName() != null){
-            hostEntry.text = bookmark.getName();
+        if (bookmark.get_name () != null) {
+            host_entry.text = bookmark.get_name ();
         }
-        if(bookmark.getIp() != null){ 
-            hostNameEntry.text = bookmark.getIp();
-        }
-
-        if(bookmark.getPort() != 0){ 
-            portEntry.text = bookmark.getPort().to_string();  
+        if (bookmark.get_ip () != null) {
+            host_name_entry.text = bookmark.get_ip ();
         }
 
-        if(bookmark.getUser() != null){ 
-            userNameEntry.text = bookmark.getUser();
+        if (bookmark.get_port () != 0) {
+            port_entry.text = bookmark.get_port ().to_string ();
         }
 
-        if(bookmark.getForwardAgent() != null){ 
-            agentForwardCheckButton.active = true;
+        if (bookmark.get_user () != null) {
+            username_entry.text = bookmark.get_user ();
         }
 
-        if(bookmark.getProxyCommand() != null){ 
-            proxyCommandEntry.text = bookmark.getProxyCommand();
+        if (bookmark.get_forward_agent () != null) {
+            agent_forward_check_button.active = true;
+        }
+
+        if (bookmark.get_proxy_command () != null) {
+            proxy_command_entry.text = bookmark.get_proxy_command ();
         }
     }
 
-    public void EditBookmarkInFile(){
-        
-        var bookmarkName = hostEntry.text;
+    public void edit_bookmarks_in_file () {
 
-        var ConfigFileReader = new ConfigFileReader(); 
-        var bookmarks = ConfigFileReader.getBookmarks(); 
+        var bookmark_name = host_entry.text;
 
-        var bookmark = getCorrectBookmarkByName(bookmarkName, bookmarks);
-        bookmark.setNickname(nicknameEntry.text);        
-        bookmark.setName(hostEntry.text);
-        bookmark.setIp(hostNameEntry.text);  
-        bookmark.setUser(userNameEntry.text);  
-        bookmark.setPort(int.parse(portEntry.text));
+        var config_file_reader = new ConfigFileReader ();
+        var bookmarks = config_file_reader.get_bookmarks ();
 
-        if(agentForwardCheckButton.active == true) {
-            bookmark.setForwardAgent("yes");
+        var bookmark = get_correct_bookmark_by_name (bookmark_name, bookmarks);
+        bookmark.set_nickname (nickname_entry.text);
+        bookmark.set_name (host_entry.text);
+        bookmark.set_ip (host_name_entry.text);
+        bookmark.set_user (username_entry.text);
+        bookmark.set_port (int.parse (port_entry.text));
+
+        if (agent_forward_check_button.active == true) {
+            bookmark.set_forward_agent ("yes");
         }
-         
-        bookmark.setProxyCommand(proxyCommandEntry.text);  
 
-        if(isNotValid(bookmark)){
-            new Alert(_("Fields are invalid"), _("Please correctly fill in all the required fields"));
+        bookmark.set_proxy_command (proxy_command_entry.text);
+
+        if (is_not_valid (bookmark)) {
+            new Alert (_("Fields are invalid"), _("Please correctly fill in all the required fields"));
             return;
         }
 
-        var index = getCorrectBookmarkIndex(bookmark, bookmarks);
-        
+        var index = get_correct_bookmark_index (bookmark, bookmarks);
+
         bookmarks[index] = bookmark;
 
-        ConfigFileReader.writeToFile(bookmarks);
+        config_file_reader.write_to_file (bookmarks);
 
-        listBox.getBookmarks("");    
+        list_box.get_bookmarks ("");
     }
 
-    public int getCorrectBookmarkIndex(Bookmark editedBookmark, Bookmark[] bookmarks){
-        var index = 0;           
+    public int get_correct_bookmark_index (Bookmark edited_bookmark, Bookmark[] bookmarks) {
+        var index = 0;
         foreach (Bookmark bookmark in bookmarks) {
-            if(bookmark.getName() == editedBookmark.getName()) {
+            if (bookmark.get_name () == edited_bookmark.get_name ()) {
                 return index;
             }
             index++;
@@ -101,13 +101,13 @@ public class EditBookmark : BookmarkForm{
         return index;
     }
 
-    public Bookmark getCorrectBookmarkByName(string bookmarkName, Bookmark[] bookmarks){           
+    public Bookmark get_correct_bookmark_by_name (string bookmark_name, Bookmark[] bookmarks) {
         foreach (Bookmark bookmark in bookmarks) {
-            if(bookmark.getName() == bookmarkName) {
+            if (bookmark.get_name () == bookmark_name) {
                 return bookmark;
             }
         }
-        return new Bookmark();
+        return new Bookmark ();
     }
 }
 }

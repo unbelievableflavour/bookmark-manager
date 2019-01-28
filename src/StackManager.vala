@@ -14,80 +14,78 @@ public class StackManager : Object {
 
     Gtk.Paned pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
 
-    EditBookmark editBookmarkPage;
+    EditBookmark edit_bookmark_page;
 
-    // Private constructor
-    StackManager() {
+    StackManager () {
         stack = new Gtk.Stack ();
-        stack.get_style_context().add_class("stack-manager");
+        stack.get_style_context ().add_class ("stack-manager");
         stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT;
     }
 
-    // Public constructor
-    public static StackManager get_instance() {
+    public static StackManager get_instance () {
         if (instance == null) {
-            instance = new StackManager();
+            instance = new StackManager ();
         }
         return instance;
     }
 
-    public Gtk.Stack getStack() {
+    public Gtk.Stack get_stack () {
         return this.stack;
     }
 
-    public void loadViews(Gtk.Window window){
+    public void load_views (Gtk.Window window) {
 
-        editBookmarkPage = new EditBookmark();
+        edit_bookmark_page = new EditBookmark ();
 
-        stack.add_named (new EmptyView(), EMPTY_VIEW_ID);
-        stack.add_named (new ListBookmarks(), LIST_VIEW_ID);
-        stack.add_named (new AddBookmark(), ADD_BOOKMARK_VIEW_ID);
-        stack.add_named (new NotFoundView(), NOT_FOUND_VIEW_ID);
-        stack.add_named (editBookmarkPage, EDIT_BOOKMARK_VIEW_ID);
+        stack.add_named (new EmptyView (), EMPTY_VIEW_ID);
+        stack.add_named (new ListBookmarks (), LIST_VIEW_ID);
+        stack.add_named (new AddBookmark (), ADD_BOOKMARK_VIEW_ID);
+        stack.add_named (new NotFoundView (), NOT_FOUND_VIEW_ID);
+        stack.add_named (edit_bookmark_page, EDIT_BOOKMARK_VIEW_ID);
 
         stack.notify["visible-child"].connect (() => {
-            var headerBar = HeaderBar.get_instance();
+            var header_bar = HeaderBar.get_instance ();
 
-            if(stack.get_visible_child_name() == ADD_BOOKMARK_VIEW_ID){
-                headerBar.showReturnButton(true);
-                headerBar.showAddButton(false);
+            if (stack.get_visible_child_name () == ADD_BOOKMARK_VIEW_ID) {
+                header_bar.show_return_button (true);
+                header_bar.show_add_button (false);
             }
 
-            if(stack.get_visible_child_name() == LIST_VIEW_ID){
-                headerBar.searchEntry.sensitive = true;
-                headerBar.showReturnButton(false);
-                headerBar.showAddButton(true);
+            if (stack.get_visible_child_name () == LIST_VIEW_ID) {
+                header_bar.search_entry.sensitive = true;
+                header_bar.show_return_button (false);
+                header_bar.show_add_button (true);
             }
 
-            if(stack.get_visible_child_name() == EMPTY_VIEW_ID){
-                headerBar.searchEntry.sensitive = true;
-                headerBar.showReturnButton(false);
-                headerBar.showAddButton(true);
+            if (stack.get_visible_child_name () == EMPTY_VIEW_ID) {
+                header_bar.search_entry.sensitive = true;
+                header_bar.show_return_button (false);
+                header_bar.show_add_button (true);
             }
 
-            if(stack.get_visible_child_name() == NOT_FOUND_VIEW_ID){
-                headerBar.searchEntry.sensitive = true;
-                headerBar.showReturnButton(false);
-                headerBar.showAddButton(true);
+            if (stack.get_visible_child_name () == NOT_FOUND_VIEW_ID) {
+                header_bar.search_entry.sensitive = true;
+                header_bar.show_return_button (false);
+                header_bar.show_add_button (true);
             }
 
-            if(stack.get_visible_child_name() == EDIT_BOOKMARK_VIEW_ID){
-                headerBar.showReturnButton(true);
-                headerBar.showAddButton(false);
+            if (stack.get_visible_child_name () == EDIT_BOOKMARK_VIEW_ID) {
+                header_bar.show_return_button (true);
+                header_bar.show_add_button (false);
             }
         });
 
-        var pane = createViewWithTerminal();
-        window.add(pane);
+        var pane = create_view_with_terminal ();
+        window.add (pane);
    }
 
-    public Gtk.Paned createViewWithTerminal(){
+    public Gtk.Paned create_view_with_terminal () {
         terminal.expand = true;
 
-        Gtk.ScrolledWindow result_box = new Gtk.ScrolledWindow(null, null);
+        Gtk.ScrolledWindow result_box = new Gtk.ScrolledWindow (null, null);
         result_box.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
         result_box.set_size_request (200,200);
-        result_box.add(stack);
+        result_box.add (stack);
 
         pane.expand = true;
         pane.pack2 (result_box, false, false);
@@ -95,18 +93,18 @@ public class StackManager : Object {
         return pane;
     }
 
-    public void setEditBookmark(Bookmark bookmark){
-        editBookmarkPage.loadBookmark(bookmark);
+    public void set_edit_bookmark (Bookmark bookmark) {
+        edit_bookmark_page.load_bookmark (bookmark);
     }
 
-    public void addATerminal(){
-        Gtk.ScrolledWindow view_box = new Gtk.ScrolledWindow(null, null);
+    public void add_a_terminal () {
+        Gtk.ScrolledWindow view_box = new Gtk.ScrolledWindow (null, null);
         view_box.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
         view_box.set_size_request (700,200);
-        view_box.add(terminal);
+        view_box.add (terminal);
 
         pane.pack1 (view_box, true, false);
-        pane.show_all();
+        pane.show_all ();
     }
 }
 }

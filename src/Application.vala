@@ -1,7 +1,7 @@
 using Granite.Widgets;
 
 namespace BookmarkManager {
-public class App:Granite.Application{
+public class App:Granite.Application {
 
     public static MainWindow window = null;
     public static GLib.Settings settings;
@@ -33,8 +33,8 @@ public class App:Granite.Application{
 
         window.show_all ();
 
-        var listBox = ListBox.get_instance();
-        listBox.getBookmarks("");
+        var list_box = ListBox.get_instance ();
+        list_box.get_bookmarks ("");
     }
 
     private void go_to_last_saved_position (MainWindow main_window) {

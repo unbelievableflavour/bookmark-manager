@@ -1,32 +1,32 @@
 namespace BookmarkManager {
-public class BookmarkForm : Gtk.Grid{
+public class BookmarkForm : Gtk.Grid {
 
     protected HeaderLabel general_header = new HeaderLabel (_("A bookmark form"));
 
-    protected Gtk.Entry nicknameEntry = new BookmarkFormEntry (_("if not set. Host is used"));
-    protected Gtk.Entry hostEntry = new BookmarkFormEntry (_("server1"));
-    protected Gtk.Entry hostNameEntry = new BookmarkFormEntry (_("127.0.0.1"));
-    protected Gtk.Entry userNameEntry = new BookmarkFormEntry (_("james"));
-    protected Gtk.Entry portEntry = new BookmarkFormEntry (_("80"));
-    protected Gtk.CheckButton agentForwardCheckButton = new BookmarkFormCheckButton();
-    protected Gtk.Entry proxyCommandEntry = new BookmarkFormEntry (_("ssh bookmark nc %h %p"));
+    protected Gtk.Entry nickname_entry = new BookmarkFormEntry (_("if not set. Host is used"));
+    protected Gtk.Entry host_entry = new BookmarkFormEntry (_("server1"));
+    protected Gtk.Entry host_name_entry = new BookmarkFormEntry (_("127.0.0.1"));
+    protected Gtk.Entry username_entry = new BookmarkFormEntry (_("james"));
+    protected Gtk.Entry port_entry = new BookmarkFormEntry (_("80"));
+    protected Gtk.CheckButton agent_forward_check_button = new BookmarkFormCheckButton ();
+    protected Gtk.Entry proxy_command_entry = new BookmarkFormEntry (_("ssh bookmark nc %h %p"));
 
     protected Gtk.ButtonBox button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
 
-    public BookmarkForm(){
+    public BookmarkForm () {
 
-        get_style_context().add_class("form-component");
+        get_style_context ().add_class ("form-component");
 
-        var nicknameLabel = new BookmarkFormLabel (_("Nickname:"));
-        var hostLabel = new BookmarkFormLabel (_("Host:*"));
-        var hostNameLabel = new BookmarkFormLabel (_("Host name:*"));
-        var userNameLabel = new BookmarkFormLabel (_("Username:"));
+        var nickname_label = new BookmarkFormLabel (_("Nickname:"));
+        var host_label = new BookmarkFormLabel (_("Host:*"));
+        var hostname_label = new BookmarkFormLabel (_("Host name:*"));
+        var username_label = new BookmarkFormLabel (_("Username:"));
         var portLabel = new BookmarkFormLabel (_("Port:"));
-        var agentForwardLabel = new BookmarkFormLabel (_("Use agent forwarding:"));
-        var proxyCommandLabel = new BookmarkFormLabel (_("Proxy command:"));
+        var agent_forward_label = new BookmarkFormLabel (_("Use agent forwarding:"));
+        var proxy_commandLabel = new BookmarkFormLabel (_("Proxy command:"));
 
         button_box.set_layout (Gtk.ButtonBoxStyle.END);
-        button_box.set_margin_start(12);
+        button_box.set_margin_start (12);
         button_box.margin_bottom = 0;
 
         column_homogeneous = true;
@@ -35,26 +35,26 @@ public class BookmarkForm : Gtk.Grid{
         margin = 12;
 
         attach (general_header, 0, 0, 2, 1);
-        attach (nicknameLabel, 0, 1, 1, 1);
-        attach (nicknameEntry, 1, 1, 1, 1);
-        attach (hostLabel, 0, 2, 1, 1);
-        attach (hostEntry, 1, 2, 1, 1);
-        attach (hostNameLabel, 0, 3, 1, 1);
-        attach (hostNameEntry, 1, 3, 1, 1);
-        attach (userNameLabel, 0, 4, 1, 1);
-        attach (userNameEntry, 1, 4, 1, 1);
+        attach (nickname_label, 0, 1, 1, 1);
+        attach (nickname_entry, 1, 1, 1, 1);
+        attach (host_label, 0, 2, 1, 1);
+        attach (host_entry, 1, 2, 1, 1);
+        attach (hostname_label, 0, 3, 1, 1);
+        attach (host_name_entry, 1, 3, 1, 1);
+        attach (username_label, 0, 4, 1, 1);
+        attach (username_entry, 1, 4, 1, 1);
         attach (portLabel, 0, 5, 1, 1);
-        attach (portEntry, 1, 5, 1, 1);
-        attach (agentForwardLabel, 0, 6, 1, 1);
-        attach (agentForwardCheckButton, 1, 6, 1, 1);
-        attach (proxyCommandLabel, 0, 7, 1, 1);
-        attach (proxyCommandEntry, 1, 7, 1, 1);
+        attach (port_entry, 1, 5, 1, 1);
+        attach (agent_forward_label, 0, 6, 1, 1);
+        attach (agent_forward_check_button, 1, 6, 1, 1);
+        attach (proxy_commandLabel, 0, 7, 1, 1);
+        attach (proxy_command_entry, 1, 7, 1, 1);
 
-        attach (button_box, 1, 8, 1, 1); 
+        attach (button_box, 1, 8, 1, 1);
     }
 
-    public bool isNotValid(Bookmark newBookmark){
-        if(newBookmark.getName() == "" || newBookmark.getIp() == ""){
+    public bool is_not_valid (Bookmark new_bookmark) {
+        if (new_bookmark.get_name () == "" || new_bookmark.get_ip () == "") {
             return true;
         }
         return false;

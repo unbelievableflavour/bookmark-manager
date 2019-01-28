@@ -1,11 +1,11 @@
 using Granite.Widgets;
 
 namespace BookmarkManager {
-public class MainWindow : Gtk.Window{
+public class MainWindow : Gtk.Window {
 
     private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager");
-    private StackManager stackManager = StackManager.get_instance();
-    private HeaderBar headerBar = HeaderBar.get_instance();
+    private StackManager stack_manager = StackManager.get_instance ();
+    private HeaderBar header_bar = HeaderBar.get_instance ();
     private uint configure_id;
 
     public MainWindow (Gtk.Application application) {
@@ -16,52 +16,55 @@ public class MainWindow : Gtk.Window{
 
     construct {
 
-        loadGresources();
+        load_gresources ();
 
-        if(settings.get_string ("sshname") == ""){
+        if (settings.get_string ("sshname") == "") {
            settings.set_string ("sshname", Environment.get_user_name ());
         }
-        if(settings.get_string ("terminalname") == "" || settings.get_string ("terminalname") == "pantheon-terminal"){
+        if (settings.get_string ("terminalname") == "" || settings.get_string ("terminalname") == "pantheon-terminal") {
            settings.set_string ("terminalname", "io.elementary.terminal");
         }
 
-        set_titlebar (headerBar);
-        stackManager.loadViews(this);
-        addShortcuts();
+        set_titlebar (header_bar);
+        stack_manager.load_views (this);
+        add_shortcuts ();
     }
 
-    private void loadGresources(){
+    private void load_gresources () {
         var provider = new Gtk.CssProvider ();
         provider.load_from_resource ("/com/github/bartzaalberg/bookmark-manager/application.css");
-        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        Gtk.StyleContext.add_provider_for_screen (
+            Gdk.Screen.get_default (),
+            provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        );
     }
 
-    private void addShortcuts(){
+    private void add_shortcuts () {
         key_press_event.connect ((e) => {
             switch (e.keyval) {
                 case Gdk.Key.a:
                   if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-                    stackManager.getStack().visible_child_name = "add-bookmark-view";
+                    stack_manager.get_stack ().visible_child_name = "add-bookmark-view";
                   }
                   break;
                 case Gdk.Key.l:
                   if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-                    stackManager.getStack().visible_child_name = "list-view";
+                    stack_manager.get_stack ().visible_child_name = "list-view";
                   }
                   break;
                 case Gdk.Key.h:
                   if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-                    new Cheatsheet();
+                    new Cheatsheet ();
                   }
                   break;
                 case Gdk.Key.f:
                   if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-                    headerBar.searchEntry.grab_focus();
+                    header_bar.search_entry.grab_focus ();
                   }
                   break;
                 case Gdk.Key.q:
                   if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-                    this.destroy();
+                    this.destroy ();
                   }
                   break;
             }

@@ -1,116 +1,113 @@
 namespace BookmarkManager {
-public class ConfigFileReader : Object{
+public class ConfigFileReader : Object {
 
-   public Bookmark[] getBookmarks (){
+    public Bookmark[] get_bookmarks () {
         Bookmark[] bookmarks = {};
 
-        var file = getSshConfigFile();
-        
+        var file = get_ssh_config_file ();
+
         try {
-            // Open file for reading and wrap returned FileInputStream into a
-            // DataInputStream, so we can read line by line
             var lines = new DataInputStream (file.read ());
             string line;
 
-            // Read lines until end of file (null) is reached
             while ((line = lines.read_line (null)) != null) {
 
-                var splittedLine = line.split(" ");
-                string variableOnLine = getfilteredVariable(splittedLine);
-                string valueOnLine = getfilteredValue(splittedLine);
-                
-                if(variableOnLine == null){continue;}
- 
-                if(inArray(variableOnLine, { "host", "Host" })){
-                    bookmarks += new Bookmark();
-                    bookmarks[bookmarks.length - 1].setName(valueOnLine);
+                var splitted_line = line.split (" ");
+                string variable_on_line = get_filtered_variable (splitted_line);
+                string value_on_line = get_filtered_value (splitted_line);
+
+                if (variable_on_line == null) {continue;}
+
+                if (in_array (variable_on_line, { "host", "Host" })) {
+                    bookmarks += new Bookmark ();
+                    bookmarks[bookmarks.length - 1].set_name (value_on_line);
                     continue;
                 }
-                if(bookmarks.length == 0){
+                if (bookmarks.length == 0) {
                     continue;
                 }
-                if(inArray(variableOnLine, { "#nickname", "#Nickname" })){
-                    bookmarks[bookmarks.length - 1].setNickname(valueOnLine);
+                if (in_array (variable_on_line, { "#nickname", "#Nickname" })) {
+                    bookmarks[bookmarks.length - 1].set_nickname (value_on_line);
                     continue;
                 }
-                if(inArray(variableOnLine, { "hostName", "HostName" })){
-                    bookmarks[bookmarks.length - 1].setIp(valueOnLine);
+                if (in_array (variable_on_line, { "hostName", "HostName" })) {
+                    bookmarks[bookmarks.length - 1].set_ip (value_on_line);
                     continue;
                 }
-                if(inArray(variableOnLine, { "port", "Port" })){
-                    bookmarks[bookmarks.length - 1].setPort(int.parse(valueOnLine));
+                if (in_array (variable_on_line, { "port", "Port" })) {
+                    bookmarks[bookmarks.length - 1].set_port (int.parse (value_on_line));
                     continue;
                 }
-                if(inArray(variableOnLine, { "user", "User" })){
-                    bookmarks[bookmarks.length - 1].setUser(valueOnLine);
+                if (in_array (variable_on_line, { "user", "User" })) {
+                    bookmarks[bookmarks.length - 1].set_user (value_on_line);
                     continue;
                 }
-                if(inArray(variableOnLine, { "forwardAgent", "ForwardAgent" })){
-                    bookmarks[bookmarks.length - 1].setForwardAgent(valueOnLine);
+                if (in_array (variable_on_line, { "forward_agent", "ForwardAgent" })) {
+                    bookmarks[bookmarks.length - 1].set_forward_agent (value_on_line);
                     continue;
                 }
-                if(inArray(variableOnLine, { "proxyCommand", "ProxyCommand" })){
-                    bookmarks[bookmarks.length - 1].setProxyCommand(valueOnLine);
+                if (in_array (variable_on_line, { "proxy_command", "ProxyCommand" })) {
+                    bookmarks[bookmarks.length - 1].set_proxy_command (value_on_line);
                     continue;
                 }
-                if(inArray(variableOnLine, { "serverAliveInterval", "ServerAliveInterval" })){
-                    bookmarks[bookmarks.length - 1].setServerAliveInterval(int.parse(valueOnLine));
+                if (in_array (variable_on_line, { "server_alive_interval", "ServerAliveInterval" })) {
+                    bookmarks[bookmarks.length - 1].set_server_alive_interval (int.parse (value_on_line));
                     continue;
                 }
-                if(inArray(variableOnLine, { "logLevel", "LogLevel" })){
-                    bookmarks[bookmarks.length - 1].setLogLevel(valueOnLine);
+                if (in_array (variable_on_line, { "log_level", "LogLevel" })) {
+                    bookmarks[bookmarks.length - 1].set_log_level (value_on_line);
                     continue;
                 }
-                if(inArray(variableOnLine, { "strictHostKeyChecking", "StrictHostKeyChecking" })){
-                    bookmarks[bookmarks.length - 1].setStrictHostKeyChecking(valueOnLine);
+                if (in_array (variable_on_line, { "strict_host_key_checking", "StrictHostKeyChecking" })) {
+                    bookmarks[bookmarks.length - 1].set_strict_host_key_checking (value_on_line);
                     continue;
                 }
-                if(inArray(variableOnLine, { "userKnownHostsFile", "UserKnownHostsFile" })){
-                    bookmarks[bookmarks.length - 1].setUserKnownHostsFile(valueOnLine);
+                if (in_array (variable_on_line, { "user_known_hosts_file", "UserKnownHostsFile" })) {
+                    bookmarks[bookmarks.length - 1].set_user_known_hosts_file (value_on_line);
                     continue;
                 }
-                if(inArray(variableOnLine, { "visualHostKey", "VisualHostKey" })){
-                    bookmarks[bookmarks.length - 1].setVisualHostKey(valueOnLine);
+                if (in_array (variable_on_line, { "visual_host_key", "VisualHostKey" })) {
+                    bookmarks[bookmarks.length - 1].set_visual_host_key (value_on_line);
                     continue;
                 }
-                if(inArray(variableOnLine, { "compression", "Compression" })){
-                    bookmarks[bookmarks.length - 1].setCompression(valueOnLine);
+                if (in_array (variable_on_line, { "compression", "Compression" })) {
+                    bookmarks[bookmarks.length - 1].set_compression (value_on_line);
                     continue;
                 }
-                if(inArray(variableOnLine, { "localForward", "LocalForward" })){
-                    bookmarks[bookmarks.length - 1].setLocalForward(valueOnLine);
+                if (in_array (variable_on_line, { "local_forward", "LocalForward" })) {
+                    bookmarks[bookmarks.length - 1].set_local_forward (value_on_line);
                     continue;
                 }
-                if(inArray(variableOnLine, { "remoteForward", "RemoteForward" })){
-                    bookmarks[bookmarks.length - 1].setRemoteForward(valueOnLine);
+                if (in_array (variable_on_line, { "remote_forward", "RemoteForward" })) {
+                    bookmarks[bookmarks.length - 1].set_remote_forward (value_on_line);
                     continue;
                 }
-                if(inArray(variableOnLine, { "dynamicForward", "DynamicForward" })){
-                    bookmarks[bookmarks.length - 1].setDynamicForward(valueOnLine);
+                if (in_array (variable_on_line, { "dynamic_forward", "DynamicForward" })) {
+                    bookmarks[bookmarks.length - 1].set_dynamic_forward (value_on_line);
                     continue;
                 }
-                if(inArray(variableOnLine, { "forwardX11", "ForwardX11" })){
-                    bookmarks[bookmarks.length - 1].setForwardX11(valueOnLine);
-                    continue;                
-                }
-                if(inArray(variableOnLine, { "identityFile", "IdentityFile" })){
-                    bookmarks[bookmarks.length - 1].setIdentityFile(valueOnLine);
-                    continue;                
-                }
-                if(inArray(variableOnLine, { "identitiesOnly", "IdentitiesOnly" })){
-                    bookmarks[bookmarks.length - 1].setIdentitiesOnly(valueOnLine);
+                if (in_array (variable_on_line, { "forward_x11", "ForwardX11" })) {
+                    bookmarks[bookmarks.length - 1].set_forward_x11 (value_on_line);
                     continue;
                 }
-                if(inArray(variableOnLine, { "controlMaster", "ControlMaster" })){
-                    bookmarks[bookmarks.length - 1].setControlMaster(valueOnLine);
+                if (in_array (variable_on_line, { "identity_file", "IdentityFile" })) {
+                    bookmarks[bookmarks.length - 1].set_identity_file (value_on_line);
                     continue;
                 }
-                if(inArray(variableOnLine, { "controlPath", "ControlPath" })){
-                    bookmarks[bookmarks.length - 1].setControlPath(valueOnLine);
+                if (in_array (variable_on_line, { "identities_only", "IdentitiesOnly" })) {
+                    bookmarks[bookmarks.length - 1].set_identities_only (value_on_line);
                     continue;
                 }
-                if(inArray(variableOnLine, { "controlPersist", "ControlPersist" })){
-                    bookmarks[bookmarks.length - 1].setControlPersist(valueOnLine);
+                if (in_array (variable_on_line, { "control_master", "ControlMaster" })) {
+                    bookmarks[bookmarks.length - 1].set_control_master (value_on_line);
+                    continue;
+                }
+                if (in_array (variable_on_line, { "control_path", "ControlPath" })) {
+                    bookmarks[bookmarks.length - 1].set_control_path (value_on_line);
+                    continue;
+                }
+                if (in_array (variable_on_line, { "control_persist", "ControlPersist" })) {
+                    bookmarks[bookmarks.length - 1].set_control_persist (value_on_line);
                     continue;
                 }
             }
@@ -122,36 +119,33 @@ public class ConfigFileReader : Object{
         }
     }
 
-    bool inArray ( string needle, string[] haystack )  {
-        if (needle in haystack) { 
-            return true; 
+    bool in_array ( string needle, string[] haystack ) {
+        if (needle in haystack) {
+            return true;
         }
         return false;
     }
 
 
-    public string[] getOtherSettings (){
+    public string[] get_other_settings () {
         string[] settings = new string[0];
 
-        var file = getSshConfigFile();
-        
+        var file = get_ssh_config_file ();
+
         try {
-            // Open file for reading and wrap returned FileInputStream into a
-            // DataInputStream, so we can read line by line
             var lines = new DataInputStream (file.read ());
             string line;
 
-            // Read lines until end of file (null) is reached
             while ((line = lines.read_line (null)) != null) {
-                
-                var splittedLine = line.split(" ");
-                string variableOnLine = getfilteredVariable(splittedLine);
 
-                if(line == "" || variableOnLine == null){
+                var splitted_line = line.split (" ");
+                string variable_on_line = get_filtered_variable (splitted_line);
+
+                if (line == "" || variable_on_line == null) {
                     continue;
                 }
 
-                if(inArray(variableOnLine, { "host", "Host" })){
+                if (in_array (variable_on_line, { "host", "Host" })) {
                     break;
                 }
 
@@ -165,30 +159,30 @@ public class ConfigFileReader : Object{
         }
     }
 
-    public string getfilteredVariable(string[] splittedLine){
-        foreach (string part in splittedLine) {
-            if(part == ""){
+    public string get_filtered_variable (string[] splitted_line) {
+        foreach (string part in splitted_line) {
+            if (part == "") {
                 continue;
             }
             return part;
         }
-        return splittedLine[0];
+        return splitted_line[0];
     }
 
-    public string getfilteredValue(string[] splittedLine){
+    public string get_filtered_value (string[] splitted_line) {
         var elementsCount = 0;
         string filteredValue = "";
-        foreach (string part in splittedLine) {
-            if(part == ""){
-                continue;  
-            }          
-            
-            if(elementsCount == 0 ) {
+        foreach (string part in splitted_line) {
+            if (part == "") {
+                continue;
+            }
+
+            if (elementsCount == 0 ) {
                 elementsCount++;
                 continue;
             }
 
-            if(elementsCount == 1 ) {
+            if (elementsCount == 1 ) {
                 filteredValue += part;
                 elementsCount++;
                 continue;
@@ -199,7 +193,7 @@ public class ConfigFileReader : Object{
         return filteredValue;
     }
 
-    private File getSshConfigFile(){
+    private File get_ssh_config_file () {
         string path = Environment.get_home_dir ();
 
         var sshFolder = File.new_for_path (path + "/.ssh/");
@@ -215,7 +209,7 @@ public class ConfigFileReader : Object{
         if (!file.query_exists ()) {
             try {
                 file.create (FileCreateFlags.REPLACE_DESTINATION, null);
-                getSshConfigFile();
+                get_ssh_config_file ();
             } catch (Error e) {
                 error ("%s", e.message);
             }
@@ -233,19 +227,19 @@ public class ConfigFileReader : Object{
         return file;
     }
 
-    public void writeToFile(Bookmark[] bookmarks){
-        var file = getSshConfigFile();
+    public void write_to_file (Bookmark[] bookmarks) {
+        var file = get_ssh_config_file ();
 
         try {
-            if(file.query_exists() == true){
-                var otherSettings = getOtherSettings();
-                string bookmarksRaw = convertBookmarksToString(bookmarks);
-                var otherSettingsRaw = convertOtherSettingsToString(otherSettings);
+            if (file.query_exists () == true) {
+                var otherSettings = get_other_settings ();
+                string bookmarksRaw = convert_bookmarks_to_string (bookmarks);
+                var otherSettingsRaw = convert_other_settings_to_string (otherSettings);
 
-                file.delete(null);
+                file.delete (null);
                 FileOutputStream fos = file.create (FileCreateFlags.REPLACE_DESTINATION, null);
                 DataOutputStream dos = new DataOutputStream (fos);
-                
+
                 dos.put_string (otherSettingsRaw + bookmarksRaw, null);
             }
         } catch (Error e) {
@@ -253,9 +247,9 @@ public class ConfigFileReader : Object{
         }
     }
 
-    private string convertOtherSettingsToString(string[] settings){
+    private string convert_other_settings_to_string (string[] settings) {
         string rawSettingsString = "";
-        
+
         foreach (string setting in settings) {
             string rawSetting = setting + "\n";
             rawSettingsString += rawSetting;
@@ -265,106 +259,106 @@ public class ConfigFileReader : Object{
         return rawSettingsString;
     }
 
-    private string convertBookmarksToString(Bookmark[] bookmarks){
-        string rawBookmarksString = "";
-        
-        foreach (Bookmark bookmark in bookmarks) { 
-            string rawBookmark = convertBookmarktoString(bookmark);
-            rawBookmarksString += rawBookmark;
+    private string convert_bookmarks_to_string (Bookmark[] bookmarks) {
+        string raw_bookmarksString = "";
+
+        foreach (Bookmark bookmark in bookmarks) {
+            string raw_bookmark = convert_bookmark_to_string (bookmark);
+            raw_bookmarksString += raw_bookmark;
         }
-        
-        return rawBookmarksString;
+
+        return raw_bookmarksString;
     }
 
-    private string convertBookmarktoString(Bookmark bookmark){
-        string rawBookmark = "Host " + bookmark.getName(); 
+    private string convert_bookmark_to_string (Bookmark bookmark) {
+        string raw_bookmark = "Host " + bookmark.get_name ();
 
-        if(bookmark.getNickname() != null && bookmark.getNickname() != ""){ 
-            rawBookmark += "\n    #nickname " + bookmark.getNickname();
+        if (bookmark.get_nickname () != null && bookmark.get_nickname () != "") {
+            raw_bookmark += "\n    #nickname " + bookmark.get_nickname ();
         }
 
-        if(bookmark.getIp() != null){ 
-            rawBookmark += "\n    HostName " + bookmark.getIp().to_string();
+        if (bookmark.get_ip () != null) {
+            raw_bookmark += "\n    HostName " + bookmark.get_ip ().to_string ();
         }
 
-        if(bookmark.getPort() != 0){ 
-            rawBookmark += "\n    Port " + bookmark.getPort().to_string();
+        if (bookmark.get_port () != 0) {
+            raw_bookmark += "\n    Port " + bookmark.get_port ().to_string ();
         }
 
-        if(bookmark.getUser() != null && bookmark.getUser() != ""){ 
-            rawBookmark += "\n    User " + bookmark.getUser();
+        if (bookmark.get_user () != null && bookmark.get_user () != "") {
+            raw_bookmark += "\n    User " + bookmark.get_user ();
         }
 
-        if(bookmark.getForwardAgent() != null){ 
-            rawBookmark += "\n    ForwardAgent " + bookmark.getForwardAgent();
+        if (bookmark.get_forward_agent () != null) {
+            raw_bookmark += "\n    ForwardAgent " + bookmark.get_forward_agent ();
         }
 
-        if(bookmark.getProxyCommand() != null && bookmark.getProxyCommand() != ""){ 
-            rawBookmark += "\n    ProxyCommand " + bookmark.getProxyCommand();
+        if (bookmark.get_proxy_command () != null && bookmark.get_proxy_command () != "") {
+            raw_bookmark += "\n    ProxyCommand " + bookmark.get_proxy_command ();
         }
 
-        if(bookmark.getServerAliveInterval() != 0){ 
-            rawBookmark += "\n    ServerAliveInterval " + bookmark.getServerAliveInterval().to_string();
+        if (bookmark.get_server_alive_interval () != 0) {
+            raw_bookmark += "\n    ServerAliveInterval " + bookmark.get_server_alive_interval ().to_string ();
         }
 
-        if(bookmark.getLogLevel() != null && bookmark.getLogLevel() != ""){ 
-            rawBookmark += "\n    LogLevel " + bookmark.getLogLevel();
+        if (bookmark.get_log_level () != null && bookmark.get_log_level () != "") {
+            raw_bookmark += "\n    LogLevel " + bookmark.get_log_level ();
         }
 
-        if(bookmark.getStrictHostKeyChecking() != null && bookmark.getStrictHostKeyChecking() != ""){ 
-            rawBookmark += "\n    StrictHostKeyChecking " + bookmark.getStrictHostKeyChecking();
+        if (bookmark.get_strict_host_key_checking () != null && bookmark.get_strict_host_key_checking () != "") {
+            raw_bookmark += "\n    StrictHostKeyChecking " + bookmark.get_strict_host_key_checking ();
         }
 
-        if(bookmark.getUserKnownHostsFile() != null && bookmark.getUserKnownHostsFile() != ""){ 
-            rawBookmark += "\n    UserKnownHostsFile " + bookmark.getUserKnownHostsFile();
+        if (bookmark.get_user_known_hosts_file () != null && bookmark.get_user_known_hosts_file () != "") {
+            raw_bookmark += "\n    UserKnownHostsFile " + bookmark.get_user_known_hosts_file ();
         }
 
-        if(bookmark.getVisualHostKey() != null && bookmark.getVisualHostKey() != ""){ 
-            rawBookmark += "\n    VisualHostKey " + bookmark.getVisualHostKey();
+        if (bookmark.get_visual_host_key () != null && bookmark.get_visual_host_key () != "") {
+            raw_bookmark += "\n    VisualHostKey " + bookmark.get_visual_host_key ();
         }
 
-        if(bookmark.getCompression() != null && bookmark.getCompression() != ""){ 
-            rawBookmark += "\n    Compression " + bookmark.getCompression();
+        if (bookmark.get_compression () != null && bookmark.get_compression () != "") {
+            raw_bookmark += "\n    Compression " + bookmark.get_compression ();
         }
 
-        if(bookmark.getLocalForward() != null && bookmark.getLocalForward() != ""){ 
-            rawBookmark += "\n    LocalForward " + bookmark.getLocalForward();
+        if (bookmark.get_local_forward () != null && bookmark.get_local_forward () != "") {
+            raw_bookmark += "\n    LocalForward " + bookmark.get_local_forward ();
         }
 
-        if(bookmark.getRemoteForward() != null && bookmark.getRemoteForward() != ""){ 
-            rawBookmark += "\n    RemoteForward " + bookmark.getRemoteForward();
+        if (bookmark.get_remote_forward () != null && bookmark.get_remote_forward () != "") {
+            raw_bookmark += "\n    RemoteForward " + bookmark.get_remote_forward ();
         }
 
-        if(bookmark.getDynamicForward() != null && bookmark.getDynamicForward() != ""){ 
-            rawBookmark += "\n    DynamicForward " + bookmark.getDynamicForward();
+        if (bookmark.get_dynamic_forward () != null && bookmark.get_dynamic_forward () != "") {
+            raw_bookmark += "\n    DynamicForward " + bookmark.get_dynamic_forward ();
         }
 
-        if(bookmark.getForwardX11() != null && bookmark.getForwardX11() != ""){ 
-            rawBookmark += "\n    ForwardX11 " + bookmark.getForwardX11();
+        if (bookmark.get_forward_x11 () != null && bookmark.get_forward_x11 () != "") {
+            raw_bookmark += "\n    ForwardX11 " + bookmark.get_forward_x11 ();
         }
 
-        if(bookmark.getIdentityFile() != null && bookmark.getIdentityFile() != ""){ 
-            rawBookmark += "\n    IdentityFile " + bookmark.getIdentityFile();
+        if (bookmark.get_identity_file () != null && bookmark.get_identity_file () != "") {
+            raw_bookmark += "\n    IdentityFile " + bookmark.get_identity_file ();
         }
 
-        if(bookmark.getIdentitiesOnly() != null && bookmark.getIdentitiesOnly() != ""){ 
-            rawBookmark += "\n    IdentitiesOnly " + bookmark.getIdentitiesOnly();
+        if (bookmark.get_identities_only () != null && bookmark.get_identities_only () != "") {
+            raw_bookmark += "\n    IdentitiesOnly " + bookmark.get_identities_only ();
         }
 
-        if(bookmark.getControlMaster() != null && bookmark.getControlMaster() != ""){ 
-            rawBookmark += "\n    ControlMaster " + bookmark.getControlMaster();
+        if (bookmark.get_control_master () != null && bookmark.get_control_master () != "") {
+            raw_bookmark += "\n    ControlMaster " + bookmark.get_control_master ();
         }
 
-        if(bookmark.getControlPath() != null && bookmark.getControlPath() != ""){ 
-            rawBookmark += "\n    ControlPath " + bookmark.getControlPath();
+        if (bookmark.get_control_path () != null && bookmark.get_control_path () != "") {
+            raw_bookmark += "\n    ControlPath " + bookmark.get_control_path ();
         }
 
-        if(bookmark.getControlPersist() != null && bookmark.getControlPersist() != ""){ 
-            rawBookmark += "\n    ControlPersist " + bookmark.getControlPersist();
+        if (bookmark.get_control_persist () != null && bookmark.get_control_persist () != "") {
+            raw_bookmark += "\n    ControlPersist " + bookmark.get_control_persist ();
         }
 
-        rawBookmark += "\n\n";
-        return rawBookmark;
+        raw_bookmark += "\n\n";
+        return raw_bookmark;
     }
 }
 }

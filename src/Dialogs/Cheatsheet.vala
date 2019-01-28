@@ -1,9 +1,9 @@
 namespace BookmarkManager {
 public class Cheatsheet : Gtk.Dialog {
-  
+
     private HeaderLabel general_header = new HeaderLabel (_("Cheatsheet"));
 
-    public Cheatsheet(){
+    public Cheatsheet () {
         title = _("Cheatsheet");
         resizable = false;
         deletable = false;
@@ -11,19 +11,19 @@ public class Cheatsheet : Gtk.Dialog {
         Gtk.Label[] labels = {};
         Gtk.Label[] shortcuts = {};
 
-        labels += generateLabel (_("Add bookmark"));
-        shortcuts += generateEntry ("ctrl + a");
+        labels += generate_label (_("Add bookmark"));
+        shortcuts += generate_entry ("ctrl + a");
 
-        labels += generateLabel (_("List bookmarks"));
-        shortcuts += generateEntry ("ctrl + l");
+        labels += generate_label (_("List bookmarks"));
+        shortcuts += generate_entry ("ctrl + l");
 
-        labels += generateLabel (_("Search"));
-        shortcuts += generateEntry ("ctrl + f");
+        labels += generate_label (_("Search"));
+        shortcuts += generate_entry ("ctrl + f");
 
-        labels += generateLabel (_("Open the cheatsheet"));
-        shortcuts += generateEntry ("ctrl + h");
-        
-        var close_button = generateCloseButton();
+        labels += generate_label (_("Open the cheatsheet"));
+        shortcuts += generate_entry ("ctrl + h");
+
+        var close_button = generate_close_button ();
 
         var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
         button_box.set_layout (Gtk.ButtonBoxStyle.END);
@@ -31,17 +31,17 @@ public class Cheatsheet : Gtk.Dialog {
         button_box.margin = 12;
         button_box.margin_bottom = 0;
 
-        var cheatsheet_grid = generateGrid(shortcuts, labels);
+        var cheatsheet_grid = generate_grid (shortcuts, labels);
 
         var main_grid = new Gtk.Grid ();
         main_grid.attach (cheatsheet_grid, 0, 0, 1, 1);
         main_grid.attach (button_box, 0, 1, 1, 1);
-        
+
         get_content_area ().add (main_grid);
         show_all ();
     }
 
-    public Gtk.Grid generateGrid(Gtk.Label[] shortcuts, Gtk.Label[] labels){
+    public Gtk.Grid generate_grid (Gtk.Label[] shortcuts, Gtk.Label[] labels) {
         var grid = new Gtk.Grid ();
         grid.row_spacing = 6;
         grid.column_spacing = 12;
@@ -51,7 +51,7 @@ public class Cheatsheet : Gtk.Dialog {
         var gridPosition = 1;
         var index = 0;
 
-        foreach(Gtk.Label shortcut in shortcuts){
+        foreach (Gtk.Label shortcut in shortcuts) {
             grid.attach (labels[index], 0, gridPosition, 1, 1);
             grid.attach (shortcuts[index], 1, gridPosition, 1, 1);
 
@@ -62,21 +62,21 @@ public class Cheatsheet : Gtk.Dialog {
         return grid;
     }
 
-    public Gtk.Label generateLabel (string labelText){
-        var label = new Gtk.Label (labelText);
+    public Gtk.Label generate_label (string label_text) {
+        var label = new Gtk.Label (label_text);
         label.halign = Gtk.Align.START;
 
         return label;
     }
-    
-    public Gtk.Label generateEntry (string entryText){
+
+    public Gtk.Label generate_entry (string entry_text) {
         var entry = new Gtk.Label (null);
-        entry.set_markup("<b>" + entryText + "</b>");
+        entry.set_markup ("<b>" + entry_text + "</b>");
 
         return entry;
     }
-    
-    public Gtk.Button generateCloseButton(){
+
+    public Gtk.Button generate_close_button () {
         var close_button = new Gtk.Button.with_label (_("Close"));
         close_button.margin_right = 6;
         close_button.clicked.connect (() => {

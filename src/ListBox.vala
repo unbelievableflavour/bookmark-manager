@@ -1,74 +1,74 @@
 using Granite.Widgets;
 
 namespace BookmarkManager {
-public class ListBox : Gtk.ListBox{
+public class ListBox : Gtk.ListBox {
 
     static ListBox? instance;
 
-    private ConfigFileReader configFileReader = new ConfigFileReader ();
-    private StackManager stackManager = StackManager.get_instance();
+    private ConfigFileReader config_file_reader = new ConfigFileReader ();
+    private StackManager stack_manager = StackManager.get_instance ();
 
-    ListBox() {
+    ListBox () {
     }
 
-    public static ListBox get_instance() {
+    public static ListBox get_instance () {
         if (instance == null) {
-            instance = new ListBox();
+            instance = new ListBox ();
         }
         return instance;
     }
 
-    public void emptyList(){
+    public void empty_list () {
         this.foreach ((ListBoxRow) => {
-            this.remove(ListBoxRow);
+            this.remove (ListBoxRow);
         });
     }
 
-    public void getBookmarks(string searchWord = ""){
-        emptyList();
+    public void get_bookmarks (string search_word = "") {
+        empty_list ();
 
-        stackManager.getStack().visible_child_name = "list-view";
+        stack_manager.get_stack ().visible_child_name = "list-view";
 
-        var bookmarks = configFileReader.getBookmarks();
+        var bookmarks = config_file_reader.get_bookmarks ();
 
-        if(listisEmpty(bookmarks)) {
-            HeaderBar.get_instance().searchEntry.sensitive = false;
-            stackManager.getStack().visible_child_name = "empty-view";
+        if (list_is_empty (bookmarks)) {
+            HeaderBar.get_instance ().search_entry.sensitive = false;
+            stack_manager.get_stack ().visible_child_name = "empty-view";
             return;
         }
 
-        if(searchWordDoesntMatchAnyInList(searchWord, bookmarks)) {
-            stackManager.getStack().visible_child_name = "not-found-view";
+        if (search_word_doesnt_match_any_in_list (search_word, bookmarks)) {
+            stack_manager.get_stack ().visible_child_name = "not-found-view";
             return;
         }
 
         foreach (Bookmark bookmark in bookmarks) {
-            if(searchWord == ""){
+            if (search_word == "") {
                 add (new ListBoxRow (bookmark));
                 continue;
             }
 
-            if(searchWord in bookmark.getName()){
+            if (search_word in bookmark.get_name ()) {
                 add (new ListBoxRow (bookmark));
             }
         }
 
-        show_all();
+        show_all ();
     }
 
-    private bool listisEmpty(Bookmark[] bookmarks){
+    private bool list_is_empty (Bookmark[] bookmarks) {
         return bookmarks.length == 0;
     }
 
-    private bool searchWordDoesntMatchAnyInList(string searchWord, Bookmark[] bookmarks){
+    private bool search_word_doesnt_match_any_in_list (string search_word, Bookmark[] bookmarks) {
         int matchCount = 0;
 
-        if(searchWord == ""){
+        if (search_word == "") {
             return false;
         }
 
         foreach (Bookmark bookmark in bookmarks) {
-            if(searchWord in bookmark.getName()){
+            if (search_word in bookmark.get_name ()) {
                 matchCount++;
             }
         }

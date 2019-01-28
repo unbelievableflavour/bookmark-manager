@@ -1,30 +1,30 @@
 public static int main (string[] args) {
 
-  string homeDir = Environment.get_home_dir ();
+    string home_dir = Environment.get_home_dir ();
 
-  // Create the variables for the process execution
-  string[] spawnArguments = {"pkexec", "env", "HOME=" + homeDir, "com.github.bartzaalberg.bookmark-manager-quicklist"};
-  string[] spawnEnvironment = Environ.get ();
-  string spawnStdOut;
-  string spawnStdError;
-  int spawnExitStatus;
+    string[] spawn_arguments = {
+        "pkexec",
+        "env",
+        "HOME=" + home_dir,
+        "com.github.bartzaalberg.bookmark-manager-quicklist"
+    };
+    string[] spawn_environments = Environ.get ();
+    string spawn_std_out;
+    string spawn_std_error;
+    int spawn_exit_status;
 
-  try {
-    // Spawn the process synchronizedly
-    // We do it synchronizedly because since we are just launching another process and such is the whole
-    // purpose of this program, we don't want to exit this, the caller, since that will cause our spawned process to become a zombie.
-    
-    Process.spawn_sync ("/", spawnArguments, spawnEnvironment, SpawnFlags.SEARCH_PATH, null, out spawnStdOut, out spawnStdError, out spawnExitStatus);
+    try {
+    Process.spawn_sync (
+        "/", spawn_arguments, spawn_environments, SpawnFlags.SEARCH_PATH, null,
+         out spawn_std_out, out spawn_std_error, out spawn_exit_status
+     );
 
-    // Print the output if any
-    stdout.printf ("Output: %s\n", spawnStdOut);
-    // Print the error if any
-    stderr.printf ("There was an error in the spawned process: %s\n", spawnStdError);
-    // Print the exit status
-    stderr.printf ("Exit status was: %d\n", spawnExitStatus);
-  } catch (SpawnError spawnCaughtError) {
+    stdout.printf ("Output: %s\n", spawn_std_out);
+    stderr.printf ("There was an error in the spawned process: %s\n", spawn_std_error);
+    stderr.printf ("Exit status was: %d\n", spawn_exit_status);
+    } catch (SpawnError spawnCaughtError) {
     stderr.printf ("There was an error spawining the process. Details: %s", spawnCaughtError.message);
-  }
+    }
 
-  return 0;
+    return 0;
 }

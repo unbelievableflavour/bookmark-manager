@@ -1,0 +1,84 @@
+# French translations for extra package.
+# Copyright (C) 2019 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.bartzaalberg.alias package.
+# NathanBnm, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-24 19:02+0100\n"
+"PO-Revision-Date: 2019-01-28 22:24+0100\n"
+"Last-Translator: NathanBnm\n"
+"Language-Team: Français>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:6
+#: data/com.github.bartzaalberg.bookmark-manager.desktop.in:3
+msgid "Bookmark Manager"
+msgstr "Bookmark Manager"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:7
+#: data/com.github.bartzaalberg.bookmark-manager.desktop.in:4
+msgid "Manage your SSH bookmarks"
+msgstr "Gérez vos signets SSH"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:9
+msgid ""
+"A simple tool to manage your SSH bookmarks from the .ssh/config file. "
+"Add, edit, and remove straight from the application. Start in a terminal inside the app, "
+"or use your own favorite terminal. "
+"You can even add your bookmarks to your app launcher as shortcuts!"
+msgstr ""
+"Un outil simple pour gérer vos signets SSH à partir du fichier .ssh/config. "
+"Ajoutez, modifiez et supprimez directement depuis l'application. Commencez dans un terminal dans l'application, "
+"ou utilisez votre propre terminal préféré. "
+"Vous pouvez même ajouter vos signets à votre lanceur d'application comme raccourcis !"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:10
+msgid "Features:"
+msgstr "Fonctionnalités :"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:12
+msgid "Easily search through your SSH bookmarks"
+msgstr "Recherchez facilement parmi vos signets SSH"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:13
+msgid "Simply start a session by clicking on a button"
+msgstr "Démarrez simplement une session en cliquant sur un bouton"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:14
+msgid "Add a default parameters for when the config file doesn't contain a variable"
+msgstr "Ajoutez des paramètres par défaut pour le cas où le fichier de configuration ne contient pas de variable"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:15
+msgid "Add, remove, and update bookmarks"
+msgstr "Ajoutez, supprimez et mettez à jour vos signets"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:16
+msgid "Choose between all your terminals, and the in-app terminal"
+msgstr "Choisissez entre vos applications de terminal ou le terminal intégré"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:17
+msgid "Add your SSH bookmarks to the app launcher!"
+msgstr "Ajoutez vos signets SSH au lanceur d'applications !"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:30
+msgid "Bart Zaalberg"
+msgstr "Bart Zaalberg"
+
+#: data/com.github.bartzaalberg.bookmark-manager.desktop.in:6
+msgid "com.github.bartzaalberg.bookmark-manager"
+msgstr "com.github.bartzaalberg.bookmark-manager"
+
+#: data/com.github.bartzaalberg.bookmark-manager.desktop.in:11
+msgid "GUI;SSH;Bookmarks;"
+msgstr "GUI;SSH;Signets;"
+
+#: data/com.github.bartzaalberg.bookmark-manager.desktop.in:16
+msgid "About Bookmark Manager"
+msgstr "À propos de Bookmark Manager"

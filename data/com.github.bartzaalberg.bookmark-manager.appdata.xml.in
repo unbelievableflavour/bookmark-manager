@@ -17,6 +17,9 @@
        <li>Add your SSH bookmarks to the app launcher!</li>
     </ul>
   </description>
+  <provides>
+    <binary>com.github.bartzaalberg.bookmark-manager</binary>
+  </provides>
   <content_rating type="oars-1.1">
     <content_attribute id="violence-cartoon">none</content_attribute>
     <content_attribute id="violence-fantasy">none</content_attribute>

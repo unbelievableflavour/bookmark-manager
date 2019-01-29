@@ -50,6 +50,18 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="1.6.0" date="2019-01-29">
+      <description>
+        <p>Metadata translation, Remember position and size</p>
+        <ul>
+          <li>Added metadata translation</li>
+          <li>Application now remembers size and position</li>
+          <li>Added code style hook</li>
+          <li>Fixed about shortcut</li>
+          <li>Added OARS rating</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.5.1" date="2019-01-16">
       <description>
         <p>Re-enabled translations, single-instance, added French</p>

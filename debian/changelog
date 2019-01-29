@@ -1,3 +1,13 @@
+com.github.bartzaalberg.bookmark-manager (1.6.0) STABLE; urgency=low
+
+  * Added metadata translation
+  * Application now remembers size and position
+  * Added code style hook
+  * Fixed about shortcut
+  * Added OARS rating
+
+-- Bart Zaalberg <bartzaalberg@gmail.com>  Tue, 29 Jan 2019 19:24:00 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.5.1) STABLE; urgency=low
 
   * Changed schema location

@@ -50,6 +50,14 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="1.6.1" date="2019-02-13">
+      <description>
+        <p>Adding bookmarks to app launcher works again</p>
+        <ul>
+          <li>Fixed quicklist</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.6.0" date="2019-01-29">
       <description>
         <p>Metadata translation, Remember position and size</p>

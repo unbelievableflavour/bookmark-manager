@@ -1,3 +1,9 @@
+com.github.bartzaalberg.bookmark-manager (1.6.1) STABLE; urgency=low
+
+  * Fixed quicklist
+
+-- Bart Zaalberg <bartzaalberg@gmail.com>  Wed, 13 Feb 2019 11:58:00 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.6.0) STABLE; urgency=low
 
   * Added metadata translation

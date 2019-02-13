@@ -5,7 +5,7 @@ public class DesktopFileManager {
 
     public File get_backup_desktop_config_file () {
         var backupFile = File.new_for_path (
-            "/usr/local/share/applications/com.github.bartzaalberg.bookmark-manager.backup"
+            "/usr/share/applications/com.github.bartzaalberg.bookmark-manager.backup"
         );
         if (!backupFile.query_exists ()) {
             try {
@@ -20,7 +20,7 @@ public class DesktopFileManager {
     }
 
     public File get_desktop_config_file () {
-        var file = File.new_for_path ("/usr/local/share/applications/com.github.bartzaalberg.bookmark-manager.desktop");
+        var file = File.new_for_path ("/usr/share/applications/com.github.bartzaalberg.bookmark-manager.desktop");
         if (!file.query_exists ()) {
             try {
                 file.create (FileCreateFlags.REPLACE_DESTINATION, null);

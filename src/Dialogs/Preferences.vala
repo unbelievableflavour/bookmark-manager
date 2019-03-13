@@ -6,7 +6,6 @@ public class Preferences : Gtk.Dialog {
 
     public Preferences () {
         title = _("Preferences");
-        set_default_size (630, 430);
         resizable = false;
         deletable = false;
 

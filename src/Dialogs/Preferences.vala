@@ -58,6 +58,23 @@ public class Preferences : Gtk.Dialog {
             this.destroy ();
         });
 
+
+        var dark_mode_label = generate_label (_("Dark mode:"));
+
+        var gtk_settings = Gtk.Settings.get_default ();
+        var dark_mode_switch = new Granite.ModeSwitch.from_icon_name (
+            "display-brightness-symbolic", "weather-clear-night-symbolic"
+        );
+        dark_mode_switch.primary_icon_tooltip_text = _("Light mode");
+        dark_mode_switch.secondary_icon_tooltip_text = _("Dark mode");
+        dark_mode_switch.valign = Gtk.Align.CENTER;
+        dark_mode_switch.bind_property ("active", gtk_settings, "gtk_application_prefer_dark_theme");
+        settings.bind ("use-dark-theme", dark_mode_switch, "active", GLib.SettingsBindFlags.DEFAULT);
+
+        dark_mode_switch.notify["active"].connect (() => {
+            detect_dark_mode (gtk_settings);
+        });
+
         var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
         button_box.set_layout (Gtk.ButtonBoxStyle.END);
         button_box.pack_start (close_button);
@@ -83,6 +100,9 @@ public class Preferences : Gtk.Dialog {
 
         general_grid.attach (add_bookmarks_to_dock_update_label, 0, 5, 1, 1);
         general_grid.attach (add_bookmarks_to_dock_update_button, 1, 5, 1, 1);
+
+        general_grid.attach (dark_mode_label, 0, 6, 1, 1);
+        general_grid.attach (dark_mode_switch, 1, 6, 1, 1);
 
         var main_grid = new Gtk.Grid ();
         main_grid.attach (general_grid, 0, 0, 1, 1);
@@ -140,6 +160,11 @@ public class Preferences : Gtk.Dialog {
         });
 
         return close_button;
+    }
+
+    public void detect_dark_mode (Gtk.Settings gtk_settings) {
+        var stack_manager = StackManager.get_instance ();
+        stack_manager.set_dark_mode (gtk_settings.gtk_application_prefer_dark_theme);
     }
 }
 }

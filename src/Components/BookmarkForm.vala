@@ -14,9 +14,6 @@ public class BookmarkForm : Gtk.Grid {
     protected Gtk.ButtonBox button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
 
     public BookmarkForm () {
-
-        get_style_context ().add_class ("form-component");
-
         var nickname_label = new BookmarkFormLabel (_("Nickname:"));
         var host_label = new BookmarkFormLabel (_("Host:*"));
         var hostname_label = new BookmarkFormLabel (_("Host name:*"));

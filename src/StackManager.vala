@@ -11,6 +11,7 @@ public class StackManager : Object {
     private const string EDIT_BOOKMARK_VIEW_ID = "edit-bookmark-view";
 
     public Terminal terminal = new Terminal ();
+    public static GLib.Settings settings;
 
     Gtk.Paned pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
 
@@ -19,7 +20,17 @@ public class StackManager : Object {
     StackManager () {
         stack = new Gtk.Stack ();
         stack.get_style_context ().add_class ("stack-manager");
+        settings = new GLib.Settings (Constants.APPLICATION_NAME);
+        this.set_dark_mode (settings.get_boolean ("use-dark-theme"));
         stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT;
+    }
+
+    public void set_dark_mode (bool answer = true) {
+        if (answer) {
+           stack.get_style_context ().add_class ("stack-manager-dark");
+        } else {
+           stack.get_style_context ().remove_class ("stack-manager-dark");
+        }
     }
 
     public static StackManager get_instance () {

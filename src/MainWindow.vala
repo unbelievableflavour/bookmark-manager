@@ -57,6 +57,11 @@ public class MainWindow : Gtk.Window {
                     new Cheatsheet ();
                   }
                   break;
+                case Gdk.Key.s:
+                  if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
+                    new Preferences ();
+                  }
+                  break;
                 case Gdk.Key.f:
                   if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
                     header_bar.search_entry.grab_focus ();

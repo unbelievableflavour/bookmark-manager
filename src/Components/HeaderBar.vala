@@ -11,12 +11,13 @@ public class HeaderBar : Gtk.HeaderBar {
     public Gtk.Button return_button = new Gtk.Button ();
     Gtk.Button add_button = new Gtk.Button.from_icon_name ("document-new", Gtk.IconSize.LARGE_TOOLBAR);
     Gtk.MenuButton menu_button = new Gtk.MenuButton ();
+    Gtk.AccelGroup accel_group = new Gtk.AccelGroup ();
 
     HeaderBar () {
         Granite.Widgets.Utils.set_color_primary (this, Constants.BRAND_COLOR);
 
         search_entry.set_placeholder_text (_("Search Bookmarks"));
-        search_entry.set_tooltip_text (_("Search for bookmarks"));
+        search_entry.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>F"}, _("Search for bookmarks"));
         search_entry.sensitive = true;
         search_entry.search_changed.connect (() => {
             show_return_button (false);
@@ -29,11 +30,15 @@ public class HeaderBar : Gtk.HeaderBar {
         generate_return_button ();
 
         var cheatsheet = new Gtk.MenuItem.with_label (_("Markdown Cheatsheet"));
+        cheatsheet.add_accelerator ("activate", accel_group,
+            Gdk.Key.h, Gdk.ModifierType.CONTROL_MASK, Gtk.AccelFlags.VISIBLE);
         cheatsheet.activate.connect (() => {
             new Cheatsheet ();
         });
 
         var preferences = new Gtk.MenuItem.with_label (_("Preferences"));
+        preferences.add_accelerator ("activate", accel_group,
+            Gdk.Key.s, Gdk.ModifierType.CONTROL_MASK, Gtk.AccelFlags.VISIBLE);
         preferences.activate.connect (() => {
             new Preferences ();
         });
@@ -63,11 +68,13 @@ public class HeaderBar : Gtk.HeaderBar {
     private void generate_menu_button () {
         menu_button.has_tooltip = true;
         menu_button.tooltip_text = (_("Settings"));
+        menu_button.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>S"}, _("Settings"));
         menu_button.set_image (new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR));
     }
 
     private void generate_add_button () {
-        add_button.set_tooltip_text (_("Create a new bookmark"));
+
+        add_button.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>A"}, _("Create a new bookmark"));
         add_button.clicked.connect (() => {
             stack_manager.get_stack ().visible_child_name = "add-bookmark-view";
         });
@@ -77,6 +84,7 @@ public class HeaderBar : Gtk.HeaderBar {
         return_button.label = _("Back");
         return_button.no_show_all = true;
         return_button.get_style_context ().add_class ("back-button");
+        return_button.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>L"}, _("Back to list"));
         return_button.visible = false;
         return_button.clicked.connect (() => {
             stack_manager.get_stack ().visible_child_name = "list-view";

@@ -63,6 +63,10 @@ msgstr ""
 msgid "Add your SSH bookmarks to the app launcher!"
 msgstr ""
 
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:18
+msgid "Choose between light and dark with the dark mode"
+msgstr ""
+
 #: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:30
 msgid "Bart Zaalberg"
 msgstr ""

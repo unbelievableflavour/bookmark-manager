@@ -15,6 +15,7 @@
        <li>Add, remove, and update bookmarks</li>
        <li>Choose between all your terminals, and the in-app terminal</li>
        <li>Add your SSH bookmarks to the app launcher!</li>
+       <li>Choose between light and dark with the dark mode</li>
     </ul>
   </description>
   <provides>
@@ -347,6 +348,9 @@
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/bartzaalberg/Bookmark-Manager/master/screenshot3.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/bartzaalberg/Bookmark-Manager/master/screenshot4.png</image>
     </screenshot>
   </screenshots>
   <developer_name>Bart Zaalberg</developer_name>

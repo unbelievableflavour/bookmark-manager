@@ -56,6 +56,10 @@ msgstr "Kies tussen al je eigen terminal applicaties, en een in-app terminal"
 msgid "Add your SSH bookmarks to the app launcher!"
 msgstr "Voeg SSH bookmarks toe aan de app launcher!"
 
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:18
+msgid "Choose between light and dark with the dark mode"
+msgstr "Kies tussen licht en donker met de donkere modus"
+
 #: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:30
 msgid "Bart Zaalberg"
 msgstr "Bart Zaalberg"

@@ -1,3 +1,11 @@
+com.github.bartzaalberg.bookmark-manager (1.7.0) STABLE; urgency=low
+
+  * Added dark mode!
+  * Fixed dialog size
+  * Added shortcuts labels throughout the app
+
+-- Bart Zaalberg <bartzaalberg@gmail.com>  Sat, 16 Mar 2019 14:01:00 +0200
+
 com.github.bartzaalberg.bookmark-manager (1.6.1) STABLE; urgency=low
 
   * Fixed quicklist

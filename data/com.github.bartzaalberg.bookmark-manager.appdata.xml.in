@@ -53,6 +53,14 @@
   <releases>
     <release version="1.6.1" date="2019-02-13">
       <description>
+        <p>Dark mode, shortcut labels</p>
+        <ul>
+          <li>Added dark mode</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.6.1" date="2019-02-13">
+      <description>
         <p>Adding bookmarks to app launcher works again</p>
         <ul>
           <li>Fixed quicklist</li>

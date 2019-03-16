@@ -51,11 +51,13 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
-    <release version="1.6.1" date="2019-02-13">
+    <release version="1.7.0" date="2019-03-16">
       <description>
-        <p>Dark mode, shortcut labels</p>
+        <p>Dark mode and shortcut labels</p>
         <ul>
           <li>Added dark mode</li>
+          <li>Added shortcut labels throughout the application</li>
+          <li>Fixed dialog size bug</li>
         </ul>
       </description>
     </release>

@@ -23,5 +23,5 @@ install:
 script:
   - houston ci
     --type system-app
-    --name-domain io.elementary.code
-    --name-human Code
+    --name-domain com.github.bartzaalberg.bookmark-manager
+    --name-human Bookmark Manager

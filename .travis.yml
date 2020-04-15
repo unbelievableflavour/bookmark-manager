@@ -24,4 +24,4 @@ script:
   - houston ci
     --type system-app
     --name-domain com.github.bartzaalberg.bookmark-manager
-    --name-human Bookmark Manager
+    --name-human "Bookmark Manager"

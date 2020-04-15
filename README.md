@@ -1,4 +1,5 @@
 <a href="https://gitlocalize.com/repo/4336"> <img src="https://gitlocalize.com/repo/4336/whole_project/badge.svg" /> </a>
+<img src="https://travis-ci.org/bartzaalberg/alias.svg?branch=master" />
 
 # Bookmark Manager
 Manager for your ssh configs

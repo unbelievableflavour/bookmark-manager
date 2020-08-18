@@ -1,0 +1,260 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.bartzaalberg.bookmark-manager package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.bartzaalberg.bookmark-manager\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-27 17:54+0100\n"
+"PO-Revision-Date: 2020-08-18 14:43+0100\n"
+"Language-Team: Portuguese (Portugal)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"Last-Translator: André Barata <andretiagob@protonmail.com\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: pt\n"
+
+#: src/ListBoxRow.vala:74
+msgid "Start an SSH session in a terminal"
+msgstr "Comece uma sessão SSH num terminal"
+
+#: src/ListBoxRow.vala:105
+msgid "Remote this bookmark"
+msgstr "Remover este marcador"
+
+#: src/ListBoxRow.vala:117
+msgid "Edit this bookmark"
+msgstr "Editar este marcador"
+
+#: src/Dialogs/Preferences.vala:8 src/Dialogs/Preferences.vala:13
+#: src/Components/HeaderBar.vala:36
+msgid "Preferences"
+msgstr "Preferências"
+
+#: src/Dialogs/Preferences.vala:15
+msgid "Default Username:"
+msgstr "Nome de Utilizador Padrão:"
+
+#: src/Dialogs/Preferences.vala:19
+msgid "This variable will be used when no variable is given in the ssh config"
+msgstr ""
+"Esta variável vai ser usada quando nenhuma variável for fornecida na "
+"configuração ssh"
+
+#: src/Dialogs/Preferences.vala:21
+msgid "Terminal:"
+msgstr "Terminal:"
+
+#: src/Dialogs/Preferences.vala:25
+msgid "This is terminal used to start your ssh sessions"
+msgstr "Isto é o terminal que é usado para iniciar as suas sessões ssh"
+
+#: src/Dialogs/Preferences.vala:27
+msgid "Experimental"
+msgstr "Experimental"
+
+#: src/Dialogs/Preferences.vala:29
+msgid "Add your bookmarks to your dock"
+msgstr "Adicione os seus marcadores à sua doca"
+
+#: src/Dialogs/Preferences.vala:30
+msgid "Update Bookmarks"
+msgstr "Atualizar Marcadores"
+
+#: src/Dialogs/Preferences.vala:35
+msgid "Use terminal inside app:"
+msgstr "Usar o terminal dentro da aplicação:"
+
+#: src/Dialogs/Preferences.vala:42
+msgid "Save"
+msgstr "Gravar"
+
+#: src/Dialogs/Preferences.vala:114 src/Dialogs/Preferences.vala:120
+msgid "An error occured"
+msgstr "Ocorreu um erro"
+
+#: src/Dialogs/Preferences.vala:116
+msgid "Success"
+msgstr "Sucesso"
+
+#: src/Dialogs/Preferences.vala:116
+msgid ""
+"Your bookmarks have been added to your dock.If you have added more "
+"bookmarks. Please click this button again, because it won't happen "
+"dynamically."
+msgstr ""
+"Os seus marcadores foram adicionados à sua doca. Se adicionou mais "
+"marcadores. Por favor clique neste botão novamente, porque isso não "
+"acontece dinamicamente."
+
+#: src/Dialogs/DeleteConfirm.vala:8
+msgid "Delete this bookmark?"
+msgstr "Apagar este marcador?"
+
+#: src/Dialogs/DeleteConfirm.vala:8
+msgid "Are you sure you want to delete this bookmark?"
+msgstr "Tem a certeza que quer apagar este marcador?"
+
+#: src/Dialogs/Cheatsheet.vala:4 src/Dialogs/Cheatsheet.vala:7
+msgid "Cheatsheet"
+msgstr "Folha de Dicas"
+
+#: src/Dialogs/Cheatsheet.vala:14
+msgid "Add bookmark"
+msgstr "Adicionar marcador"
+
+#: src/Dialogs/Cheatsheet.vala:17
+msgid "List bookmarks"
+msgstr "Lista de marcadores"
+
+#: src/Dialogs/Cheatsheet.vala:20
+msgid "Search"
+msgstr "Pesquisar"
+
+#: src/Dialogs/Cheatsheet.vala:23
+msgid "Open the cheatsheet"
+msgstr "Abrir a folha de dicas"
+
+#: src/Dialogs/Cheatsheet.vala:80
+msgid "Close"
+msgstr "Fechar"
+
+#: src/Views/AddBookmark.vala:8
+msgid "Add new bookmark"
+msgstr "Adicionar um novo marcador"
+
+#: src/Views/AddBookmark.vala:10
+msgid "Create"
+msgstr "Criar"
+
+#: src/Views/AddBookmark.vala:36 src/Views/EditBookmark.vala:80
+msgid "Fields are invalid"
+msgstr "Os campos são inválidos"
+
+#: src/Views/AddBookmark.vala:36 src/Views/EditBookmark.vala:80
+msgid "Please correctly fill in all the required fields"
+msgstr "Por favor preencha corretamente todos os campos necessários"
+
+#: src/Views/AddBookmark.vala:41
+msgid "Bookmark with this name already exists"
+msgstr "Marcador com este nome já existe"
+
+#: src/Views/AddBookmark.vala:41
+msgid "Please choose a different name"
+msgstr "Por favor escolha um nome diferente"
+
+#: src/Views/EditBookmark.vala:8
+msgid "Edit a bookmark"
+msgstr "Editar um marcador"
+
+#: src/Views/EditBookmark.vala:12
+msgid "Edit"
+msgstr "Editar"
+
+#: src/Views/EmptyView.vala:9
+msgid "Add some bookmarks"
+msgstr "Adicionar alguns marcadores"
+
+#: src/Views/EmptyView.vala:9
+msgid "Your bookmarks file is empty."
+msgstr "O seu ficheiro de marcadores está vazio."
+
+#: src/Views/EmptyView.vala:10
+msgid "New bookmark"
+msgstr "Novo marcador"
+
+#: src/Views/EmptyView.vala:10
+msgid "add a new bookmark with host, ip, etc.."
+msgstr "adicionar um novo marcador com o anfitrião, ip, etc..."
+
+#: src/Views/NotFoundView.vala:7
+msgid "Nothing was found"
+msgstr "Nada foi encontrado"
+
+#: src/Views/NotFoundView.vala:7
+msgid "Try searching for something else"
+msgstr "Tente pesquisar por outra coisa"
+
+#: src/Components/HeaderBar.vala:18
+msgid "Search Bookmarks"
+msgstr "Pesquisar Marcadores"
+
+#: src/Components/HeaderBar.vala:19
+msgid "Search for bookmarks"
+msgstr "Pesquisar por marcadores"
+
+#: src/Components/HeaderBar.vala:31
+msgid "Markdown Cheatsheet"
+msgstr "Lista de Dicas em Markdown"
+
+#: src/Components/HeaderBar.vala:65
+msgid "Settings"
+msgstr "Configurações"
+
+#: src/Components/HeaderBar.vala:70
+msgid "Create a new bookmark"
+msgstr "Criar um novo marcador"
+
+#: src/Components/HeaderBar.vala:77
+msgid "Back"
+msgstr "Voltar"
+
+#: src/Components/BookmarkForm.vala:4
+msgid "A bookmark form"
+msgstr "Um formulário de marcador"
+
+#: src/Components/BookmarkForm.vala:6
+msgid "if not set. Host is used"
+msgstr "se não está definido. O anfitrião é usado"
+
+#: src/Components/BookmarkForm.vala:7
+msgid "server1"
+msgstr "servidor1"
+
+#: src/Components/BookmarkForm.vala:8
+msgid "127.0.0.1"
+msgstr "127.0.0.1"
+
+#: src/Components/BookmarkForm.vala:9
+msgid "james"
+msgstr "james"
+
+#: src/Components/BookmarkForm.vala:10
+msgid "80"
+msgstr "80"
+
+#: src/Components/BookmarkForm.vala:12
+msgid "ssh bookmark nc %h %p"
+msgstr "marcador ssh nc %h %p"
+
+#: src/Components/BookmarkForm.vala:20
+msgid "Nickname:"
+msgstr "Alcunha:"
+
+#: src/Components/BookmarkForm.vala:21
+msgid "Host:*"
+msgstr "Anfitrião:*"
+
+#: src/Components/BookmarkForm.vala:22
+msgid "Host name:*"
+msgstr "Nome do anfitrião:*"
+
+#: src/Components/BookmarkForm.vala:23
+msgid "Username:"
+msgstr "Nome do utilizador:"
+
+#: src/Components/BookmarkForm.vala:24
+msgid "Port:"
+msgstr "Porta:"
+
+#: src/Components/BookmarkForm.vala:25
+msgid "Use agent forwarding:"
+msgstr "Usar agente de encaminhamento:"
+
+#: src/Components/BookmarkForm.vala:26
+msgid "Proxy command:"
+msgstr "Comando proxy:"

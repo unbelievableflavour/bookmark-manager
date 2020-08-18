@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.bartzaalberg.alias package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-24 19:02+0100\n"
+"PO-Revision-Date: 2020-08-18 14:59+0100\n"
+"Language-Team: Portuguese (Portugal)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"Last-Translator: André Barata <andretiagob@protonmail.com\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: pt\n"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:6
+#: data/com.github.bartzaalberg.bookmark-manager.desktop.in:3
+msgid "Bookmark Manager"
+msgstr "Administrador de Marcadores"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:7
+#: data/com.github.bartzaalberg.bookmark-manager.desktop.in:4
+msgid "Manage your SSH bookmarks"
+msgstr "Administre os seus marcadores em SSH"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:9
+msgid ""
+"A simple tool to manage your SSH bookmarks from the .ssh/config file. Add, "
+"edit, and remove straight from the application. Start in a terminal inside "
+"the app, or use your own favorite terminal. You can even add your bookmarks "
+"to your app launcher as shortcuts!"
+msgstr ""
+"Uma ferramenta simples para administrar os seus marcadores em SSH do .shh/"
+"ficheiro de configuração. Adicione, edite, e remova diretamente da "
+"aplicação. Inicie num terminal dentro da aplicação, ou use o seu terminal "
+"favorito. Você pode até adicionar os seus marcadores no menu de aplicações "
+"como atalhos!"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:10
+msgid "Features:"
+msgstr "Funcionalidades:"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:12
+msgid "Easily search through your SSH bookmarks"
+msgstr "Pesquise de forma fácil os seus marcadores em SSH"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:13
+msgid "Simply start a session by clicking on a button"
+msgstr "Inicie uma sessão carregando simplesmente num botão"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:14
+msgid ""
+"Add a default parameters for when the config file doesn't contain a variable"
+msgstr ""
+"Adicione um parâmetro padrão para quando o ficheiro de configuração não "
+"conter uma variável"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:15
+msgid "Add, remove, and update bookmarks"
+msgstr "Adicione, remova, e atualize marcadores"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:16
+msgid "Choose between all your terminals, and the in-app terminal"
+msgstr ""
+"Escolha entre todos os seus terminais, e o terminal incluído na aplicação"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:17
+msgid "Add your SSH bookmarks to the app launcher!"
+msgstr "Adicione os seus marcadores em SSH ao menu de aplicações!"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:18
+msgid "Choose between light and dark with the dark mode"
+msgstr "Escolha entre o claro e escuro com o modo escuro"
+
+#: data/com.github.bartzaalberg.bookmark-manager.appdata.xml.in:30
+msgid "Bart Zaalberg"
+msgstr "Bart Zaalberg"
+
+#: data/com.github.bartzaalberg.bookmark-manager.desktop.in:6
+msgid "com.github.bartzaalberg.bookmark-manager"
+msgstr "com.github.bartzaalberg.bookmark-manager"
+
+#: data/com.github.bartzaalberg.bookmark-manager.desktop.in:11
+msgid "GUI;SSH;Bookmarks;"
+msgstr "GUI:SSH:Marcadores;"
+
+#: data/com.github.bartzaalberg.bookmark-manager.desktop.in:16
+msgid "About Bookmark Manager"
+msgstr "Sobre o Administrador de Marcadores"

@@ -48,14 +48,14 @@ public class Cheatsheet : Gtk.Dialog {
         grid.margin = 12;
         grid.attach (general_header, 0, 0, 2, 1);
 
-        var gridPosition = 1;
+        var grid_position = 1;
         var index = 0;
 
         foreach (Gtk.Label shortcut in shortcuts) {
-            grid.attach (labels[index], 0, gridPosition, 1, 1);
-            grid.attach (shortcuts[index], 1, gridPosition, 1, 1);
+            grid.attach (labels[index], 0, grid_position, 1, 1);
+            grid.attach (shortcuts[index], 1, grid_position, 1, 1);
 
-            gridPosition++;
+            grid_position++;
             index++;
         }
 

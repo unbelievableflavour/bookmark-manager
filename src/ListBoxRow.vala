@@ -91,8 +91,8 @@ public class ListBoxRow : Gtk.ListBoxRow {
             }
 
             try {
-                var terminalName = settings.get_string ("terminalname");
-                Process.spawn_command_line_async (terminalName + " --execute='" + ssh_command + "'");
+                var terminal_name = settings.get_string ("terminalname");
+                Process.spawn_command_line_async (terminal_name + " --execute='" + ssh_command + "'");
             } catch (SpawnError e) {
                 new Alert ("An error occured", e.message);
             }

@@ -70,4 +70,3 @@ public class App:Granite.Application {
     }
 }
 }
-

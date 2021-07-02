@@ -170,36 +170,36 @@ public class ConfigFileReader : Object {
     }
 
     public string get_filtered_value (string[] splitted_line) {
-        var elementsCount = 0;
-        string filteredValue = "";
+        var elements_count = 0;
+        string filtered_value = "";
         foreach (string part in splitted_line) {
             if (part == "") {
                 continue;
             }
 
-            if (elementsCount == 0 ) {
-                elementsCount++;
+            if (elements_count == 0 ) {
+                elements_count++;
                 continue;
             }
 
-            if (elementsCount == 1 ) {
-                filteredValue += part;
-                elementsCount++;
+            if (elements_count == 1 ) {
+                filtered_value += part;
+                elements_count++;
                 continue;
             }
 
-            filteredValue += " " + part;
+            filtered_value += " " + part;
         }
-        return filteredValue;
+        return filtered_value;
     }
 
     private File get_ssh_config_file () {
         string path = Environment.get_home_dir ();
 
-        var sshFolder = File.new_for_path (path + "/.ssh/");
-        if (!sshFolder.query_exists ()) {
+        var ssh_folder = File.new_for_path (path + "/.ssh/");
+        if (!ssh_folder.query_exists ()) {
             try {
-                sshFolder.make_directory ();
+                ssh_folder.make_directory ();
             } catch (Error e) {
                 error ("%s", e.message);
             }
@@ -215,10 +215,10 @@ public class ConfigFileReader : Object {
             }
         }
 
-        var backupFile = File.new_for_path (path + "/.ssh/config_backup");
-        if (!backupFile.query_exists ()) {
+        var backup_file = File.new_for_path (path + "/.ssh/config_backup");
+        if (!backup_file.query_exists ()) {
             try {
-                file.copy (backupFile, 0, null);
+                file.copy (backup_file, 0, null);
             } catch (Error e) {
                 error ("%s", e.message);
             }
@@ -232,15 +232,15 @@ public class ConfigFileReader : Object {
 
         try {
             if (file.query_exists () == true) {
-                var otherSettings = get_other_settings ();
-                string bookmarksRaw = convert_bookmarks_to_string (bookmarks);
-                var otherSettingsRaw = convert_other_settings_to_string (otherSettings);
+                var other_settings = get_other_settings ();
+                string bookmarks_raw = convert_bookmarks_to_string (bookmarks);
+                var other_settings_raw = convert_other_settings_to_string (other_settings);
 
                 file.delete (null);
                 FileOutputStream fos = file.create (FileCreateFlags.REPLACE_DESTINATION, null);
                 DataOutputStream dos = new DataOutputStream (fos);
 
-                dos.put_string (otherSettingsRaw + bookmarksRaw, null);
+                dos.put_string (other_settings_raw + bookmarks_raw, null);
             }
         } catch (Error e) {
             stderr.printf ("Error: %s\n", e.message);
@@ -248,26 +248,26 @@ public class ConfigFileReader : Object {
     }
 
     private string convert_other_settings_to_string (string[] settings) {
-        string rawSettingsString = "";
+        string raw_settings_string = "";
 
         foreach (string setting in settings) {
-            string rawSetting = setting + "\n";
-            rawSettingsString += rawSetting;
+            string raw_setting = setting + "\n";
+            raw_settings_string += raw_setting;
         }
 
-        rawSettingsString += "\n";
-        return rawSettingsString;
+        raw_settings_string += "\n";
+        return raw_settings_string;
     }
 
     private string convert_bookmarks_to_string (Bookmark[] bookmarks) {
-        string raw_bookmarksString = "";
+        string raw_bookmarks_string = "";
 
         foreach (Bookmark bookmark in bookmarks) {
             string raw_bookmark = convert_bookmark_to_string (bookmark);
-            raw_bookmarksString += raw_bookmark;
+            raw_bookmarks_string += raw_bookmark;
         }
 
-        return raw_bookmarksString;
+        return raw_bookmarks_string;
     }
 
     private string convert_bookmark_to_string (Bookmark bookmark) {

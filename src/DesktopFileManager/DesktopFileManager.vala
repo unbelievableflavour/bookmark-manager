@@ -4,19 +4,19 @@ public class DesktopFileManager {
     private Settings settings = new Settings ("com.github.bartzaalberg.bookmark-manager");
 
     public File get_backup_desktop_config_file () {
-        var backupFile = File.new_for_path (
+        var backup_file = File.new_for_path (
             "/usr/share/applications/com.github.bartzaalberg.bookmark-manager.backup"
         );
-        if (!backupFile.query_exists ()) {
+        if (!backup_file.query_exists ()) {
             try {
                 var normal_file = get_desktop_config_file ();
-                normal_file.copy (backupFile, 0, null);
+                normal_file.copy (backup_file, 0, null);
                 get_backup_desktop_config_file ();
             } catch (Error e) {
                 error ("%s", e.message);
             }
         }
-        return backupFile;
+        return backup_file;
     }
 
     public File get_desktop_config_file () {
@@ -34,8 +34,8 @@ public class DesktopFileManager {
 
     public void write_to_desktop_file (Bookmark[] bookmarks) {
 
-        var backupFile = get_backup_desktop_config_file ();
-        var lines = new DataInputStream (backupFile.read ());
+        var backup_file = get_backup_desktop_config_file ();
+        var lines = new DataInputStream (backup_file.read ());
         var normal_file = get_desktop_config_file ();
         var desktop_bookmarks_raw = "";
         string line;
@@ -65,39 +65,39 @@ public class DesktopFileManager {
     }
 
     private string convert_bookmarks_to_desktop_file_string (Bookmark[] bookmarks) {
-        string raw_bookmarksString = "";
+        string raw_bookmarks_string = "";
 
         foreach (Bookmark bookmark in bookmarks) {
             string raw_bookmark = generate_ssh_command (bookmark);
-            raw_bookmarksString += raw_bookmark;
+            raw_bookmarks_string += raw_bookmark;
         }
 
-        return raw_bookmarksString;
+        return raw_bookmarks_string;
     }
 
     private string convert_bookmarks_to_actions_string (Bookmark[] bookmarks) {
-        string raw_bookmarksString = "Actions=AboutDialog;";
+        string raw_bookmarks_string = "Actions=AboutDialog;";
 
         foreach (Bookmark bookmark in bookmarks) {
-            raw_bookmarksString += bookmark.get_name () + ";";
+            raw_bookmarks_string += bookmark.get_name () + ";";
         }
 
-        return raw_bookmarksString;
+        return raw_bookmarks_string;
     }
 
     public string generate_ssh_command (Bookmark bookmark) {
         var username = settings.get_string ("sshname");
-        var terminalName = settings.get_string ("terminalname");
+        var terminal_name = settings.get_string ("terminalname");
         if (bookmark.get_user () != null && bookmark.get_user () != "") {
             username = bookmark.get_user ();
         }
 
-        var actionString = "[Desktop Action " + bookmark.get_name () + "]\n";
-        actionString += "Name=ssh " + bookmark.get_name () + "\n";
-        actionString += "Exec=" + terminalName + " --execute='ssh " + username + "@" + bookmark.get_name () + "'\n";
-        actionString += "\n";
+        var action_string = "[Desktop Action " + bookmark.get_name () + "]\n";
+        action_string += "Name=ssh " + bookmark.get_name () + "\n";
+        action_string += "Exec=" + terminal_name + " --execute='ssh " + username + "@" + bookmark.get_name () + "'\n";
+        action_string += "\n";
 
-        return actionString;
+        return action_string;
     }
 }
 }

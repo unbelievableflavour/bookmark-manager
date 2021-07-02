@@ -18,9 +18,9 @@ public class BookmarkForm : Gtk.Grid {
         var host_label = new BookmarkFormLabel (_("Host:*"));
         var hostname_label = new BookmarkFormLabel (_("Host name:*"));
         var username_label = new BookmarkFormLabel (_("Username:"));
-        var portLabel = new BookmarkFormLabel (_("Port:"));
+        var port_label = new BookmarkFormLabel (_("Port:"));
         var agent_forward_label = new BookmarkFormLabel (_("Use agent forwarding:"));
-        var proxy_commandLabel = new BookmarkFormLabel (_("Proxy command:"));
+        var proxy_command_label = new BookmarkFormLabel (_("Proxy command:"));
 
         button_box.set_layout (Gtk.ButtonBoxStyle.END);
         button_box.set_margin_start (12);
@@ -40,11 +40,11 @@ public class BookmarkForm : Gtk.Grid {
         attach (host_name_entry, 1, 3, 1, 1);
         attach (username_label, 0, 4, 1, 1);
         attach (username_entry, 1, 4, 1, 1);
-        attach (portLabel, 0, 5, 1, 1);
+        attach (port_label, 0, 5, 1, 1);
         attach (port_entry, 1, 5, 1, 1);
         attach (agent_forward_label, 0, 6, 1, 1);
         attach (agent_forward_check_button, 1, 6, 1, 1);
-        attach (proxy_commandLabel, 0, 7, 1, 1);
+        attach (proxy_command_label, 0, 7, 1, 1);
         attach (proxy_command_entry, 1, 7, 1, 1);
 
         attach (button_box, 1, 8, 1, 1);

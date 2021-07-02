@@ -61,7 +61,7 @@ public class ListBox : Gtk.ListBox {
     }
 
     private bool search_word_doesnt_match_any_in_list (string search_word, Bookmark[] bookmarks) {
-        int matchCount = 0;
+        int match_count = 0;
 
         if (search_word == "") {
             return false;
@@ -69,10 +69,10 @@ public class ListBox : Gtk.ListBox {
 
         foreach (Bookmark bookmark in bookmarks) {
             if (search_word in bookmark.get_name ()) {
-                matchCount++;
+                match_count++;
             }
         }
-        return matchCount == 0;
+        return match_count == 0;
     }
 }
 }

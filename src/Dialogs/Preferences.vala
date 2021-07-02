@@ -11,7 +11,7 @@ public class Preferences : Gtk.Dialog {
 
         var general_header = new HeaderLabel (_("Preferences"));
 
-        var usernameLabel = generate_label (_("Default Username:"));
+        var username_label = generate_label (_("Default Username:"));
 
         var username_entry = new Gtk.Entry ();
         username_entry.set_text (settings.get_string ("sshname"));
@@ -86,7 +86,7 @@ public class Preferences : Gtk.Dialog {
         general_grid.column_spacing = 12;
         general_grid.margin = 12;
         general_grid.attach (general_header, 0, 0, 2, 1);
-        general_grid.attach (usernameLabel, 0, 1, 1, 1);
+        general_grid.attach (username_label, 0, 1, 1, 1);
         general_grid.attach (username_entry, 1, 1, 1, 1);
 
         general_grid.attach (terminal_name_label, 0, 2, 1, 1);

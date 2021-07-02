@@ -24,15 +24,15 @@ public class DeleteConfirm : Object {
     private void delete_bookmark (Bookmark deleted_bookmark) {
         var config_file_reader = new ConfigFileReader ();
         var bookmarks = config_file_reader.get_bookmarks ();
-        Bookmark[] new_bookmarksList = {};
+        Bookmark[] new_bookmarks_list = {};
 
         foreach (Bookmark bookmark in bookmarks) {
            if (bookmark.get_name () != deleted_bookmark.get_name ()) {
-                new_bookmarksList += bookmark;
+                new_bookmarks_list += bookmark;
            }
         }
 
-        config_file_reader.write_to_file (new_bookmarksList);
+        config_file_reader.write_to_file (new_bookmarks_list);
 
         stack_manager.get_stack ().visible_child_name = "list-view";
         list_box.get_bookmarks ("");

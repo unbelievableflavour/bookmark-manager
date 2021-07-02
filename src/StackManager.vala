@@ -95,7 +95,7 @@ public class StackManager : Object {
 
         Gtk.ScrolledWindow result_box = new Gtk.ScrolledWindow (null, null);
         result_box.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-        result_box.set_size_request (200,200);
+        result_box.set_size_request (200, 200);
         result_box.add (stack);
 
         pane.expand = true;
@@ -111,7 +111,7 @@ public class StackManager : Object {
     public void add_a_terminal () {
         Gtk.ScrolledWindow view_box = new Gtk.ScrolledWindow (null, null);
         view_box.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-        view_box.set_size_request (700,200);
+        view_box.set_size_request (700, 200);
         view_box.add (terminal);
 
         pane.pack1 (view_box, true, false);
